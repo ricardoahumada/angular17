@@ -1,0 +1,49 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Leaf Rake serv",
+      "code": "GUN-0611",
+      "image": "LeafRake.png",
+      "date": "2022-11-14T18:25:43.511Z",
+      "price": 19.95,
+      "stars": 3
+    },
+    {
+      "id": 2,
+      "name": "Garden Cart serv",
+      "code": "GUN-0023",
+      "image": "GardenCart.png",
+      "date": "2021-01-23T18:25:43.511Z",
+      "price": 32.99,
+      "stars": 4
+    },
+    {
+      "name": "Spray nozzle",
+      "code": "GUN-9711",
+      "image": "",
+      "date": "2022-12-09T23:00:00.000Z",
+      "price": 39.95,
+      "stars": 0,
+      "id": 3
+    },
+    {
+      "name": "Spray nozzle",
+      "code": "GUN-9711",
+      "image": "",
+      "date": "2022-12-09T23:00:00.000Z",
+      "price": 39.95,
+      "stars": 0,
+      "id": 4
+    },
+    {
+      "name": "Spray nozzle",
+      "code": "GUN-9711",
+      "image": "",
+      "date": "2022-12-09T23:00:00.000Z",
+      "price": 39.95,
+      "stars": 0,
+      "id": 5
+    }
+  ]
+}
