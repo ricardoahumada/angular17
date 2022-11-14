@@ -1,0 +1,16 @@
+.stars{
+    div{
+        span{
+            margin: 0.5em;
+            i{
+                color: #ccc;
+            }
+            &.fill{
+                i{
+                    color: yellow;
+                }
+            }
+        }
+        
+    }
+}

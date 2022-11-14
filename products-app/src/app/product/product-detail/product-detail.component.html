@@ -1,0 +1,11 @@
+<p>product-detail works!</p>
+
+<button (click)="goHome()">Go Home</button>
+<button (click)="goProducts()">Go Products</button>
+
+<p>
+<a [routerLink]="['./features']">Tracks</a> |
+<a [routerLink]="['./images']">Albums</a>
+</p>
+
+<router-outlet></router-outlet>

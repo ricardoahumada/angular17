@@ -1,0 +1,37 @@
+<section>
+    <h2 *replicate="4">Title to be repeated</h2>
+    <h3 *ngIf="show_text">{{text}}</h3>
+    <div *ngIf="!products" class="red">{{no_products}}</div>
+    <button class="btn btn-primary" (click)="showImages()">{{show_imgs?'Hide images':'Show images'}}</button>
+    <br /><br />
+    <input [(ngModel)]="filter_text" placeholder="input a text to filter"/>
+    <h3>Products filtered by: {{filter_text}}</h3>
+    <table *ngIf="products" class="styled-table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Code</th>
+                <th>Image</th>
+                <th>Date</th>
+                <th>Price</th>
+                <th>Stars</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products | filterProducts:filter_text">
+                <td highlight>{{product.name}}</td>
+                <td>{{product.code | lowercase}}</td>
+                <td>
+                    <img *ngIf="show_imgs" [src]="'./assets/imgs/'+product.image" [title]="product.name | uppercase" [style.maxWidth.px]="img_width"
+                        [style.maxHeight.px]="img_height" />
+                </td>
+                <td>{{product.date | date:'mediumDate'}}</td>
+                <td>{{product.price | currency:'USD':true:'1.2-2'}}</td>
+                <td>
+                    <app-stars [rating]="product.stars" (star_clicked)="onRatingClicked($event,product.code)"></app-stars>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</section>
