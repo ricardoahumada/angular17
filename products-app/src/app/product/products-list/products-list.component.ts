@@ -11,7 +11,10 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./products-list.component.scss'],
 })
 export class ProductsListComponent implements OnInit, OnChanges, OnDestroy {
-  constructor(private _productsService: ProductsService, private _productsAPIService:ProductApiService) {}
+  constructor(
+    private _productsService: ProductsService,
+    private _productsAPIService: ProductApiService
+  ) {}
 
   private $productsSuscription: Subscription | null = null;
 
@@ -72,6 +75,8 @@ export class ProductsListComponent implements OnInit, OnChanges, OnDestroy {
     console.log('onRatingClicked:', new_rating, code);
     // process the input
   };
+
+  $products: IProduct[] | null = null;
 
   ngOnInit() {
     console.log(`Spy #${this.products} onInit`);

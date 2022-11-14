@@ -26,7 +26,7 @@ export class ProductApiService {
       }); */
     const request = this._http
       .get<IProduct[]>('http://localhost:3000/products', { params })
-      .pipe(retry(1), catchError(this.errorHandl));  
+      .pipe(retry(1), catchError(this.errorHandl));
 
     request.subscribe((data) => console.log('getProductsFromAPI:', data));
   };
