@@ -12,9 +12,11 @@ export class AuthInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<HttpEventType.Response>> {
+
     const authReq = req.clone({
       setHeaders: { Authorization: `Bearer authtest` },
     });
+    console.log('AuthInterceptor....', authReq);
     return next.handle(authReq);
   }
 }
