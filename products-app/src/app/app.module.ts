@@ -18,6 +18,8 @@ import { NewUserComponent } from './user/new-user/new-user.component';
 import { GteValidatorDirective } from './directives/gte-validator.directive';
 import { EmailvalidatorDirective } from './directives/emailvalidator.directive';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
+import { LoginComponent } from './auth/login/login.component';
+import { HeaderComponent } from './structural/header/header.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { AuthInterceptor } from './interceptors/auth-interceptor';
     NewUserComponent,
     GteValidatorDirective,
     EmailvalidatorDirective,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { AuthInterceptor } from './interceptors/auth-interceptor';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+    HeaderComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
