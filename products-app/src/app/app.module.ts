@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
+import { HeaderComponent } from './structure/header/header.component';
 
 @NgModule({
   declarations: [
@@ -10,7 +12,9 @@ import { ProductListComponent } from './product/product-list/product-list.compon
     ProductListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HeaderComponent,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
