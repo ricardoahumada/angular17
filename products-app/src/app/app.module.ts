@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { HeaderComponent } from './structure/header/header.component';
 import { RateComponentComponent } from './utils/rate-component/rate-component.component';
+import { FilterProductsPipe } from './pipes/filter-products.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
-    RateComponentComponent
+    RateComponentComponent,
+    FilterProductsPipe
   ],
   imports: [
     BrowserModule,

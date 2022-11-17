@@ -15,8 +15,8 @@
 			<td>{{aTask.description}}</td>
 			<td>{{aTask.time}}</td>
 			<td>{{aTask.project}}</td>
-			<td>
-				<button (click)="deleteTask(aTask.tid)">delete</button>
+			<td>				
+				<app-delete [tid]="aTask.tid" (delete_clicked)="deleteTask($event)" ></app-delete>
 			</td>
 		</tr>
 	</table>

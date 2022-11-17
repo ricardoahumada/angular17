@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
 import { ProjectsListComponent } from './projects/projects-list/projects-list.component';
 import { HeaderComponent } from './structure/header/header.component';
+import { DeleteComponent } from './utils/delete/delete.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TasksListComponent,
-    ProjectsListComponent
+    ProjectsListComponent,
+    DeleteComponent
   ],
   imports: [
     BrowserModule,
