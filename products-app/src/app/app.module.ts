@@ -5,11 +5,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { HeaderComponent } from './structure/header/header.component';
+import { RateComponentComponent } from './utils/rate-component/rate-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent
+    ProductListComponent,
+    RateComponentComponent
   ],
   imports: [
     BrowserModule,
