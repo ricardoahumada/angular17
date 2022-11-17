@@ -15,4 +15,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  app_title:string="Tasks & Projects App"
+
 }

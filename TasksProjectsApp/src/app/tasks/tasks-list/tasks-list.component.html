@@ -1,1 +1,23 @@
-<p>tasks-list works!</p>
+<section>
+	<h2>Tasks</h2>
+	<br>
+
+	<table class="table table-striped">
+		<tr>
+			<th>tid</th>
+			<th>description</th>
+			<th>time</th>
+			<th>project</th>
+			<th></th>
+		</tr>
+		<tr *ngFor="let aTask of tasks">
+			<td>{{aTask.tid}}</td>
+			<td>{{aTask.description}}</td>
+			<td>{{aTask.time}}</td>
+			<td>{{aTask.project}}</td>
+			<td>
+				<button (click)="deleteTask(aTask.tid)">delete</button>
+			</td>
+		</tr>
+	</table>
+</section>
