@@ -3,27 +3,32 @@
 	<br>
 
 	<table class="table table-striped">
-		<tr>
-			<th>tid</th>
-			<th>description</th>
-			<th>time</th>
-			<th>project</th>
-			<th></th>
-		</tr>
-		<tr *ngFor="let aTask of tasks">
-			<td>{{aTask.tid}}</td>
-			<td>
-				<div *ngIf="!show_desc_form[aTask.tid]" (click)="showDescForm(aTask.tid)">
-					{{aTask.description}}
-				</div>
-				<name-editor *ngIf="show_desc_form[aTask.tid]" [description]="aTask.description" (save_clicked)="saveName($event,aTask.tid)">
-				</name-editor>
-			</td>
-			<td>{{aTask.time}}</td>
-			<td>{{aTask.project}}</td>
-			<td>
-				<app-delete [tid]="aTask.tid" (delete_clicked)="deleteTask($event)"></app-delete>
-			</td>
-		</tr>
+		<thead class="table-dark">
+			<tr>
+				<th>tid</th>
+				<th>description</th>
+				<th>time</th>
+				<th>project</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let aTask of tasks">
+				<td>{{aTask.tid}}</td>
+				<td>
+					<div *ngIf="!show_desc_form[aTask.tid]" (click)="showDescForm(aTask.tid)">
+						{{aTask.description}}
+					</div>
+					<name-editor *ngIf="show_desc_form[aTask.tid]" [description]="aTask.description"
+						(save_clicked)="saveName($event,aTask.tid)">
+					</name-editor>
+				</td>
+				<td>{{aTask.time}}</td>
+				<td>{{aTask.project}}</td>
+				<td>
+					<app-delete [tid]="aTask.tid" (delete_clicked)="deleteTask($event)"></app-delete>
+				</td>
+			</tr>
+		</tbody>
 	</table>
 </section>

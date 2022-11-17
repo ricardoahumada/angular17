@@ -1,1 +1,18 @@
-<p>projects-list works!</p>
+<section>
+    <h2>Projects</h2>
+    <input class="form-control" [(ngModel)]="filter_text" placeholder="text to filter projects">
+    <br>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <article *ngFor="let project of projects" class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{project.name}}</h5>
+                    <div>Id: {{project.pid}}</div>
+                    <div>Deadline: {{project.date | date: 'shortDate'}}</div>
+                    <a href="#" class="card-link">12 tasks</a>
+                </div>
+            </div>
+        </article>
+    </div>
+
+</section>

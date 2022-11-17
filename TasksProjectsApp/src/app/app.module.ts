@@ -8,6 +8,7 @@ import { ProjectsListComponent } from './projects/projects-list/projects-list.co
 import { HeaderComponent } from './structure/header/header.component';
 import { DeleteComponent } from './utils/delete/delete.component';
 import { NameEditorComponent } from './utils/name-editor/name-editor.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NameEditorComponent } from './utils/name-editor/name-editor.component';
     BrowserModule,
     AppRoutingModule,
     HeaderComponent,
-    NameEditorComponent
+    NameEditorComponent,
+    FormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
