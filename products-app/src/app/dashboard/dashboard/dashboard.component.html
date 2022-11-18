@@ -1,1 +1,14 @@
-<p>dashboard works!</p>
+<!-- <div class="buttons-container">
+    <button class="show-btn" (click)="showDynamicComponent()">Show component</button>
+    <button class="remove-btn" (click)="removeDynamicComponent()">
+        Remove component
+    </button>
+</div> -->
+<div class="buttons-container">
+    <button class="btn btn-primary" (click)="loadDynamicComponent()">Load component</button>
+    &nbsp;
+    <button class="btn btn-primary" (click)="removeDynamicComponent()">
+        Remove component
+    </button>
+</div>
+<ng-template #dynamic></ng-template>
