@@ -20,6 +20,11 @@ import { EmailvalidatorDirective } from './directives/emailvalidator.directive';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { LoginComponent } from './auth/login/login.component';
 import { HeaderComponent } from './structural/header/header.component';
+import { FeaturesComponent } from './product/product-detail/features/features.component';
+import { ImagesComponent } from './product/product-detail/images/images.component';
+import { QuoteDirective } from './examples/directives/quote.directive';
+import { PoliticianComponent } from './examples/components/politician/politician.component';
+import { NamesDirective } from './examples/directives/names.directive';
 
 @NgModule({
   declarations: [
@@ -37,6 +42,11 @@ import { HeaderComponent } from './structural/header/header.component';
     GteValidatorDirective,
     EmailvalidatorDirective,
     LoginComponent,
+    FeaturesComponent,
+    ImagesComponent,
+    QuoteDirective,
+    PoliticianComponent,
+    NamesDirective,
   ],
   imports: [
     BrowserModule,

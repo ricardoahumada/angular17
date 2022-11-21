@@ -42,8 +42,12 @@ export class ProductsService {
     return this.$productssObs;
   };
 
-  public deleteProduct = (code: string)  => {
+  public deleteProduct = (code: string) => {
     this.$productssObs.next(this._products);
     return true;
+  };
+
+  public getProduct = (code: string): IProduct | undefined => {
+    return this._products.find((aP) => aP.code == code);
   };
 }

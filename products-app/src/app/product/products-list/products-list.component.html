@@ -15,6 +15,7 @@
                 <th>Date</th>
                 <th>Price</th>
                 <th>Stars</th>
+                <th>Detail</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +30,9 @@
                 <td>{{product.price | currency:'USD':true:'1.2-2'}}</td>
                 <td>
                     <app-stars [rating]="product.stars" (star_clicked)="onRatingClicked($event,product.code)"></app-stars>
+                </td>
+                <td>
+                    <a [routerLink]="['./',product.code]" routerLinkActive="router-link-active" ><i class="bi bi-eye-fill"></i></a>
                 </td>
             </tr>
         </tbody>

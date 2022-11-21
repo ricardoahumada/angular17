@@ -1,11 +1,19 @@
-<p>product-detail works!</p>
+<div class="card" style="width: 18rem;">
+    <img [src]="'./assets/imgs/'+product?.image" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{product?.name}}</h5>
+      <p class="card-text">{{product?.code}} </p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
 
-<button (click)="goHome()">Go Home</button>
-<button (click)="goProducts()">Go Products</button>
-
-<p>
-    <a [routerLink]="['./features']">Tracks</a> |
-    <a [routerLink]="['./images']">Albums</a>
-</p>
-
+<nav class="nav">
+    <a [routerLink]="['./features']" class="nav-link" routerLinkActive="active">Features</a>
+    <a [routerLink]="['./images']" class="nav-link" routerLinkActive="active">Images</a>
+</nav>
+<hr>
 <router-outlet></router-outlet>
+<hr>
+
+<button (click)="goHome()" class="btn btn-secondary">Go Home</button>&nbsp;
+<button (click)="goProducts()" class="btn btn-secondary">Go Products</button>
