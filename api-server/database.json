@@ -22,7 +22,7 @@
       "name": "Spray nozzle",
       "code": "GUN-9711",
       "image": "",
-      "date": "2022-12-09T23:00:00.000Z",
+      "date": "2021-12-09T23:00:00.000Z",
       "price": 39.95,
       "stars": 0,
       "id": 3
@@ -31,7 +31,7 @@
       "name": "Spray nozzle",
       "code": "GUN-9711",
       "image": "",
-      "date": "2022-12-09T23:00:00.000Z",
+      "date": "2021-12-09T23:00:00.000Z",
       "price": 39.95,
       "stars": 0,
       "id": 4
@@ -40,12 +40,28 @@
       "name": "Spray nozzle",
       "code": "GUN-9711",
       "image": "",
-      "date": "2022-12-09T23:00:00.000Z",
+      "date": "2021-12-09T23:00:00.000Z",
       "price": 39.95,
       "stars": 0,
       "id": 5
     }
   ],
-  "projects":[],
-  "tasks":[]
+  "projects": [
+    { "pid": 1, "name": "Web Cliente a", "date": "2022-12-09T23:00:00.000Z" },
+    { "pid": 2, "name": "App Cliente b", "date": "2022-11-29T23:00:00.000Z" },
+    { "pid": 3, "name": "App Cliente c", "date": "2023-01-29T23:00:00.000Z" },
+    { "pid": 4, "name": "App Cliente d", "date": "2022-10-29T23:00:00.000Z" }
+  ],
+  "tasks": [
+    { "tid": 1, "description": "Create html", "time": 23, "project": 1 },
+    { "tid": 2, "description": "Create js", "time": 23, "project": 2 },
+    { "tid": 3, "description": "Create TS", "time": 23, "project": 1 },
+    {
+      "tid": 4,
+      "description": "Deploy to production",
+      "time": 23,
+      "project": 2
+    },
+    { "tid": 5, "description": "Create html", "time": 23, "project": 1 }
+  ]
 }

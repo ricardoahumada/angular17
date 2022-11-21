@@ -12,11 +12,11 @@ export class TasksListComponent implements OnInit {
   ngOnInit(): void {}
 
   tasks: Task[] = [
-    { tid: 1, description: 'Crea html', time: 23, project: 1 },
-    { tid: 2, description: 'Crea js', time: 23, project: 2 },
-    { tid: 3, description: 'Crea TS', time: 23, project: 1 },
-    { tid: 4, description: 'Llevar a producción', time: 23, project: 2 },
-    { tid: 5, description: 'Crea html', time: 23, project: 1 },
+    { tid: 1, description: 'Create html', time: 23, project: 1 },
+    { tid: 2, description: 'Create js', time: 23, project: 2 },
+    { tid: 3, description: 'Create TS', time: 23, project: 1 },
+    { tid: 4, description: 'Deploy to production', time: 23, project: 2 },
+    { tid: 5, description: 'Create html', time: 23, project: 1 },
   ];
 
   deleteTask(tid: number) {
