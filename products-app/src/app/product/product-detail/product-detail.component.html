@@ -1,5 +1,12 @@
 <h2>{{product?.code}}</h2>
 <pre>{{product | json}}</pre>
+<hr>
+
+<a [routerLink]="['./images']" routerLinkActive="tab-active" >Images</a>  <a [routerLink]="['./comments']" routerLinkActive="tab-active">Comments</a>
+
+<router-outlet></router-outlet>
+
+<hr>
 
 <button (click)="goHome()">go Home</button>
 <button (click)="goProducts()">go Products</button>

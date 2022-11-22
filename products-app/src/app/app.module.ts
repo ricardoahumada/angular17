@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -13,6 +13,9 @@ import { NotFoundComponent } from './util/not-found/not-found.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CommentsComponent } from './product/product-detail/comments/comments.component';
+import { ImagesComponent } from './product/product-detail/images/images.component';
+import { NewUserComponent } from './users/new-user/new-user.component';
 
 @NgModule({
   declarations: [
@@ -24,15 +27,19 @@ import { AppRoutingModule } from './app-routing.module';
     ReplicateDirective,
     NotFoundComponent,
     ProductDetailComponent,
-    DashboardComponent
+    DashboardComponent,
+    CommentsComponent,
+    ImagesComponent,
+    NewUserComponent,
   ],
   imports: [
     BrowserModule,
     HeaderComponent,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
