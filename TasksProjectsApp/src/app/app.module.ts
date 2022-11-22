@@ -13,6 +13,7 @@ import { FilterElementsPipe } from './pipes/filter-elements.pipe';
 import { DelayDirective } from './directives/delay.directive';
 import { NotFoundComponent } from './utils/not-found/not-found.component';
 import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
+import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
     FilterElementsPipe,
     DelayDirective,
     NotFoundComponent,
-    TaskDetailComponent
+    TaskDetailComponent,
+    ProjectDetailComponent
   ],
   imports: [
     BrowserModule,
