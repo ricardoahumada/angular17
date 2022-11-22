@@ -11,6 +11,8 @@ import { NameEditorComponent } from './utils/name-editor/name-editor.component';
 import { FormsModule } from '@angular/forms';
 import { FilterElementsPipe } from './pipes/filter-elements.pipe';
 import { DelayDirective } from './directives/delay.directive';
+import { NotFoundComponent } from './utils/not-found/not-found.component';
+import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { DelayDirective } from './directives/delay.directive';
     ProjectsListComponent,
     DeleteComponent,
     FilterElementsPipe,
-    DelayDirective
+    DelayDirective,
+    NotFoundComponent,
+    TaskDetailComponent
   ],
   imports: [
     BrowserModule,
