@@ -9,6 +9,10 @@ import { RateComponentComponent } from './utils/rate-component/rate-component.co
 import { FilterProductsPipe } from './pipes/filter-products.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
 import { ReplicateDirective } from './directives/replicate.directive';
+import { NotFoundComponent } from './util/not-found/not-found.component';
+import { ProductDetailComponent } from './product/product-detail/product-detail.component';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -17,12 +21,16 @@ import { ReplicateDirective } from './directives/replicate.directive';
     RateComponentComponent,
     FilterProductsPipe,
     HighlightDirective,
-    ReplicateDirective
+    ReplicateDirective,
+    NotFoundComponent,
+    ProductDetailComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     HeaderComponent,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
