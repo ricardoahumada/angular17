@@ -1,0 +1,37 @@
+<section>
+	<h2>Tasks</h2>
+	<br>
+    <input class="form-control" [(ngModel)]="filter_text" placeholder="text to filter tasks">
+	<hr>
+	<table class="table table-striped">
+		<thead class="table-dark">
+			<tr>
+				<th>tid</th>
+				<th>description</th>
+				<th>time</th>
+				<th>project</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let aTask of tasks | filterElements:'description':filter_text">
+				<td>{{aTask.tid}}</td>
+				<td>
+					<div *ngIf="!show_desc_form[aTask.tid]" (click)="showDescForm(aTask.tid)">
+						{{aTask.description}}
+					</div>
+					<name-editor *ngIf="show_desc_form[aTask.tid]" [description]="aTask.description"
+						(save_clicked)="saveName($event,aTask.tid)">
+					</name-editor>
+				</td>
+				<td>{{aTask.time}}</td>
+				<td>{{aTask.project}}</td>
+				<td>
+					<app-delete [tid]="aTask.tid" (delete_clicked)="deleteTask($event)"></app-delete>
+				</td>
+				<td><a [routerLink]="['/tasks/',aTask.tid]" routerLinkActive="router-link-active" ><i class="bi bi-eye"></i></a></td>
+			</tr>
+		</tbody>
+	</table>
+</section>
