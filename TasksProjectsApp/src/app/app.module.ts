@@ -9,13 +9,17 @@ import { HeaderComponent } from './structure/header/header.component';
 import { DeleteComponent } from './utils/delete/delete.component';
 import { NameEditorComponent } from './utils/name-editor/name-editor.component';
 import { FormsModule } from '@angular/forms';
+import { FilterElementsPipe } from './pipes/filter-elements.pipe';
+import { DelayDirective } from './directives/delay.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     TasksListComponent,
     ProjectsListComponent,
-    DeleteComponent
+    DeleteComponent,
+    FilterElementsPipe,
+    DelayDirective
   ],
   imports: [
     BrowserModule,

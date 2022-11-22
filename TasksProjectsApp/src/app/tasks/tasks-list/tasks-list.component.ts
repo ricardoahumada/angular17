@@ -11,6 +11,8 @@ export class TasksListComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  filter_text:string='';
+
   tasks: Task[] = [
     { tid: 1, description: 'Create html', time: 23, project: 1 },
     { tid: 2, description: 'Create js', time: 23, project: 2 },
