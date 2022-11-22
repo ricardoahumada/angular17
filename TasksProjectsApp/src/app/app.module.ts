@@ -14,6 +14,8 @@ import { DelayDirective } from './directives/delay.directive';
 import { NotFoundComponent } from './utils/not-found/not-found.component';
 import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
+import { ProjectTasksComponent } from './projects/project-detail/project-tasks/project-tasks.component';
+import { ProjectMembersComponent } from './projects/project-detail/project-members/project-members.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ProjectDetailComponent } from './projects/project-detail/project-detail
     DelayDirective,
     NotFoundComponent,
     TaskDetailComponent,
-    ProjectDetailComponent
+    ProjectDetailComponent,
+    ProjectTasksComponent,
+    ProjectMembersComponent
   ],
   imports: [
     BrowserModule,

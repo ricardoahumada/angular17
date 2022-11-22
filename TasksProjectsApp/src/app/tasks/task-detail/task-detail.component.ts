@@ -25,12 +25,14 @@ export class TaskDetailComponent implements OnInit {
   }
 
   goNext() {
-    //call the service to find the next tid
-    // use _router to navegate
+    const newTid=this._taskSrv.getNext(this.task);
+    if(newTid>=0) this._router.navigate(['/tasks',newTid]);
+    else this._router.navigate(['/tasks']);
   }
 
   goPrev() {
-    //call the service to find the prev tid
-    // use _router to navegate
+    const newTid=this._taskSrv.getPrev(this.task);
+    if(newTid>=0) this._router.navigate(['/tasks',newTid]);
+    else this._router.navigate(['/tasks']);
   }
 }
