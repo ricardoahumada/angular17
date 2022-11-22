@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from 'src/app/models/project';
+import { ProjectsService } from 'src/app/services/projects.service';
+import { TasksService } from 'src/app/services/tasks.service';
 
 @Component({
   selector: 'projects-list',
@@ -7,14 +9,20 @@ import { Project } from 'src/app/models/project';
   styleUrls: ['./projects-list.component.scss'],
 })
 export class ProjectsListComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-
+  projects: Project[] = [];
   filter_text: string = '';
+  project_tasks: any = {};
 
-  projects: Project[] = [
-    { pid: 1, name: 'Web Cliente a', date: new Date('2018-12-01') },
-    { pid: 2, name: 'App Cliente b', date: new Date('2018-10-23') },
-  ];
+  constructor(
+    private _projectsSrv: ProjectsService,
+    private _taskSrv: TasksService
+  ) {}
+
+  ngOnInit(): void {
+    this.projects = this._projectsSrv.getProjects();
+    if (this.projects) {
+      this.project_tasks = this._taskSrv.getAllProjectsTaskNumber();
+    }
+  }  
+
 }

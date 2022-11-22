@@ -1,5 +1,8 @@
 <h2>{{task?.description}}</h2>
-<pre>{{task|json}}</pre>
-
-<button (click)="goNext()">Next</button>
-<button (click)="goPrev()">Prev</button>
+<div>
+    <pre>{{task|json}}</pre>
+</div>
+<hr>
+<button (click)="goPrev()" class="btn btn-primary"><i class="bi bi-arrow-left"></i></button>
+&nbsp;
+<button (click)="goNext()" class="btn btn-primary"><i class="bi bi-arrow-right"></i></button>
