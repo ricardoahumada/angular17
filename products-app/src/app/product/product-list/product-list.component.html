@@ -3,7 +3,7 @@
     <div *ngIf="show_message">{{message}}</div>
 
     <input [(ngModel)]="filter_text" type="text">
-    <pre>{{filter_text}}</pre>
+    <pre *replicate="3">{{filter_text}}</pre>
 
     <br />
 
@@ -12,7 +12,7 @@
 
     <ul *ngIf="show_list" class="list-group">
         <li *ngFor="let a_product of products | filterProducts:filter_text" class="list-group-item">
-            <div>{{a_product?.name | uppercase}}</div>
+            <div highlight user="Ricardo" color="orange">{{a_product?.name | uppercase}}</div>
             <div>{{a_product?.code | lowercase}}</div>
             <div>
                 <img [src]="'./assets/imgs/'+a_product?.image" alt="" [style.maxWidth.px]="img_width"

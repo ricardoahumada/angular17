@@ -7,13 +7,17 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { HeaderComponent } from './structure/header/header.component';
 import { RateComponentComponent } from './utils/rate-component/rate-component.component';
 import { FilterProductsPipe } from './pipes/filter-products.pipe';
+import { HighlightDirective } from './directives/highlight.directive';
+import { ReplicateDirective } from './directives/replicate.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
     RateComponentComponent,
-    FilterProductsPipe
+    FilterProductsPipe,
+    HighlightDirective,
+    ReplicateDirective
   ],
   imports: [
     BrowserModule,

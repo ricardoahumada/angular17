@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/models/iproduct';
 import { Product } from 'src/app/models/product';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit{
   title: string = 'Products list';
   message: string = 'This is a message';
   show_text: string = 'show';
@@ -15,24 +16,14 @@ export class ProductListComponent {
   show_message: boolean = false;
   show_list: boolean = true;
 
-  products: Array<IProduct> = [
-    {
-      name: 'Leaf Rake',
-      code: 'GUN-0611',
-      image: 'LeafRake.png',
-      date: new Date(2016, 3, 19),
-      price: 19.95,
-      stars: 2,
-    },
-    {
-      name: 'Garden Cart',
-      code: 'GUN-0023',
-      image: 'GardenCart.png',
-      date: new Date(2016, 5, 21),
-      price: 32.99,
-      stars: 5,
-    },
-  ];
+  products: Array<IProduct> = [];
+
+  constructor(private _productsService:ProductsService){    
+  }
+
+  ngOnInit(): void {
+    this.products=this._productsService.getProducts();
+  }
 
   products2: Product[] = [new Product()];
 
