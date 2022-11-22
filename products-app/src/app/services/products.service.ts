@@ -29,4 +29,8 @@ export class ProductsService {
   public getProducts(): IProduct[] {
     return this._products;
   }
+
+  public getAProduct(code: string): IProduct | undefined {
+    return this._products.find((aP) => aP.code == code);
+  }
 }

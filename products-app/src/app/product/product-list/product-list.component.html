@@ -25,6 +25,7 @@
                 (star_clicked)="updateStars($event,a_product.code)">
                 </rate-component>
             </div>
+            <div><a [routerLink]="['/products',a_product?.code]" >detail</a></div>
         </li>
     </ul>
 
