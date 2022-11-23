@@ -25,6 +25,7 @@ import { ImagesComponent } from './product/product-detail/images/images.componen
 import { QuoteDirective } from './examples/directives/quote.directive';
 import { PoliticianComponent } from './examples/components/politician/politician.component';
 import { NamesDirective } from './examples/directives/names.directive';
+import { LogginInterceptor } from './interceptors/loggin.interceptor';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { NamesDirective } from './examples/directives/names.directive';
     HeaderComponent
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LogginInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],

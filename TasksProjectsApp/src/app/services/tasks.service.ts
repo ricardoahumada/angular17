@@ -1,12 +1,24 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  Observable,
+  of,
+  tap,
+  throwError,
+} from 'rxjs';
 import { Task } from 'src/app/models/task';
+import { environment } from 'src/environments/environment';
+import { SessionService } from './session.service';
+
+const API_URL = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root',
 })
 export class TasksService {
-  constructor() {}
+  constructor(private _http: HttpClient, private session: SessionService) {}
 
   private _tasks: Task[] = [
     { tid: 1, description: 'Create html', time: 23, project: 1 },
@@ -16,13 +28,13 @@ export class TasksService {
     { tid: 5, description: 'Create html', time: 23, project: 1 },
   ];
 
-  private $tasksObs = new BehaviorSubject<Task[]>(this._tasks );
+  private $tasksObs = new BehaviorSubject<Task[]>(this._tasks);
 
   getTasks(): Task[] {
     return this._tasks;
   }
 
-  getTasksObs():Observable<Task[]>{
+  getTasksObs(): Observable<Task[]> {
     return this.$tasksObs;
   }
 
@@ -66,4 +78,60 @@ export class TasksService {
     } else return -1;
   }
 
+  private $tasksObsr: Observable<Task[]> | null = null;
+
+  getTasksFromApiStore() {
+    if (this._tasks) {
+      return of(this._tasks);
+    } else if (this.$tasksObsr) {
+      return this.$tasksObsr;
+    } else {
+      const httpOptions = this.getRequestOptions();
+      this.$tasksObsr = this._http
+        .get<Task[]>(API_URL + '/tasks', httpOptions)
+        .pipe(
+          tap((data) => (this._tasks = data)),
+          catchError(this.errorHandl)
+        );
+      return this.$tasksObsr;
+    }
+  }
+
+  getTasksFromApi() {
+    // const httpOptions = {};
+    const httpOptions = this.getRequestOptions();
+    
+    this.$tasksObsr = this._http
+      .get<Task[]>(API_URL + '/tasks', httpOptions)
+      .pipe(
+        tap((data) => {
+          this._tasks = data;
+        }),
+        catchError(this.errorHandl)
+      );
+    return this.$tasksObsr;
+  }
+
+  errorHandl = (error: any) => {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(() => {
+      return errorMessage;
+    });
+  };
+
+  private getRequestOptions() {
+    return {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.session.accessToken,
+      }),
+    };
+  }
 }

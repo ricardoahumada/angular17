@@ -2,13 +2,19 @@ const fs = require("fs");
 const bodyParser = require("body-parser");
 const jsonServer = require("json-server");
 const jwt = require("jsonwebtoken");
+const cors = require("cors");
 
 const server = jsonServer.create();
 const router = jsonServer.router("./database.json");
 const userdb = JSON.parse(fs.readFileSync("./users.json", "UTF-8"));
 
-server.use(bodyParser.urlencoded({extended: true}))
-server.use(bodyParser.json())
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.json());
+server.use(
+  cors({
+    origin: "*",
+  })
+);
 
 const SECRET_KEY = "123456789";
 const expiresIn = "1h";
@@ -66,11 +72,10 @@ server.use(/^(?!\/auth).*$/, (req, res, next) => {
   }
 });
 
-
-server.use(router)
+server.use(router);
 
 server.listen(3000, () => {
-  console.log('Run Auth API Server')
-})
+  console.log("Run Auth API Server");
+});
 
-server.use('/api', router);
+server.use("/api", router);

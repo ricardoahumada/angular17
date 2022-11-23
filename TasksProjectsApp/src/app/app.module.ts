@@ -18,6 +18,10 @@ import { ProjectTasksComponent } from './projects/project-detail/project-tasks/p
 import { ProjectMembersComponent } from './projects/project-detail/project-members/project-members.component';
 import { NewProjectComponent } from './projects/new-project/new-project.component';
 import { NewTaskComponent } from './tasks/new-task/new-task.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LogginInterceptor } from './interceptors/loggin.interceptor';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,8 @@ import { NewTaskComponent } from './tasks/new-task/new-task.component';
     ProjectTasksComponent,
     ProjectMembersComponent,
     NewProjectComponent,
-    NewTaskComponent
+    NewTaskComponent,
+    SignInComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,9 +46,13 @@ import { NewTaskComponent } from './tasks/new-task/new-task.component';
     HeaderComponent,
     NameEditorComponent,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    // { provide: HTTP_INTERCEPTORS, useClass: LogginInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

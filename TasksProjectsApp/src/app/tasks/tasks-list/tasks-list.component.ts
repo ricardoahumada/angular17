@@ -17,8 +17,11 @@ export class TasksListComponent implements OnInit {
   $taskSubs: Subscription = {} as Subscription;
 
   ngOnInit(): void {
-    this.tasks = this._taskSrv.getTasks();
-    this.$taskSubs = this._taskSrv.getTasksObs().subscribe((data) => {
+    // this.tasks = this._taskSrv.getTasks();
+    /* this.$taskSubs = this._taskSrv.getTasksObs().subscribe((data) => {
+      this.tasks = data;
+    }); */
+    this.$taskSubs = this._taskSrv.getTasksFromApi().subscribe((data) => {
       this.tasks = data;
     });
   }
