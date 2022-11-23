@@ -83,12 +83,23 @@ export class ProductsListComponent implements OnInit, OnChanges, OnDestroy {
     // this.products = this._productsService.getProducts();
     console.log('ngOnInit...');
 
-    this._productsService.getProducts().subscribe((prods) => {
+    /* this._productsService.getProducts().subscribe((prods) => {
       this.products = prods;
-    });
+    }); */
 
     // this._productsAPIService.addProductToAPI();
-    this._productsAPIService.getProductsFromAPI();
+    // this._productsAPIService.getProductsFromAPI();
+    this.$productsSuscription = this._productsAPIService
+      .getProductsStore()
+      .subscribe({
+        next: (data) => {
+          console.log('getProductsStore success:', data);
+          this.products=data;
+        },
+        error: (err) => {
+          console.log('getProductsStore error:', err);
+        },
+      });
   }
 
   ngOnChanges() {

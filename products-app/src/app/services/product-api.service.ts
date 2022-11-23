@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, retry, throwError } from 'rxjs';
+import { catchError, Observable, of, retry, tap, throwError } from 'rxjs';
 import { IProduct } from '../models/iproduct';
 
 @Injectable({
@@ -28,8 +28,32 @@ export class ProductApiService {
       .get<IProduct[]>('http://localhost:3000/products', { params })
       .pipe(retry(1), catchError(this.errorHandl));
 
-    request.subscribe((data) => console.log('getProductsFromAPI:', data));
+    return request;
+
+    // request.subscribe((data) => console.log('getProductsFromAPI:', data));
   };
+
+  private _products: IProduct[] | null = null;
+  private $productsObs: Observable<IProduct[]> | null = null;
+
+  getProductsStore(): Observable<IProduct[]> {
+    if (this._products) {
+      console.log('getProductsStore return stored data...');
+      return of(this._products);
+    } else if (this.$productsObs) {
+      console.log('getProductsStore return observable...');
+      return this.$productsObs;
+    } else {
+      console.log('getProductsStore conecting to API...');
+      this.$productsObs = this.getProductsFromAPI().pipe(
+        tap((data) => {
+          this._products = data;
+        }),
+        catchError(this.errorHandl)
+      );
+      return this.$productsObs;
+    }
+  }
 
   httpOptions = {
     headers: new HttpHeaders({

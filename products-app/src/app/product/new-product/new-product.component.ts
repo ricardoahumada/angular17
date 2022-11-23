@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-new-product',
@@ -9,7 +9,23 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class NewProductComponent implements OnInit {
   myform: FormGroup | null = null;
 
-  constructor() {}
+  constructor(private _fb: FormBuilder) {}
+
+  signUpForm = this._fb.group({
+    name: this._fb.group({
+      firstname: ['', [Validators.required, Validators.minLength(10)]],
+      lastname: [ '',
+        [
+          Validators.required,
+          Validators.maxLength(15),
+          Validators.pattern('^[a-zA-Z]+$'),
+        ],
+      ],
+    }),
+    email: ['', [Validators.required, Validators.pattern('[^ @]*@[^ @]*')]],
+    password: ['', [Validators.minLength(8), Validators.required]],
+    language: [''],
+  });
 
   ngOnInit(): void {
     this.myform = new FormGroup({
