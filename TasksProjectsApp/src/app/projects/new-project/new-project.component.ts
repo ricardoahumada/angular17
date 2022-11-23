@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { UsersService } from 'src/app/services/users.service';
@@ -23,7 +23,7 @@ export class NewProjectComponent implements OnInit {
   constructor(
     private _projSrv: ProjectsService,
     private _userSrv: UsersService
-  ) {}
+  ) {}  
 
   ngOnInit(): void {
     this.users = this._userSrv.getUsers();

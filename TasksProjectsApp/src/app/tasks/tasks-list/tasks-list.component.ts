@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Task } from 'src/app/models/task';
 import { TasksService } from 'src/app/services/tasks.service';
 
@@ -13,9 +14,13 @@ export class TasksListComponent implements OnInit {
   filter_text: string = '';
 
   tasks: Task[] = [];
+  $taskSubs: Subscription = {} as Subscription;
 
   ngOnInit(): void {
     this.tasks = this._taskSrv.getTasks();
+    this.$taskSubs = this._taskSrv.getTasksObs().subscribe((data) => {
+      this.tasks = data;
+    });
   }
 
   deleteTask(tid: number) {
@@ -34,5 +39,9 @@ export class TasksListComponent implements OnInit {
     const aTask = this.tasks.find((aT) => aT.tid == tid);
     if (aTask) aTask.description = text;
     this.show_desc_form[tid] = false;
+  }
+
+  ngOnDestroy() {
+    this.$taskSubs.unsubscribe();
   }
 }
