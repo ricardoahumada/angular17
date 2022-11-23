@@ -8,7 +8,7 @@ import { ProjectsListComponent } from './projects/projects-list/projects-list.co
 import { HeaderComponent } from './structure/header/header.component';
 import { DeleteComponent } from './utils/delete/delete.component';
 import { NameEditorComponent } from './utils/name-editor/name-editor.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterElementsPipe } from './pipes/filter-elements.pipe';
 import { DelayDirective } from './directives/delay.directive';
 import { NotFoundComponent } from './utils/not-found/not-found.component';
@@ -16,6 +16,8 @@ import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
 import { ProjectTasksComponent } from './projects/project-detail/project-tasks/project-tasks.component';
 import { ProjectMembersComponent } from './projects/project-detail/project-members/project-members.component';
+import { NewProjectComponent } from './projects/new-project/new-project.component';
+import { NewTaskComponent } from './tasks/new-task/new-task.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +31,17 @@ import { ProjectMembersComponent } from './projects/project-detail/project-membe
     TaskDetailComponent,
     ProjectDetailComponent,
     ProjectTasksComponent,
-    ProjectMembersComponent
+    ProjectMembersComponent,
+    NewProjectComponent,
+    NewTaskComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HeaderComponent,
     NameEditorComponent,
-    FormsModule 
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
