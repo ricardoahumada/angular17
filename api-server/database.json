@@ -45,5 +45,13 @@
       "stars": 0,
       "id": 5
     }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "author": "khjkh",
+      "name": "sdadf",
+      "cost": 23
+    }
   ]
 }
