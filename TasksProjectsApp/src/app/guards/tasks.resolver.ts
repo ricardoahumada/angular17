@@ -8,7 +8,9 @@ import { Observable } from 'rxjs';
 import { Task } from '../models/task';
 import { TasksService } from '../services/tasks.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class TasksResolver implements Resolve<Observable<Task[]>> {
   constructor(private _tasksService: TasksService) {}
 
