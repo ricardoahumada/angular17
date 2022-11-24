@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -6,6 +6,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { Signup } from 'src/app/models/signup';
 import { LanguageValidator } from 'src/app/validators/language-validatior';
 
 @Component({
@@ -35,6 +37,13 @@ export class NewUserComponent implements OnInit {
       password: new FormControl(),
       language: new FormControl('', LanguageValidator.validateLanguage),
     });
+
+    this.searchField.valueChanges
+      .pipe(debounceTime(400), distinctUntilChanged())
+      .subscribe((term) => {
+        console.log('term:', term);
+        this.searches.push(term);
+      });
   }
 
   onSubmit() {
@@ -62,4 +71,18 @@ export class NewUserComponent implements OnInit {
     password: ['', [Validators.minLength(8), Validators.required]],
     language: [''],
   });
+
+  /* template driven */
+  model: Signup = new Signup();
+  @ViewChild('f')
+  sform: any;
+
+  onSubmitTemplate() {
+    console.log('onSubmitTemplate model:', this.model);
+    console.log('onSubmitTemplate form:', this.sform);
+  }
+
+  /* reactive */
+  searchField = new FormControl();
+  searches: string[] = [];
 }

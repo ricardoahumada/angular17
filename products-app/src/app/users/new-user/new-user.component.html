@@ -48,3 +48,54 @@
 
     </form>
 </section>
+
+<section>
+    <h2>Signup form 2</h2>
+    <form #f="ngForm" (ngSubmit)="onSubmitTemplate()">
+        <div class="form-group">
+            <input class="form-control" [(ngModel)]="model.name" name="name" required placeholder="name">
+            <pre>Valid? {{f.form.get('name')?.valid}}</pre>
+        </div>
+        <div class="form-group">
+            <input class="form-control" [(ngModel)]="model.surname" name="surname" required placeholder="surname">
+            <pre>Valid? {{f.form.get('surname')?.valid}}</pre>
+        </div>
+        <div class="form-group">
+            <input class="form-control" [(ngModel)]="model.email" name="email" required appEmailvalidator
+                placeholder="email" #email="ngModel" [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched),
+                'is-valid': email.valid && (email.dirty || email.touched)
+            }">
+            <pre>Valid? {{f.form.get('email')?.valid}}</pre>
+            <pre>Dirty? {{f.form.get('email')?.dirty}}</pre>
+            <pre>Touched? {{f.form.get('email')?.touched}}</pre>
+        </div>
+        <div class="form-group">
+            <input class="form-control" [(ngModel)]="model.password" name="password" required placeholder="password"
+                minlength="8">
+            <pre>Valid? {{f.form.get('password')?.valid}}</pre>
+        </div>
+        <div class="form-group">
+            <input class="form-control" [(ngModel)]="model.language" name="language" required minlength="2"
+                placeholder="language">
+            <pre>Valid? {{f.form.get('language')?.valid}}</pre>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+        </div>
+
+    </form>
+    <hr>
+    <pre>{{model | json}}</pre>
+    <hr>
+    <pre>{{f.value | json}}</pre>
+    <pre>{{f.valid}}</pre>
+
+</section>
+
+<section>
+    <input type="search" class="form-control" placeholder="Please enter search term" [formControl]="searchField">
+    <hr />
+    <ul>
+        <li *ngFor="let search of searches">{{ search }}</li>
+    </ul>
+</section>
