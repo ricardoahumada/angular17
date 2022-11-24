@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiULR: 'http://localhost:3000',
 };

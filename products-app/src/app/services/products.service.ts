@@ -1,7 +1,10 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, retry, throwError } from 'rxjs';
 import { IProduct } from '../models/iproduct';
+import {environment} from '../../environments/environment';
+
+const API_URL=environment.apiULR;
 
 @Injectable({
   providedIn: 'root',
@@ -40,7 +43,7 @@ export class ProductsService {
     const params = new HttpParams().set('code', 'GUN-0611');
 
     return this._http
-      .get<IProduct[]>('http://localhost:3000/productsx', { params })
+      .get<IProduct[]>(`${API_URL}/products`, { params })
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
@@ -58,4 +61,20 @@ export class ProductsService {
       return errorMessage;
     });
   };
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'my-auth-token',
+    }),
+  };
+
+  addProductAPI(new_product: IProduct) {
+    this._http
+      .post<IProduct>(`${API_URL}/products`,
+        JSON.stringify(new_product),
+        this.httpOptions
+      )
+      .pipe(retry(1), catchError(this.errorHandl));
+  }
 }
