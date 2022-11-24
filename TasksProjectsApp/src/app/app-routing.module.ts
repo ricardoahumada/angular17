@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NewProjectComponent } from './projects/new-project/new-project.component';
 import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
 import { ProjectMembersComponent } from './projects/project-detail/project-members/project-members.component';
 import { ProjectTasksComponent } from './projects/project-detail/project-tasks/project-tasks.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'tasks', component: TasksListComponent },
   { path: 'tasks/:tid', component: TaskDetailComponent },
   { path: 'projects', component: ProjectsListComponent },
+  { path: 'projects/new', component: NewProjectComponent },
   {
     path: 'projects/:pid',
     component: ProjectDetailComponent,

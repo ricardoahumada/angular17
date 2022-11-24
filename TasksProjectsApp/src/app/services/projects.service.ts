@@ -50,4 +50,12 @@ export class ProjectsService {
   getCurrentProject(): Project | undefined {
     return this._projects.find((aP) => aP.pid == this._currentPid);
   }
+
+  addProject(aP: Project):boolean {
+    if (aP) {
+      this._projects.push(aP);
+      return true;
+    }
+    return false;
+  }
 }
