@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Task } from 'src/app/models/task';
 
 @Injectable({
@@ -15,8 +16,14 @@ export class TasksService {
     { tid: 5, description: 'Create html', time: 23, project: 1 },
   ];
 
+  private $taskObs: BehaviorSubject<Task[]> = new BehaviorSubject(this._tasks);
+
   getTasks(): Task[] {
     return this._tasks;
+  }
+
+  getTasksObs(): BehaviorSubject<Task[]> {
+    return this.$taskObs;
   }
 
   getATask(tid: number): Task | undefined {
@@ -25,6 +32,7 @@ export class TasksService {
 
   deleteATask(tid: number): boolean {
     this._tasks = this._tasks.filter((aT) => aT.tid != tid);
+    this.$taskObs.next(this._tasks);
     return true;
   }
 
@@ -57,5 +65,4 @@ export class TasksService {
       else return this._tasks[index - 1].tid;
     } else return -1;
   }
-
 }

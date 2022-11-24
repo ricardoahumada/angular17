@@ -13,9 +13,13 @@ export class TasksListComponent implements OnInit {
   filter_text: string = '';
 
   tasks: Task[] = [];
+  $taskObsr: any = {};
 
   ngOnInit(): void {
-    this.tasks = this._taskSrv.getTasks();
+    // this.tasks = this._taskSrv.getTasks();
+    this.$taskObsr = this._taskSrv.getTasksObs().subscribe((data) => {
+      this.tasks = data;
+    });
   }
 
   deleteTask(tid: number) {
@@ -34,5 +38,9 @@ export class TasksListComponent implements OnInit {
     const aTask = this.tasks.find((aT) => aT.tid == tid);
     if (aTask) aTask.description = text;
     this.show_desc_form[tid] = false;
+  }
+
+  ngOnDestroy() {
+    this.$taskObsr.unsubscribe();
   }
 }
