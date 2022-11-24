@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CommentsComponent } from './product/product-detail/comments/comments.component';
 import { ImagesComponent } from './product/product-detail/images/images.component';
 import { NewUserComponent } from './users/new-user/new-user.component';
+import { EmailvalidatorDirective } from './directives/emailvalidator.directive';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { NewUserComponent } from './users/new-user/new-user.component';
     CommentsComponent,
     ImagesComponent,
     NewUserComponent,
+    EmailvalidatorDirective,
   ],
   imports: [
     BrowserModule,
