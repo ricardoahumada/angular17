@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, Observer } from 'rxjs';
 import { IProduct } from 'src/app/models/iproduct';
 import { Product } from 'src/app/models/product';
 import { ProductsService } from 'src/app/services/products.service';
@@ -8,7 +9,7 @@ import { ProductsService } from 'src/app/services/products.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
 })
-export class ProductListComponent implements OnInit{
+export class ProductListComponent implements OnInit {
   title: string = 'Products list';
   message: string = 'This is a message';
   show_text: string = 'show';
@@ -18,11 +19,23 @@ export class ProductListComponent implements OnInit{
 
   products: Array<IProduct> = [];
 
-  constructor(private _productsService:ProductsService){    
-  }
+  constructor(private _productsService: ProductsService) {}
+
+  private $productsObs: any = {};
 
   ngOnInit(): void {
-    this.products=this._productsService.getProducts();
+    // this.products=this._productsService.getProducts();
+    this.$productsObs.$productsObs = this._productsService
+      .getProductsFromAPI()
+      .subscribe({
+        next: (data) => {
+          this.products = data;
+        },
+        error: (err) => {
+          console.log('error:', err);
+        },
+        complete: () => console.info('complete'),
+      });
   }
 
   products2: Product[] = [new Product()];
@@ -47,5 +60,9 @@ export class ProductListComponent implements OnInit{
     console.log('updateStars...', stars, code);
     const theProduct = this.products.find((aP) => aP.code == code);
     if (theProduct) theProduct.stars = stars;
+  }
+
+  ngOnDestroy() {
+    this.$productsObs.unsubscribe();
   }
 }

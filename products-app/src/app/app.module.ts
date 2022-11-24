@@ -17,6 +17,7 @@ import { CommentsComponent } from './product/product-detail/comments/comments.co
 import { ImagesComponent } from './product/product-detail/images/images.component';
 import { NewUserComponent } from './users/new-user/new-user.component';
 import { EmailvalidatorDirective } from './directives/emailvalidator.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { EmailvalidatorDirective } from './directives/emailvalidator.directive';
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

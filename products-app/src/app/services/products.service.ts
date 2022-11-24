@@ -1,11 +1,13 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, Observable, retry, throwError } from 'rxjs';
 import { IProduct } from '../models/iproduct';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  constructor() {}
+  constructor(private _http: HttpClient) {}
 
   private _products: Array<IProduct> = [
     {
@@ -33,4 +35,27 @@ export class ProductsService {
   public getAProduct(code: string): IProduct | undefined {
     return this._products.find((aP) => aP.code == code);
   }
+
+  public getProductsFromAPI(): Observable<IProduct[]> {
+    const params = new HttpParams().set('code', 'GUN-0611');
+
+    return this._http
+      .get<IProduct[]>('http://localhost:3000/productsx', { params })
+      .pipe(retry(1), catchError(this.errorHandl));
+  }
+
+  errorHandl = (error: any) => {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: 	${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(() => {
+      return errorMessage;
+    });
+  };
 }
