@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Project } from 'src/app/models/project';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { TasksService } from 'src/app/services/tasks.service';
@@ -12,6 +13,10 @@ export class ProjectsListComponent implements OnInit {
   projects: Project[] = [];
   filter_text: string = '';
   project_tasks: any = {};
+  apiError:boolean=false;
+  loading:boolean=true;
+
+  $projectSubs: Subscription = {} as Subscription;
 
   constructor(
     private _projectsSrv: ProjectsService,
@@ -19,10 +24,24 @@ export class ProjectsListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.projects = this._projectsSrv.getProjects();
+    /* this.projects = this._projectsSrv.getProjects();
     if (this.projects) {
       this.project_tasks = this._taskSrv.getAllProjectsTaskNumber();
-    }
-  }  
+    } */
+    this.$projectSubs=this._projectsSrv.getProjectsFromApi().subscribe({
+      next: data=>{
+        this.projects = data;
+        this.loading=false;
+        if (this.projects) {
+          this.project_tasks = this._taskSrv.getAllProjectsTaskNumber();
+        }
+      },
+      error:(err)=>{this.apiError=true;}
+    })
 
+  }
+
+  ngOnDestroy():void{
+    this.$projectSubs.unsubscribe();
+  }
 }

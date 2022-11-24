@@ -1,29 +1,40 @@
 <section>
     <h2>Projects</h2>
     <input class="form-control" [(ngModel)]="filter_text" placeholder="text to filter projects">
+
+    <article *ngIf="loading || apiError">
+        <div class="spinner-border" role="status" *ngIf="loading && !apiError">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="alert alert-dark" role="alert" *ngIf="apiError">
+            Ooops...there was a problem :-/
+            <br>
+            Please try again later.
+        </div>
+    </article>
+
     <br>
     <div>
-        <a [routerLink]="['new']" routerLinkActive="router-link-active" ><i class="bi bi-calendar2-plus"></i></a>
+        <a [routerLink]="['new']" routerLinkActive="router-link-active"><i class="bi bi-calendar2-plus"></i></a>
     </div>
     <br>
-
     <div class="row row-cols-1 row-cols-md-2 g-4">
         <article *ngFor="let project of projects | filterElements:'name':filter_text" class="col">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{project.name}}</h5>
                     <div>
-                        <h6>Id:</h6> {{project.pid}}
+                        <h6>Id:</h6> {{project.id}}
                     </div>
                     <div>
                         <h6>Deadline:</h6> {{project.date | date: 'shortDate'}}
                     </div>
-                    <div>{{project_tasks[project.pid]||0}} tasks</div>
+                    <div>{{project_tasks[project.id]||0}} tasks</div>
                     <br>
-                    <a [routerLink]="['/projects',project.pid]" class="card-link"><i class="bi bi-eye"></i></a>
+                    <a [routerLink]="['/projects',project.id]" class="card-link"><i class="bi bi-eye"></i></a>
                 </div>
             </div>
         </article>
     </div>
-    
+
 </section>

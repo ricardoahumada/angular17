@@ -1,38 +1,51 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  Observable,
+  of,
+  tap,
+  throwError,
+} from 'rxjs';
 import { Task } from 'src/app/models/task';
+import { environment } from 'src/environments/environment';
+import { HttpErrorHandler } from '../handlers/http-error-handler';
+import { SessionService } from './session.service';
+
+const API_URL = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root',
 })
 export class TasksService {
-  constructor() {}
+  constructor(private _http: HttpClient, private session: SessionService) {}
 
   private _tasks: Task[] = [
-    { tid: 1, description: 'Create html', time: 23, project: 1 },
-    { tid: 2, description: 'Create js', time: 23, project: 2 },
-    { tid: 3, description: 'Create TS', time: 23, project: 1 },
-    { tid: 4, description: 'Deploy to production', time: 23, project: 2 },
-    { tid: 5, description: 'Create html', time: 23, project: 1 },
-  ];
+/*     { id: 1, description: 'Create html', time: 23, project: 1 },
+    { id: 2, description: 'Create js', time: 23, project: 2 },
+    { id: 3, description: 'Create TS', time: 23, project: 1 },
+    { id: 4, description: 'Deploy to production', time: 23, project: 2 },
+    { id: 5, description: 'Create html', time: 23, project: 1 },
+ */  ];
 
-  private $taskObs: BehaviorSubject<Task[]> = new BehaviorSubject(this._tasks);
+  private $tasksObs = new BehaviorSubject<Task[]>(this._tasks);
 
   getTasks(): Task[] {
     return this._tasks;
   }
 
-  getTasksObs(): BehaviorSubject<Task[]> {
-    return this.$taskObs;
+  getTasksObs(): Observable<Task[]> {
+    return this.$tasksObs;
   }
 
   getATask(tid: number): Task | undefined {
-    return this._tasks.find((aT) => aT.tid == tid);
+    return this._tasks.find((aT) => aT.id == tid);
   }
 
   deleteATask(tid: number): boolean {
-    this._tasks = this._tasks.filter((aT) => aT.tid != tid);
-    this.$taskObs.next(this._tasks);
+    this._tasks = this._tasks.filter((aT) => aT.id != tid);
+    this.$tasksObs.next(this._tasks);
     return true;
   }
 
@@ -40,7 +53,7 @@ export class TasksService {
     return this._tasks.filter((aT) => aT.project == pid);
   }
 
-  getAllProjectsTaskNumber(): any {
+  getAllProjectsTaskNumber(): any {    
     return this._tasks.reduce((acc: any, aT: Task) => {
       if (acc[aT.project]) {
         acc[aT.project] = acc[aT.project] + 1;
@@ -53,16 +66,58 @@ export class TasksService {
   getNext(aTask: Task): number {
     const index = this._tasks.indexOf(aTask);
     if (index >= 0) {
-      if (index == this._tasks.length - 1) return this._tasks[0].tid;
-      else return this._tasks[index + 1].tid;
+      if (index == this._tasks.length - 1) return this._tasks[0].id;
+      else return this._tasks[index + 1].id;
     } else return -1;
   }
 
   getPrev(aTask: Task): number {
     const index = this._tasks.indexOf(aTask);
     if (index <= this._tasks.length - 1) {
-      if (index == 0) return this._tasks[this._tasks.length - 1].tid;
-      else return this._tasks[index - 1].tid;
+      if (index == 0) return this._tasks[this._tasks.length - 1].id;
+      else return this._tasks[index - 1].id;
     } else return -1;
+  }
+
+  private $tasksObsr: Observable<Task[]> | null = null;
+
+  getTasksFromApiStore() {
+    if (this._tasks) {
+      return of(this._tasks);
+    } else if (this.$tasksObsr) {
+      return this.$tasksObsr;
+    } else {
+      const httpOptions = this.getRequestOptions();
+      this.$tasksObsr = this._http
+        .get<Task[]>(API_URL + '/tasks', httpOptions)
+        .pipe(
+          tap((data) => (this._tasks = data)),
+          catchError(HttpErrorHandler.errorHandl)
+        );
+      return this.$tasksObsr;
+    }
+  }
+
+  getTasksFromApi() {
+    // const httpOptions = {};
+    const httpOptions = this.getRequestOptions();
+    
+    this.$tasksObsr = this._http
+      .get<Task[]>(API_URL + '/tasks', httpOptions)
+      .pipe(
+        tap((data) => {
+          this._tasks = data;
+        }),
+        catchError(HttpErrorHandler.errorHandl)
+      );
+    return this.$tasksObsr;
+  }
+
+  private getRequestOptions() {
+    return {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.session.accessToken,
+      }),
+    };
   }
 }

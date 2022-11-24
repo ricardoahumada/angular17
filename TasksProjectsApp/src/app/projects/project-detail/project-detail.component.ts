@@ -36,11 +36,11 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   navigateToTasks(){
-    this._router.navigate(['projects',this.project.pid,'tasks'],  {state: this.project})
+    this._router.navigate(['projects',this.project.id,'tasks'],  {state: this.project})
   }
 
   navigateToMembers(){
-    this._router.navigate(['projects',this.project.pid,'members'],  {state: this.project})
+    this._router.navigate(['projects',this.project.id,'members'],  {state: this.project})
   }
 
   ngOnDestroy(){

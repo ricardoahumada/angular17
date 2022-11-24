@@ -1,0 +1,12 @@
+{
+    "TITLE": "Task and Projects app",
+    "ACCESS": "Sign in",
+    "YOURUSERNAME": "Your username",
+    "USERNAMEREQ": "Username is required",
+    "YOURPASS": "Your password",
+    "PASSREQ": "Password is required",
+    "INVALIDUSERNAME&PASS": "Invalid username and password",
+    "SIGNIN": "Sign in",
+    "SIGNINGINPLEASEWAIT": "Signing in, please wait...",
+    "TIP": "Tip"
+}

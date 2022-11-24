@@ -16,21 +16,21 @@
 		</thead>
 		<tbody>
 			<tr *ngFor="let aTask of tasks | filterElements:'description':filter_text">
-				<td>{{aTask.tid}}</td>
+				<td>{{aTask.id}}</td>
 				<td>
-					<div *ngIf="!show_desc_form[aTask.tid]" (click)="showDescForm(aTask.tid)">
+					<div *ngIf="!show_desc_form[aTask.id]" (click)="showDescForm(aTask.id)">
 						{{aTask.description}}
 					</div>
-					<name-editor *ngIf="show_desc_form[aTask.tid]" [description]="aTask.description"
-						(save_clicked)="saveName($event,aTask.tid)">
+					<name-editor *ngIf="show_desc_form[aTask.id]" [description]="aTask.description"
+						(save_clicked)="saveName($event,aTask.id)">
 					</name-editor>
 				</td>
 				<td>{{aTask.time}}</td>
 				<td>{{aTask.project}}</td>
 				<td>
-					<app-delete [tid]="aTask.tid" (delete_clicked)="deleteTask($event)"></app-delete>
+					<app-delete [tid]="aTask.id" (delete_clicked)="deleteTask($event)"></app-delete>
 				</td>
-				<td><a [routerLink]="['/tasks/',aTask.tid]" routerLinkActive="router-link-active" ><i class="bi bi-eye"></i></a></td>
+				<td><a [routerLink]="['/tasks/',aTask.id]" routerLinkActive="router-link-active" ><i class="bi bi-eye"></i></a></td>
 			</tr>
 		</tbody>
 	</table>

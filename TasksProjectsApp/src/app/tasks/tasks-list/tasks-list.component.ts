@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Task } from 'src/app/models/task';
 import { TasksService } from 'src/app/services/tasks.service';
 
@@ -8,18 +10,28 @@ import { TasksService } from 'src/app/services/tasks.service';
   styleUrls: ['./tasks-list.component.scss'],
 })
 export class TasksListComponent implements OnInit {
-  constructor(private _taskSrv: TasksService) {}
+  constructor(private _taskSrv: TasksService, private _route: ActivatedRoute) {}
 
   filter_text: string = '';
 
   tasks: Task[] = [];
-  $taskObsr: any = {};
+  $taskSubs: Subscription = {} as Subscription;
 
   ngOnInit(): void {
     // this.tasks = this._taskSrv.getTasks();
-    this.$taskObsr = this._taskSrv.getTasksObs().subscribe((data) => {
+    /* this.$taskSubs = this._taskSrv.getTasksObs().subscribe((data) => {
+      this.tasks = data;
+    }); */
+
+    //Api
+    this.$taskSubs = this._taskSrv.getTasksFromApi().subscribe((data) => {
       this.tasks = data;
     });
+
+    //resolver
+    /* this.$taskSubs = this._route.data.subscribe((data: any) => {
+      this.tasks = data.tasks;
+    }); */
   }
 
   deleteTask(tid: number) {
@@ -35,12 +47,12 @@ export class TasksListComponent implements OnInit {
 
   saveName(text: string, tid: number) {
     console.log('saveName:', text, tid);
-    const aTask = this.tasks.find((aT) => aT.tid == tid);
+    const aTask = this.tasks.find((aT) => aT.id == tid);
     if (aTask) aTask.description = text;
     this.show_desc_form[tid] = false;
   }
 
   ngOnDestroy() {
-    this.$taskObsr.unsubscribe();
+    this.$taskSubs.unsubscribe();
   }
 }

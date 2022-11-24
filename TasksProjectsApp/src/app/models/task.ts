@@ -1,5 +1,5 @@
 export interface Task {
-  tid: number;
+  id: number;
   description: string;
   time: number;
   project: number;

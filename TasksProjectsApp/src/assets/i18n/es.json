@@ -1,0 +1,12 @@
+{
+    "TITLE": "Aplicación de tareas y proyectos",
+    "ACCESS": "Acceso",
+    "YOURUSERNAME": "Nombre de usuario",
+    "USERNAMEREQ": "Nombre de usuario requerido",
+    "YOURPASS": "Contraseña",
+    "PASSREQ": "Contraseña requerida",
+    "INVALIDUSERNAME&PASS": "Nombre de usuario y contraseña inválidos",
+    "SIGNIN": "Acceder",
+    "SIGNINGINPLEASEWAIT": "Accediendo, espere...",
+    "TIP": "Pista"
+}

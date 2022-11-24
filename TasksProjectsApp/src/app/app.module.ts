@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,17 @@ import { ProjectDetailComponent } from './projects/project-detail/project-detail
 import { ProjectTasksComponent } from './projects/project-detail/project-tasks/project-tasks.component';
 import { ProjectMembersComponent } from './projects/project-detail/project-members/project-members.component';
 import { NewProjectComponent } from './projects/new-project/new-project.component';
+import { NewTaskComponent } from './tasks/new-task/new-task.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LogginInterceptor } from './interceptors/loggin.interceptor';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { LangMenuComponent } from './i18n/lang-menu/lang-menu.component';
+import { TranslateService } from './i18n/translate.service';
+
+export function setupTranslateFactory(service: TranslateService): Function {
+  return () => service.use('en');
+}
 
 @NgModule({
   declarations: [
@@ -31,17 +42,30 @@ import { NewProjectComponent } from './projects/new-project/new-project.componen
     ProjectDetailComponent,
     ProjectTasksComponent,
     ProjectMembersComponent,
-    NewProjectComponent
+    NewProjectComponent,
+    NewTaskComponent,
+    SignInComponent,
+    LangMenuComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HeaderComponent,
     NameEditorComponent,
-    FormsModule ,
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    // { provide: HTTP_INTERCEPTORS, useClass: LogginInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: setupTranslateFactory,
+      deps: [TranslateService],
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -25,7 +25,7 @@ export class ProjectTasksComponent implements OnInit {
     const aProject = this._projectSrv.getCurrentProject();
     if (aProject) {
       this.project = aProject;
-      const pid = this.project.pid;
+      const pid = this.project.id;
       if (pid) this.tasks = this._taskSrv.getProjectTasks(pid);
     }
   }

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="appTitle" datatype="html">
+        <source>Tasks and projects App</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">The title for the app</note>
+        <note priority="1" from="meaning">apptitle</note>
+      </trans-unit>
+      <trans-unit id="tasksListTitle" datatype="html">
+        <source>Task list</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tareas/tareas.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">The title for the tasks list</note>
+        <note priority="1" from="meaning">taskslist</note>
+      </trans-unit>
+      <trans-unit id="taskId" datatype="html">
+        <source>Tid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tareas/tareas.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description">the task id</note>
+        <note priority="1" from="meaning">task id</note>
+      </trans-unit>
+      <trans-unit id="taskDesc" datatype="html">
+        <source>Description</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tareas/tareas.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">The task description</note>
+        <note priority="1" from="meaning">task desc</note>
+      </trans-unit>
+      <trans-unit id="taskTime" datatype="html">
+        <source>Time</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tareas/tareas.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description">The time for the task</note>
+        <note priority="1" from="meaning">tasks time</note>
+      </trans-unit>
+      <trans-unit id="taskProject" datatype="html">
+        <source>Project</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tareas/tareas.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="description">The project for the task</note>
+        <note priority="1" from="meaning">task project</note>
+      </trans-unit>
+      <trans-unit id="taskView" datatype="html">
+        <source>View</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tareas/tareas.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <note priority="1" from="description">the task view</note>
+        <note priority="1" from="meaning">task view</note>
+      </trans-unit>
+      <trans-unit id="taskDeleteButton" datatype="html">
+        <source>Delete</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tareas/botonborrar.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">The button for delete the tasks</note>
+        <note priority="1" from="meaning">task del button</note>
+      </trans-unit>
+      <trans-unit id="access" datatype="html">
+        <source>Access</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sign-in/sign-in.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">Access</note>
+        <note priority="1" from="meaning">access</note>
+      </trans-unit>
+      <trans-unit id="9643ead56f7c43e26e42066bc2ded3473364bd3b" datatype="html">
+        <source>Your username</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sign-in/sign-in.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">username placeholder</note>
+      </trans-unit>
+      <trans-unit id="usernamereq" datatype="html">
+        <source>
+        Username required
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sign-in/sign-in.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Username required</note>
+        <note priority="1" from="meaning">username required</note>
+      </trans-unit>
+      <trans-unit id="5b5b91438db5731debea388908f788bab8d3d404" datatype="html">
+        <source>Your password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sign-in/sign-in.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="description">pass placeholder</note>
+      </trans-unit>
+      <trans-unit id="passwordreq" datatype="html">
+        <source>
+        Password required
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sign-in/sign-in.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <note priority="1" from="description">Password required</note>
+        <note priority="1" from="meaning">password required</note>
+      </trans-unit>
+      <trans-unit id="signinerror" datatype="html">
+        <source>
+      Invalid username and password
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sign-in/sign-in.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <note priority="1" from="description">Message when error on signin</note>
+        <note priority="1" from="meaning">signin error</note>
+      </trans-unit>
+      <trans-unit id="signin" datatype="html">
+        <source>Sign in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sign-in/sign-in.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <note priority="1" from="description">Signin</note>
+        <note priority="1" from="meaning">signin</note>
+      </trans-unit>
+      <trans-unit id="signinwait" datatype="html">
+        <source>Signing in, please wait...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sign-in/sign-in.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <note priority="1" from="description">Wait while signin</note>
+        <note priority="1" from="meaning">signin wait</note>
+      </trans-unit>
+      <trans-unit id="tasks" datatype="html">
+        <source>Tasks</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/menu/menu.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">Tasks</note>
+        <note priority="1" from="meaning">tasks</note>
+      </trans-unit>
+      <trans-unit id="projects" datatype="html">
+        <source>Projects</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/menu/menu.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">Projects</note>
+        <note priority="1" from="meaning">projects</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

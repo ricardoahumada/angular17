@@ -28,10 +28,13 @@ export class NewProjectComponent implements OnInit {
   users: User[] = [];
   team_members_arr: FormArray = <FormArray>this.pform.get('team_members');
 
+  saved: boolean = false;
+  http_error: boolean = false;
+
   constructor(
     private _projSrv: ProjectsService,
     private _userSrv: UsersService,
-    private _router:Router
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
@@ -40,14 +43,14 @@ export class NewProjectComponent implements OnInit {
     this.team_members_arr = <FormArray>this.pform.get('team_members');
     this.users.forEach((aU) => {
       this.team_members_arr.push(
-        new FormControl({ uid: aU.uid, selected: false })
+        new FormControl({ uid: aU.id, selected: false })
       );
     });
-    console.log('team_members_arr:', this.team_members_arr);
+    // console.log('team_members_arr:', this.team_members_arr);
   }
 
   getUserById(uid: number): User {
-    const theUser = this.users.find((aU) => aU.uid == uid);
+    const theUser = this.users.find((aU) => aU.id == uid);
     return theUser || ({} as User);
   }
 
@@ -63,8 +66,23 @@ export class NewProjectComponent implements OnInit {
     const temProj: any = this.pform.value as Project;
     temProj.team_members = temProj.team_members.reduce((acc: any, aTM: any) => {
       if (aTM.selected) acc.push(aTM.uid);
+      return acc;
     }, []);
-    this._projSrv.addProject(temProj);
-    this._router.navigate(['/projects']);
+    temProj.date = temProj.deadline;
+    delete(temProj.deadline);
+    // this._projSrv.addProject(temProj);
+    // this._router.navigate(['/projects']);
+    this._projSrv.addProjectToApi(temProj).subscribe({
+      next: (data) => {
+        this.saved = true;
+        setTimeout(() => {
+          this._router.navigate(['/projects']);
+        }, 500);
+      },
+      error: (err) => {
+        console.log('Error saving!');
+        this.http_error=true;
+      },
+    });
   }
 }

@@ -1,45 +1,52 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, Observable, retry, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { HttpErrorHandler } from '../handlers/http-error-handler';
 import { Project } from '../models/project';
+import { SessionService } from './session.service';
+
+const API_URL = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectsService {
   private _projects: Project[] = [
-    {
-      pid: 1,
+    /* {
+      id: 1,
       name: 'Web Client a',
       date: new Date('2021-12-01'),
       team_members: [1, 3],
     },
     {
-      pid: 2,
+      id: 2,
       name: 'App Client b',
       date: new Date('2023-01-23'),
       team_members: [1, 2],
     },
     {
-      pid: 3,
+      id: 3,
       name: 'Hibryd Client c',
       date: new Date('2012-11-29'),
       team_members: [2, 3],
-    },
+    }, */
   ];
 
   private _currentPid: number = 0;
 
-  constructor() {}
+  constructor(private _http: HttpClient, private session: SessionService) {}
 
   getProjects(): Project[] {
     return this._projects;
   }
 
   getAproject(pid: number): Project | undefined {
-    return this._projects.find((aT) => aT.pid == pid);
+    return this._projects.find((aP) => aP.id == pid);
   }
 
   deleteAProject(pid: number): boolean {
-    this._projects = this._projects.filter((aT) => aT.pid != pid);
+    this._projects = this._projects.filter((aP) => aP.id != pid);
     return true;
   }
 
@@ -48,14 +55,52 @@ export class ProjectsService {
   }
 
   getCurrentProject(): Project | undefined {
-    return this._projects.find((aP) => aP.pid == this._currentPid);
+    return this._projects.find((aP) => aP.id == this._currentPid);
   }
 
-  addProject(aP: Project):boolean {
+  addProject(aP: Project): boolean {
     if (aP) {
+      aP.id = this._projects.length;
       this._projects.push(aP);
       return true;
     }
     return false;
+  }
+
+  private $projObsr: Observable<Project[]> | null = null;
+
+  getProjectsFromApi() {
+    // const httpOptions = {};
+    const httpOptions = this.getRequestOptions();
+
+    this.$projObsr = this._http
+      .get<Project[]>(API_URL + '/projects', httpOptions)
+      .pipe(
+        tap((data) => {
+          this._projects = data;
+        }),
+        catchError(HttpErrorHandler.errorHandl)
+      );
+    return this.$projObsr;
+  }
+
+  addProjectToApi(aP: Project): Observable<Project> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+
+    return this._http
+      .post<Project>(`${API_URL}/projects`, JSON.stringify(aP), httpOptions)
+      .pipe(retry(1), catchError(HttpErrorHandler.errorHandl));
+  }
+
+  private getRequestOptions() {
+    return {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.session.accessToken,
+      }),
+    };
   }
 }
