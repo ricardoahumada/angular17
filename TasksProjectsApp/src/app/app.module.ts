@@ -24,10 +24,13 @@ import { LogginInterceptor } from './interceptors/loggin.interceptor';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LangMenuComponent } from './i18n/lang-menu/lang-menu.component';
 import { TranslateService } from './i18n/translate.service';
+import { FeatureFlagsService } from './feature-flags/feature-flags.service';
 
-export function setupTranslateFactory(service: TranslateService): Function {
+/* export function setupTranslateFactory(service: TranslateService): Function {
   return () => service.use('en');
 }
+const featureFactory = (featureFlagsService: FeatureFlagsService) => () =>
+  featureFlagsService.loadConfig(); */
 
 @NgModule({
   declarations: [
@@ -59,12 +62,18 @@ export function setupTranslateFactory(service: TranslateService): Function {
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: LogginInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    {
+    /* {
       provide: APP_INITIALIZER,
       useFactory: setupTranslateFactory,
       deps: [TranslateService],
       multi: true,
-    },
+    }, */
+    /* {
+      provide: APP_INITIALIZER,
+      useFactory: featureFactory,
+      deps: [FeatureFlagsService],
+      multi: true,
+    }, */
   ],
   bootstrap: [AppComponent],
 })

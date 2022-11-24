@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FeatureGuard } from './feature-flags/feature-flags.guard';
 import { CanActivateGuard } from './guards/can-activate.guard';
 import { TasksResolver } from './guards/tasks.resolver';
 import { NewProjectComponent } from './projects/new-project/new-project.component';
@@ -18,8 +19,8 @@ const routes: Routes = [
   { path: 'signin', component: SignInComponent },
   {
     path: 'tasks',
-    component: TasksListComponent,
-    /* canActivate: [CanActivateGuard], */ /* resolve: { tasks: TasksResolver }, */
+    component: TasksListComponent /* resolve: { tasks: TasksResolver }, */,
+    /* canActivate: [CanActivateGuard], */
   },
   { path: 'tasks/new', component: NewTaskComponent },
   { path: 'tasks/:tid', component: TaskDetailComponent },
@@ -36,7 +37,7 @@ const routes: Routes = [
       { path: 'tasks', component: ProjectTasksComponent },
       { path: 'members', component: ProjectMembersComponent },
     ],
-  },
+  },  
   { path: '**', component: NotFoundComponent },
 ];
 
