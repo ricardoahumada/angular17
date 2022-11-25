@@ -50,7 +50,6 @@ const featureFactory = (featureFlagsService: FeatureFlagsService) => () =>
     NewTaskComponent,
     SignInComponent,
     LangMenuComponent,
-    FeatureFlagsDirective,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +58,7 @@ const featureFactory = (featureFlagsService: FeatureFlagsService) => () =>
     NameEditorComponent,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LogginInterceptor, multi: true },

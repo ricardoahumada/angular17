@@ -18,13 +18,14 @@ export class FeatureFlagsService {
     return this._http.get<any>(this.configUrl).pipe(
       tap((data) => {
         this.config = data;
-        console.log('FeatureFlagsService:',this.config);
-        
+        console.log('FeatureFlagsService loadConfig:',this.config);        
       })
     );
   }
 
   isFeatureEnabled(key: string) {
+    console.log('FeatureFlagsService isFeatureEnabled:',this.config);        
+
     if (this.config && this.config[key]) {
       return this.config[key];
     }
