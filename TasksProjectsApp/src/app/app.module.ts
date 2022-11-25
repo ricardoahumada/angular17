@@ -27,9 +27,9 @@ import { TranslateService } from './i18n/translate.service';
 import { FeatureFlagsService } from './feature-flags/feature-flags.service';
 import { FeatureFlagsDirective } from './feature-flags/feature-flags.directive';
 
-/*  export function setupTranslateFactory(service: TranslateService): Function {
+export function setupTranslateFactory(service: TranslateService): Function {
   return () => service.use('en');
-} */
+}
 const featureFactory = (featureFlagsService: FeatureFlagsService) => () =>
   featureFlagsService.loadConfig();
 
@@ -59,17 +59,17 @@ const featureFactory = (featureFlagsService: FeatureFlagsService) => () =>
     NameEditorComponent,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LogginInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    /* {
+    {
       provide: APP_INITIALIZER,
       useFactory: setupTranslateFactory,
       deps: [TranslateService],
       multi: true,
-    }, */
+    },
     {
       provide: APP_INITIALIZER,
       useFactory: featureFactory,

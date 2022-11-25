@@ -43,3 +43,11 @@
 <ng-template #dynamic></ng-template>
 
 <hr>
+<div>
+  <h1>
+     {{ 'TITLE' | translate }}!
+  </h1>
+  <button (click)="setLang('es')">ES</button><button (click)="setLang('en')">EN</button>
+</div>
+
+<hr>
