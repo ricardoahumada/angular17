@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { TranslatePipe } from 'src/app/i18n/translate.pipe';
@@ -8,15 +8,25 @@ import { TranslatePipe } from 'src/app/i18n/translate.pipe';
   standalone: true,
   imports: [CommonModule, AppRoutingModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  app_title: string = 'Tasks & Projects App';
+
+  @ViewChild('dynamic', { read: ViewContainerRef })
+  private viewRef: ViewContainerRef = {} as ViewContainerRef;
+
+  async showDynamicComponent() {
+    const { DynamicComponent } = await import("../../dynamic/dynamic/dynamic.component");
+    this.viewRef.clear();    
+    this.viewRef.createComponent(DynamicComponent);
   }
 
-  app_title:string="Tasks & Projects App"
-
+  removeDynamicComponent() {
+    this.viewRef.clear();
+  }
 }

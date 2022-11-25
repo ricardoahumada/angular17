@@ -25,12 +25,13 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LangMenuComponent } from './i18n/lang-menu/lang-menu.component';
 import { TranslateService } from './i18n/translate.service';
 import { FeatureFlagsService } from './feature-flags/feature-flags.service';
+import { FeatureFlagsDirective } from './feature-flags/feature-flags.directive';
 
-/* export function setupTranslateFactory(service: TranslateService): Function {
+/*  export function setupTranslateFactory(service: TranslateService): Function {
   return () => service.use('en');
-}
+} */
 const featureFactory = (featureFlagsService: FeatureFlagsService) => () =>
-  featureFlagsService.loadConfig(); */
+  featureFlagsService.loadConfig();
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ const featureFactory = (featureFlagsService: FeatureFlagsService) => () =>
     NewTaskComponent,
     SignInComponent,
     LangMenuComponent,
+    FeatureFlagsDirective,
   ],
   imports: [
     BrowserModule,
@@ -68,12 +70,12 @@ const featureFactory = (featureFlagsService: FeatureFlagsService) => () =>
       deps: [TranslateService],
       multi: true,
     }, */
-    /* {
+    {
       provide: APP_INITIALIZER,
       useFactory: featureFactory,
       deps: [FeatureFlagsService],
       multi: true,
-    }, */
+    },
   ],
   bootstrap: [AppComponent],
 })
