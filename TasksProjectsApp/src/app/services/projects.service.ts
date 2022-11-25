@@ -70,8 +70,8 @@ export class ProjectsService {
   private $projObsr: Observable<Project[]> | null = null;
 
   getProjectsFromApi() {
-    // const httpOptions = {};
-    const httpOptions = this.getRequestOptions();
+    const httpOptions = {};
+    // const httpOptions = this.getRequestOptions();
 
     this.$projObsr = this._http
       .get<Project[]>(API_URL + '/projects', httpOptions)

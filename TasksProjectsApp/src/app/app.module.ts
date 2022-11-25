@@ -60,8 +60,8 @@ const featureFactory = (featureFlagsService: FeatureFlagsService) => () =>
     HttpClientModule,
   ],
   providers: [
-    // { provide: HTTP_INTERCEPTORS, useClass: LogginInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LogginInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     /* {
       provide: APP_INITIALIZER,
       useFactory: setupTranslateFactory,

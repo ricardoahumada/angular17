@@ -19,14 +19,14 @@ const routes: Routes = [
   { path: 'signin', component: SignInComponent },
   {
     path: 'tasks',
-    component: TasksListComponent /* resolve: { tasks: TasksResolver }, */,
-    /* canActivate: [CanActivateGuard], */
+    component: TasksListComponent , resolve: { tasks: TasksResolver },
+    canActivate: [CanActivateGuard],
   },
   { path: 'tasks/new', component: NewTaskComponent },
   { path: 'tasks/:tid', component: TaskDetailComponent },
   {
     path: 'projects',
-    component: ProjectsListComponent /* canActivate: [CanActivateGuard] */,
+    component: ProjectsListComponent, canActivate: [CanActivateGuard],
   },
   { path: 'projects/new', component: NewProjectComponent },
   {

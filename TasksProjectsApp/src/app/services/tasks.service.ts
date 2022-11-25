@@ -22,12 +22,13 @@ export class TasksService {
   constructor(private _http: HttpClient, private session: SessionService) {}
 
   private _tasks: Task[] = [
-/*     { id: 1, description: 'Create html', time: 23, project: 1 },
+    /*     { id: 1, description: 'Create html', time: 23, project: 1 },
     { id: 2, description: 'Create js', time: 23, project: 2 },
     { id: 3, description: 'Create TS', time: 23, project: 1 },
     { id: 4, description: 'Deploy to production', time: 23, project: 2 },
     { id: 5, description: 'Create html', time: 23, project: 1 },
- */  ];
+ */
+  ];
 
   private $tasksObs = new BehaviorSubject<Task[]>(this._tasks);
 
@@ -53,7 +54,7 @@ export class TasksService {
     return this._tasks.filter((aT) => aT.project == pid);
   }
 
-  getAllProjectsTaskNumber(): any {    
+  getAllProjectsTaskNumber(): any {
     return this._tasks.reduce((acc: any, aT: Task) => {
       if (acc[aT.project]) {
         acc[aT.project] = acc[aT.project] + 1;
@@ -82,16 +83,21 @@ export class TasksService {
   private $tasksObsr: Observable<Task[]> | null = null;
 
   getTasksFromApiStore() {
-    if (this._tasks) {
+    if (this._tasks.length > 0) {
       return of(this._tasks);
     } else if (this.$tasksObsr) {
       return this.$tasksObsr;
     } else {
+      console.log('getTasksFromApiStore...');
       const httpOptions = this.getRequestOptions();
       this.$tasksObsr = this._http
         .get<Task[]>(API_URL + '/tasks', httpOptions)
         .pipe(
-          tap((data) => (this._tasks = data)),
+          tap((data) => {
+            console.log('getTasksFromApiStore:', data);
+
+            this._tasks = data;
+          }),
           catchError(HttpErrorHandler.errorHandl)
         );
       return this.$tasksObsr;
@@ -99,9 +105,9 @@ export class TasksService {
   }
 
   getTasksFromApi() {
-    // const httpOptions = {};
-    const httpOptions = this.getRequestOptions();
-    
+    const httpOptions = {};
+    // const httpOptions = this.getRequestOptions();
+
     this.$tasksObsr = this._http
       .get<Task[]>(API_URL + '/tasks', httpOptions)
       .pipe(

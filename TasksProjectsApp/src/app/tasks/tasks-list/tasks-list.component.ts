@@ -24,14 +24,19 @@ export class TasksListComponent implements OnInit {
     }); */
 
     //Api
-    this.$taskSubs = this._taskSrv.getTasksFromApi().subscribe((data) => {
+    /* this.$taskSubs = this._taskSrv.getTasksFromApi().subscribe((data) => {
       this.tasks = data;
-    });
+    }); */
+
+    //store
+    /* this.$taskSubs = this._taskSrv.getTasksFromApiStore().subscribe((data) => {
+      this.tasks = data;
+    }); */
 
     //resolver
-    /* this.$taskSubs = this._route.data.subscribe((data: any) => {
+    this.$taskSubs = this._route.data.subscribe((data: any) => {
       this.tasks = data.tasks;
-    }); */
+    });
   }
 
   deleteTask(tid: number) {
