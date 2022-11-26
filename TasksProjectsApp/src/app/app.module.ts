@@ -69,12 +69,12 @@ const featureFactory = (featureFlagsService: FeatureFlagsService) => () =>
       deps: [TranslateService],
       multi: true,
     },
-    {
+    /* {
       provide: APP_INITIALIZER,
       useFactory: featureFactory,
       deps: [FeatureFlagsService],
       multi: true,
-    },
+    }, */
   ],
   bootstrap: [AppComponent],
 })
