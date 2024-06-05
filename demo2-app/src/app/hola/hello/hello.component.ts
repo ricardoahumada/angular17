@@ -27,6 +27,9 @@ export class HelloComponent implements OnInit {
   mostrar_lista: boolean = false;
   texto_boton: string = 'Mostrar';
 
+
+  elInput:string = 'Un valor';
+
   constructor() { }
 
   ngOnInit(): void {
@@ -34,7 +37,8 @@ export class HelloComponent implements OnInit {
     setTimeout(() => {
       this.texto = 'hello world"';
       this.mostrar = true;
-      this.usuario_class = 'usuarios'
+      this.usuario_class = 'usuarios';
+      this.elInput='Actutlizado...'
     }, 5000);
   }
 
