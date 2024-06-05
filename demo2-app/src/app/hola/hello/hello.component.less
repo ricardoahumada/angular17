@@ -1,0 +1,26 @@
+@padding: 16;
+
+.hello {
+    p {
+        background-color: black;
+        color: white;
+        margin: 24px;
+    }
+
+    .usuarios {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            border: 1px solid red;
+            padding: @padding*1px;
+            display: flex;
+
+            div {
+                padding: 0 (@padding/2)*1px;
+            }
+        }
+    }
+
+}
