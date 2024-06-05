@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { timeout } from 'rxjs';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'hello',
@@ -17,7 +18,7 @@ export class HelloComponent implements OnInit {
     nombre: 'Juan'
   };
 
-  usuarios = [
+  usuarios:Array<User> = [
     { id: 1, nombre: 'Juan', rating: 0 },
     { id: 2, nombre: 'Ana', rating: 2 },
     { id: 3, nombre: 'Luisa', rating: 0 },
