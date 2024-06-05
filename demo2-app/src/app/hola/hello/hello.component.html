@@ -10,14 +10,19 @@
 
     <h2>usuarios</h2>
 
-    <button (click)="mostrarLista()" >{{texto_boton}}</button>
+    <button (click)="mostrarLista()">{{texto_boton}}</button>
 
     <ul [class]="usuario_class" *ngIf="mostrar_lista">
         <li *ngFor="let user of usuarios">
             <div>{{user.id}}</div>
             <div>{{user.nombre | uppercase}}</div>
+            <div>
+                <app-rate [rate]="user.rating" (start_clicked)="updateRating($event,user.id)"></app-rate>
+            </div>
         </li>
     </ul>
+
+    <pre>{{usuarios | json}}</pre>
 
     <input type="text" [(ngModel)]="elInput" />
     <p>{{elInput}}</p>

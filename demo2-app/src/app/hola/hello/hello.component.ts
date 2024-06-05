@@ -18,13 +18,13 @@ export class HelloComponent implements OnInit {
   };
 
   usuarios = [
-    { id: 1, nombre: 'Juan' },
-    { id: 2, nombre: 'Ana' },
-    { id: 3, nombre: 'Luisa' },
+    { id: 1, nombre: 'Juan', rating: 0 },
+    { id: 2, nombre: 'Ana', rating: 2 },
+    { id: 3, nombre: 'Luisa', rating: 0 },
   ]
 
   usuario_class: string = '';
-  mostrar_lista: boolean = false;
+  mostrar_lista: boolean = true;
   texto_boton: string = 'Mostrar';
 
 
@@ -51,6 +51,15 @@ export class HelloComponent implements OnInit {
 
   aMayuscula = (valor: string): string => {
     return valor.toUpperCase();
+  }
+
+  updateRating = (stars: number, uid: number): void => {
+    console.log('updateRating:', stars, uid);
+
+    this.usuarios.forEach(aU => {
+      if (aU.id == uid) aU.rating = stars;
+    })
+
   }
 
 }
