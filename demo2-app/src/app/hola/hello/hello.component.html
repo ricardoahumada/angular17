@@ -15,7 +15,7 @@
     <ul [class]="usuario_class" *ngIf="mostrar_lista">
         <li *ngFor="let user of usuarios">
             <div>{{user.id}}</div>
-            <div>{{user.nombre}}</div>
+            <div>{{user.nombre | uppercase}}</div>
         </li>
     </ul>
 

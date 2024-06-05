@@ -28,7 +28,7 @@ export class HelloComponent implements OnInit {
   texto_boton: string = 'Mostrar';
 
 
-  elInput:string = 'Un valor';
+  elInput: string = 'Un valor';
 
   constructor() { }
 
@@ -38,15 +38,19 @@ export class HelloComponent implements OnInit {
       this.texto = 'hello world"';
       this.mostrar = true;
       this.usuario_class = 'usuarios';
-      this.elInput='Actutlizado...'
+      this.elInput = 'Actutlizado...'
     }, 5000);
   }
 
   mostrarLista = () => {
     console.log('Mostrar lista...');
     // this.mostrar_lista = true;
-    this.texto_boton='Ocultar';
-    this.mostrar_lista=!this.mostrar_lista;
+    this.texto_boton = 'Ocultar';
+    this.mostrar_lista = !this.mostrar_lista;
+  }
+
+  aMayuscula = (valor: string): string => {
+    return valor.toUpperCase();
   }
 
 }
