@@ -1,1 +1,27 @@
-<p>task-list works!</p>
+<h1>Tareas</h1>
+<div>
+    <input type="text" [(ngModel)]="texto_filtro" />
+</div>
+<table class="tareas">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Time</th>
+            <th>Project</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let aT of filtraT(texto_filtro)">
+            <td>{{aT.tid}}</td>
+            <td>{{aT.description}}</td>
+            <td>{{aT.time}}</td>
+            <td>{{aT.project}}</td>
+            <!-- <td><button (click)="borrarT(aT.tid)">Borrar</button></td> -->
+            <td>
+                <app-delete [tid]="aT.tid" (delete_clicked)="borrarT($event)"></app-delete>
+            </td>
+        </tr>
+    </tbody>
+</table>

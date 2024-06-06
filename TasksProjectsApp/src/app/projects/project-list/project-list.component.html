@@ -1,1 +1,11 @@
-<p>project-list works!</p>
+<h2>Proyectos</h2>
+<ul>
+    <li *ngFor="let aP of proyectos">
+        <span>{{aP.pid}}</span>
+        <span>{{aP.name}}</span>
+        <span>{{aP.date}}</span>
+        <span>
+            <app-rate [rate]="aP.rating" (start_clicked)="updateRating($event,aP.pid)"></app-rate>
+        </span>
+    </li>
+</ul>
