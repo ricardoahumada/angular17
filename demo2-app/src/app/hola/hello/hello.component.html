@@ -1,5 +1,5 @@
 <div class="hello">
-    <p *ngIf="texto">{{texto}}</p>
+    <p *ngIf="texto">{{texto }}</p>
 
     <p>{{objeto | json}}</p>
 
@@ -8,12 +8,19 @@
         <li>{{objeto.nombre}}</li>
     </ul>
 
+    <hr>
+
+    <div highlight color="yellow" [user]="usuarios[0]">
+        xxx
+    </div>
+    <hr>
+
     <h2>usuarios</h2>
 
     <button (click)="mostrarLista()">{{texto_boton}}</button>
 
     <ul [class]="usuario_class" *ngIf="mostrar_lista">
-        <li *ngFor="let user of usuarios">
+        <li *ngFor="let user of usuarios | filtraDatos:'l'">
             <div>{{user.id}}</div>
             <div>{{user.nombre | uppercase}}</div>
             <div>
@@ -21,6 +28,10 @@
             </div>
         </li>
     </ul>
+
+
+    <div>
+    </div>
 
     <pre>{{usuarios | json}}</pre>
 
