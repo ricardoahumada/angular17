@@ -41,6 +41,8 @@ export class TasksService {
 
   public deleteATask(tid: number): boolean {
     this._tasks = this._tasks.filter((aT) => aT.tid != tid);
+    console.log('deleteATask:', this._tasks);
+    
     return true;
   }
 

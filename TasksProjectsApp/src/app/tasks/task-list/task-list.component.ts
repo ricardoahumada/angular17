@@ -11,7 +11,6 @@ export class TaskListComponent implements OnInit {
 
 
   tareas: Array<Task> = [
-
   ];
 
   texto_filtro: string = '';
@@ -25,7 +24,8 @@ export class TaskListComponent implements OnInit {
   borrarT = (tid: number): void => {
     console.log('borrando:', tid);
 
-    this.tareas = this.tareas.filter(aT => aT.tid != tid);
+    // this.tareas = this.tareas.filter(aT => aT.tid != tid);
+    this._taskSrv.deleteATask(tid);
   }
 
   filtraT = (texto: string): Array<any> => {
