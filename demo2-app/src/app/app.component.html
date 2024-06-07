@@ -1,5 +1,13 @@
 <section class="hola container">
   <h1>Hola mundo!!</h1>
+  <header>
+    <nav>
+      <ul>
+        <li><a [routerLink]="['hello']">Hello</a></li>
+        <li><a [routerLink]="['hello2']">Hello2</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <!-- <hello></hello> -->
   <router-outlet></router-outlet>
