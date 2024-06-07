@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from 'src/app/models/task';
+import { TasksService } from 'src/app/services/tasks.service';
 
 @Component({
   selector: 'task-list',
@@ -10,31 +11,15 @@ export class TaskListComponent implements OnInit {
 
 
   tareas: Array<Task> = [
-    {
-      tid: 1,
-      description: 'Genear app',
-      time: 30,
-      project: 1
-    },
-    {
-      tid: 2,
-      description: 'Modificar app',
-      time: 20,
-      project: 2
-    },
-    {
-      tid: 3,
-      description: 'Añadir func app',
-      time: 40,
-      project: 1
-    }
+
   ];
 
   texto_filtro: string = '';
 
-  constructor() { }
+  constructor(private _taskSrv: TasksService) { }
 
   ngOnInit(): void {
+    this.tareas = this._taskSrv.getTasks();
   }
 
   borrarT = (tid: number): void => {

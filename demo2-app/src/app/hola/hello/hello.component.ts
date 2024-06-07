@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { timeout } from 'rxjs';
 import { User } from 'src/app/models/user';
+import { HelloService } from 'src/app/services/hello.service';
 
 @Component({
   selector: 'hello',
@@ -18,11 +19,7 @@ export class HelloComponent implements OnInit {
     nombre: 'Juan'
   };
 
-  usuarios:Array<User> = [
-    { id: 1, nombre: 'Juan', rating: 0 },
-    { id: 2, nombre: 'Ana', rating: 2 },
-    { id: 3, nombre: 'Luisa', rating: 0 },
-  ];
+  usuarios: Array<User> = [];
 
   usuario_class: string = '';
   mostrar_lista: boolean = true;
@@ -31,16 +28,18 @@ export class HelloComponent implements OnInit {
 
   elInput: string = 'Un valor';
 
-  constructor() { }
+  constructor(private _helloSrv: HelloService) { }
 
   ngOnInit(): void {
     console.log('Inicializando HelloComponent...');
+    this.usuarios = this._helloSrv.getUsers();
+
     setTimeout(() => {
       this.texto = 'hello world"';
       this.mostrar = true;
       this.usuario_class = 'usuarios';
       this.elInput = 'Actutlizado...'
-    }, 5000);
+    }, 1000);
   }
 
   mostrarLista = () => {

@@ -20,7 +20,7 @@
     <button (click)="mostrarLista()" *replicate="4">{{texto_boton}}</button>
 
     <ul [class]="usuario_class" *ngIf="mostrar_lista">
-        <li *ngFor="let user of usuarios | filtraDatos:'l'">
+        <li *ngFor="let user of usuarios ">
             <div>{{user.id}}</div>
             <div>{{user.nombre | uppercase}}</div>
             <div>
