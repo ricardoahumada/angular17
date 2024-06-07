@@ -8,6 +8,7 @@ import { RateComponent } from './util/rate/rate.component';
 import { FiltraDatosPipe } from './pipes/filtra-datos.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
 import { ReplicateDirective } from './directives/replicate.directive';
+import { AppRoutingModule } from './approuting.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ReplicateDirective } from './directives/replicate.directive';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
