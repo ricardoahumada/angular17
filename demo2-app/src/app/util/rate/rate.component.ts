@@ -1,15 +1,23 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-rate',
   templateUrl: './rate.component.html',
   styleUrls: ['./rate.component.less']
 })
-export class RateComponent implements OnInit {
+export class RateComponent implements OnInit, OnChanges, OnDestroy {
 
-  constructor() { }
+  constructor() { 
+    console.log('RateComponent....constructor');
+
+  }
 
   ngOnInit(): void {
+    console.log('RateComponent....ngOnInit');
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('RateComponent....ngOnChanges:', changes);    
   }
 
 
@@ -23,6 +31,11 @@ export class RateComponent implements OnInit {
     console.log('emitiendo valor star:', valor);
     // this.rating = valor;
     this.start_clicked.emit(valor);
+  }
+
+  ngOnDestroy(): void {
+    console.log('RateComponent....ngOnDestroy');
+    
   }
 
 }

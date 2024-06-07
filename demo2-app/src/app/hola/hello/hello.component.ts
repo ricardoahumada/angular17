@@ -22,7 +22,7 @@ export class HelloComponent implements OnInit {
     { id: 1, nombre: 'Juan', rating: 0 },
     { id: 2, nombre: 'Ana', rating: 2 },
     { id: 3, nombre: 'Luisa', rating: 0 },
-  ]
+  ];
 
   usuario_class: string = '';
   mostrar_lista: boolean = true;
