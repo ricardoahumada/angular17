@@ -1,6 +1,9 @@
 <h2>Proyectos</h2>
+<div>
+    <input type="text" [(ngModel)]="texto_filtro" *appDelay="3"/>
+</div>
 <ul>
-    <li *ngFor="let aP of proyectos">
+    <li *ngFor="let aP of proyectos | filterElements:'name':texto_filtro">
         <span>{{aP.pid}}</span>
         <span>{{aP.name}}</span>
         <span>{{aP.date}}</span>

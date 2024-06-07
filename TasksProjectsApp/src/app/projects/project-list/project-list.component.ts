@@ -12,7 +12,10 @@ export class ProjectListComponent implements OnInit {
     { pid: 2, name: 'App 2', date: '2024-06-26', rating: 0 },
   ];
 
+  texto_filtro: string = '';
+
   constructor() { }
+
 
   ngOnInit(): void {
   }

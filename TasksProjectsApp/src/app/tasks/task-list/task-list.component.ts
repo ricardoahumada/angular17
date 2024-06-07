@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Task } from 'src/app/models/task';
 
 @Component({
   selector: 'task-list',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class TaskListComponent implements OnInit {
 
 
-  tareas: Array<any> = [
+  tareas: Array<Task> = [
     {
       tid: 1,
       description: 'Genear app',

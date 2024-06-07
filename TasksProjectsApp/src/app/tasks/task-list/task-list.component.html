@@ -13,7 +13,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let aT of filtraT(texto_filtro)">
+        <!-- <tr *ngFor="let aT of filtraT(texto_filtro)"> -->
+        <tr *ngFor="let aT of tareas | filterElements:'description':texto_filtro">
             <td>{{aT.tid}}</td>
             <td>{{aT.description}}</td>
             <td>{{aT.time}}</td>
