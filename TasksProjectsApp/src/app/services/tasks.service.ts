@@ -6,7 +6,7 @@ import { Task } from 'src/app/models/task';
   providedIn: 'root',
 })
 export class TasksService {
-  
+
   constructor() { }
 
   private _tasks: Task[] = [
@@ -42,6 +42,15 @@ export class TasksService {
   public deleteATask(tid: number): boolean {
     this._tasks = this._tasks.filter((aT) => aT.tid != tid);
     return true;
+  }
+
+  public duplicateATask(tid: number): boolean {
+    const tad = this.getATask(tid);
+    if (tad) {
+      tad.tid = this._tasks.length;
+      this._tasks.push({ ...tad });
+      return true;
+    } else return false;
   }
 
 
