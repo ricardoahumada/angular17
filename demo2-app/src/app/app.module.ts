@@ -14,6 +14,7 @@ import { ProductDetailComponent } from './product/product-detail/product-detail.
 import { FilterProductsPipe } from './pipes/filter-products.pipe';
 import { CommentsComponent } from './product/product-detail/comments/comments.component';
 import { ImagesComponent } from './product/product-detail/images/images.component';
+import { NewUserComponent } from './users/new-user/new-user.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ImagesComponent } from './product/product-detail/images/images.componen
     FilterProductsPipe,
     ProductDetailComponent,
     CommentsComponent,
-    ImagesComponent
+    ImagesComponent,
+    NewUserComponent
   ],
   imports: [
     BrowserModule,
