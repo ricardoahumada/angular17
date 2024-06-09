@@ -1,0 +1,21 @@
+<h2>{{product.code}}</h2>
+<pre>{{product | json}}</pre>
+
+<hr>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a [routerLink]="['./images']" class="nav-link " [routerLinkActive]="['active']">Images</a>
+    </li>
+    <li class="nav-item">
+        <a [routerLink]="['./comments']" class="nav-link " [routerLinkActive]="['active']">Comments</a>
+    </li>
+</ul>
+
+
+<router-outlet></router-outlet>
+
+<hr>
+
+<button type="button" class="btn btn-primary" (click)="goHome()">go Home</button>
+<button type="button" class="btn btn-primary" (click)="goProducts()">go Products</button>

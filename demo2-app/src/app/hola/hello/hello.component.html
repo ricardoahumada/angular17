@@ -24,7 +24,7 @@
             <div>{{user.id}}</div>
             <div>{{user.nombre | uppercase}}</div>
             <div>
-                <app-rate [rate]="user.rating" (start_clicked)="updateRating($event,user.id)"></app-rate>
+                <app-rate [rate]="user.rating" (star_clicked)="updateRating($event,user.id)"></app-rate>
             </div>
         </li>
     </ul>

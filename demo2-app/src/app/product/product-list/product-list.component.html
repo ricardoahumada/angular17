@@ -1,0 +1,28 @@
+<section class="products">
+    <h2>{{title}}</h2>
+
+    <input [(ngModel)]="filter_text" type="text">
+
+    <ul *ngIf="show_list" class="list-group">
+        <li *ngFor="let a_product of products | filterProducts:filter_text" class="list-group-item">
+            <div highlight user="Ricardo" color="orange">{{a_product?.name | uppercase}}</div>
+            <div>{{a_product?.code | lowercase}}</div>
+            <div>
+                <img [src]="'./assets/imgs/'+a_product?.image" alt="" [style.maxWidth.px]="img_width"
+                    [style.maxHeight.px]="img_height" />
+            </div>
+            <div>{{a_product?.date | date: 'full'}}</div>
+            <div>{{a_product?.price | currency:'EUR':true:'1.2-2'}}</div>
+            <div>{{a_product.stars}}
+                <app-rate [rate]="a_product.stars"
+                (star_clicked)="updateStars($event,a_product.code)">
+                </app-rate>
+            </div>
+            <div><a >Ver detalle</a></div>
+        </li>
+    </ul>
+
+
+
+
+</section>

@@ -9,6 +9,11 @@ import { FiltraDatosPipe } from './pipes/filtra-datos.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
 import { ReplicateDirective } from './directives/replicate.directive';
 import { AppRoutingModule } from './approuting.module';
+import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductDetailComponent } from './product/product-detail/product-detail.component';
+import { FilterProductsPipe } from './pipes/filter-products.pipe';
+import { CommentsComponent } from './product/product-detail/comments/comments.component';
+import { ImagesComponent } from './product/product-detail/images/images.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +22,13 @@ import { AppRoutingModule } from './approuting.module';
     RateComponent,
     FiltraDatosPipe,
     HighlightDirective,
-    ReplicateDirective
+    ReplicateDirective,
+    ProductListComponent,
+    ProductDetailComponent,
+    FilterProductsPipe,
+    ProductDetailComponent,
+    CommentsComponent,
+    ImagesComponent
   ],
   imports: [
     BrowserModule,

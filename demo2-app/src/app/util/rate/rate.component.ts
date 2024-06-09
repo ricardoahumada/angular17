@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, S
 })
 export class RateComponent implements OnInit, OnChanges, OnDestroy {
 
-  constructor() { 
+  constructor() {
     console.log('RateComponent....constructor');
 
   }
@@ -17,25 +17,25 @@ export class RateComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('RateComponent....ngOnChanges:', changes);    
+    console.log('RateComponent....ngOnChanges:', changes);
   }
 
 
   @Input('rate')
   rating: number = 0;
 
-  @Output() 
-  start_clicked: EventEmitter<number> = new EventEmitter();
+  @Output()
+  star_clicked: EventEmitter<number> = new EventEmitter();
 
   starClick = (valor: number): void => {
     console.log('emitiendo valor star:', valor);
     // this.rating = valor;
-    this.start_clicked.emit(valor);
+    this.star_clicked.emit(valor);
   }
 
   ngOnDestroy(): void {
     console.log('RateComponent....ngOnDestroy');
-    
+
   }
 
 }
