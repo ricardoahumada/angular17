@@ -13,7 +13,14 @@ const routes: Routes = [
     { path: 'hello', component: HelloComponent },
     { path: 'hello2', component: Hello2Component },
     { path: 'products', component: ProductListComponent },
-    { path: 'products/:code', component: ProductDetailComponent },
+    {
+        path: 'products/:code', component: ProductDetailComponent,
+        children: [
+            { path: '', redirectTo: 'features', pathMatch: 'full' },
+            { path: 'comments', component: CommentsComponent },
+            { path: 'images', component: ImagesComponent },
+        ]
+    },
     { path: '**', component: NotfoundComponent },
 ];
 
