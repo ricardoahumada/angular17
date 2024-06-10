@@ -18,7 +18,8 @@
                 (star_clicked)="updateStars($event,a_product.code)">
                 </app-rate>
             </div>
-            <div><a >Ver detalle</a></div>
+
+            <div><a [routerLink]="['/products',a_product.code]" >Ver detalle</a></div>
         </li>
     </ul>
 

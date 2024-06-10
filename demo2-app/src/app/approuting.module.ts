@@ -13,6 +13,7 @@ const routes: Routes = [
     { path: 'hello', component: HelloComponent },
     { path: 'hello2', component: Hello2Component },
     { path: 'products', component: ProductListComponent },
+    { path: 'products/:code', component: ProductDetailComponent },
     { path: '**', component: NotfoundComponent },
 ];
 
