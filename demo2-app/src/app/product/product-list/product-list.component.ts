@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IProduct } from 'src/app/models/iproduct';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -17,11 +18,16 @@ export class ProductListComponent implements OnInit {
 
   products: Array<IProduct> = [];
 
-  constructor(private _productsService: ProductsService) { }
+  constructor(private _productsService: ProductsService,
+    private _route: ActivatedRoute,
+  ) { }
 
 
   ngOnInit(): void {
-    this.products = this._productsService.getProducts();
+    this._route.queryParams.subscribe((data: any) => {
+      console.log('Query params:', data);
+      this.products = this._productsService.filterProducts(data.name);
+    })
   }
 
 
@@ -47,7 +53,7 @@ export class ProductListComponent implements OnInit {
     if (theProduct) theProduct.stars = stars;
   }
 
-  
+
 
   ngOnDestroy() {
   }

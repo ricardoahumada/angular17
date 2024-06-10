@@ -8,7 +8,7 @@ import { IProduct } from '../models/iproduct';
   providedIn: 'root',
 })
 export class ProductsService {
-  constructor() {}
+  constructor() { }
 
   private _products: Array<IProduct> = [
     {
@@ -33,9 +33,14 @@ export class ProductsService {
     return this._products;
   }
 
+  public filterProducts(str: string): IProduct[] {
+    if (!str) return this._products;
+    else return this._products.filter(aP => aP.name.toLocaleLowerCase().includes(str.toLocaleLowerCase()));
+  }
+
   public getAProduct(code: string): IProduct | undefined {
     return this._products.find((aP) => aP.code == code);
   }
 
-  
+
 }
