@@ -9,16 +9,22 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./product-detail.component.scss'],
 })
 export class ProductDetailComponent implements OnInit {
-  product: IProduct = {} as IProduct;
+  
+  product: IProduct | undefined = {} as IProduct;
 
   constructor(
     private _route: ActivatedRoute,
     private _productsSrv: ProductsService,
     private _router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    // ....
+    this._route.params.subscribe((data: any) => {
+      console.log('ProductDetailComponent data:', data);
+      const code = data.code;
+      this.product = this._productsSrv.getAProduct(code);
+      console.log('ProductDetailComponent product:', this.product);
+    });
   }
 
   goHome() {
@@ -26,5 +32,5 @@ export class ProductDetailComponent implements OnInit {
 
   goProducts() {
   }
-  
+
 }
