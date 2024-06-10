@@ -9,7 +9,7 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./product-detail.component.scss'],
 })
 export class ProductDetailComponent implements OnInit {
-  
+
   product: IProduct | undefined = {} as IProduct;
 
   constructor(
@@ -28,9 +28,11 @@ export class ProductDetailComponent implements OnInit {
   }
 
   goHome() {
+    this._router.navigate(['']);
   }
 
   goProducts() {
+    this._router.navigate(['products']);
   }
 
 }
