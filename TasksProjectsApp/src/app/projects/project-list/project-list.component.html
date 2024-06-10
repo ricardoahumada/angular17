@@ -1,14 +1,16 @@
 <h2>Proyectos</h2>
 <div>
-    <input type="text" [(ngModel)]="texto_filtro" *appDelay="3"/>
+    <input class="form-control" type="text" [(ngModel)]="texto_filtro" *appDelay="3" />
 </div>
 <ul>
-    <li *ngFor="let aP of proyectos | filterElements:'name':texto_filtro">
-        <span>{{aP.pid}}</span>
-        <span>{{aP.name}}</span>
-        <span>{{aP.date}}</span>
-        <span>
-            <app-rate [rate]="aP.rating" (start_clicked)="updateRating($event,aP.pid)"></app-rate>
-        </span>
+    <li *ngFor="let aP of proyectos | filterElements:'name':texto_filtro" class="card">
+        <div class="card-body">
+            <span>{{aP.pid}}</span>
+            <h5 class="card-title">{{aP.name}}</h5>
+            <span>{{aP.date}}</span>
+            <span>
+                <app-rate [rate]="aP.rating" (start_clicked)="updateRating($event,aP.pid)"></app-rate>
+            </span>
+        </div>
     </li>
 </ul>

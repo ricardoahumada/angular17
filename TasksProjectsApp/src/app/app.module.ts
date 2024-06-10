@@ -9,6 +9,8 @@ import { RateComponent } from './utils/rate/rate.component';
 import { DeleteComponent } from './utils/delete/delete.component';
 import { FilterElementsPipe } from './pipes/filter-elements.pipe';
 import { DelayDirective } from './directives/delay.directive';
+import { AppRoutingModule } from './app-routing.module';
+import { HeaderComponent } from './structure/header/header.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,13 @@ import { DelayDirective } from './directives/delay.directive';
     RateComponent,
     DeleteComponent,
     FilterElementsPipe,
-    DelayDirective
+    DelayDirective,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule, 
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
