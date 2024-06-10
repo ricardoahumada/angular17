@@ -19,7 +19,7 @@
                 </app-rate>
             </div>
 
-            <div><a [routerLink]="['/products',a_product.code]" >Ver detalle</a></div>
+            <div><a [routerLink]="['/products',a_product.code]" [queryParams]="{f:'valor'}">Ver detalle</a></div>
         </li>
     </ul>
 

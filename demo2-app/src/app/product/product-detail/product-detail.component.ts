@@ -32,7 +32,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   goProducts() {
-    this._router.navigate(['products']);
+    this._router.navigate(['products'],{queryParams:{name:'garden'}});
   }
 
 }
