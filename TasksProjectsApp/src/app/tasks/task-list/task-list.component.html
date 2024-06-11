@@ -10,6 +10,7 @@
             <th>Time</th>
             <th>Project</th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +23,10 @@
             <!-- <td><button (click)="borrarT(aT.tid)">Borrar</button></td> -->
             <td>
                 <app-delete [tid]="aT.tid" (delete_clicked)="borrarT($event)"></app-delete>
+            </td>
+            <td>
+                <a [routerLink]="['/tasks/',aT.tid]" routerLinkActive="router-link-active"><i
+                        class="bi bi-eye"></i></a>
             </td>
         </tr>
     </tbody>

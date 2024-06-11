@@ -56,56 +56,58 @@
   ],
   "projects": [
     {
-      "id": 1,
+      "pid": 1,
       "name": "Web Client a",
       "date": "2022-12-09T23:00:00.000Z",
-      "team_members": [1, 3]
+      "team_members": [1, 3],
+      "stars":0
     },
     {
-      "id": 2,
+      "pid": 2,
       "name": "App Client b",
       "date": "2022-11-29T23:00:00.000Z",
-      "team_members": [1, 2]
+      "team_members": [1, 2],
+      "stars":0
     },
     {
-      "id": 3,
+      "pid": 3,
       "name": "App Client c",
       "date": "2023-01-29T23:00:00.000Z",
       "team_members": [2, 3]
     },
     {
-      "id": 4,
+      "pid": 4,
       "name": "Hybric Client d",
       "date": "2022-10-29T23:00:00.000Z"
     }
   ],
   "tasks": [
     {
-      "id": 1,
+      "tid": 1,
       "description": "Create html",
       "time": 23,
       "project": 1
     },
     {
-      "id": 2,
+      "tid": 2,
       "description": "Create js",
       "time": 23,
       "project": 2
     },
     {
-      "id": 3,
+      "tid": 3,
       "description": "Create TS",
       "time": 23,
       "project": 1
     },
     {
-      "id": 4,
+      "tid": 4,
       "description": "Deploy to production",
       "time": 23,
       "project": 2
     },
     {
-      "id": 5,
+      "tid": 5,
       "description": "Create java",
       "time": 23,
       "project": 1

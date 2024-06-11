@@ -55,5 +55,34 @@ export class TasksService {
     } else return false;
   }
 
+  getProjectTasks(pid: number): Task[] {
+    return this._tasks.filter((aT) => aT.project == pid);
+  }
+
+  getAllProjectsTaskNumber(): any {
+    return this._tasks.reduce((acc: any, aT: Task) => {
+      if (acc[aT.project]) {
+        acc[aT.project] = acc[aT.project] + 1;
+      } else acc[aT.project] = 1;
+
+      return acc;
+    }, {});
+  }
+
+  getNext(aTask: Task): number {
+    const index = this._tasks.indexOf(aTask);
+    if (index >= 0) {
+      if (index == this._tasks.length - 1) return this._tasks[0].tid;
+      else return this._tasks[index + 1].tid;
+    } else return -1;
+  }
+
+  getPrev(aTask: Task): number {
+    const index = this._tasks.indexOf(aTask);
+    if (index <= this._tasks.length - 1) {
+      if (index == 0) return this._tasks[this._tasks.length - 1].tid;
+      else return this._tasks[index - 1].tid;
+    } else return -1;
+  }
 
 }

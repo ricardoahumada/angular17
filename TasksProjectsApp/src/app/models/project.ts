@@ -1,6 +1,6 @@
 export interface Project {
   pid: number;
   name: string;
-  date: string;
+  date: Date;
   rating: number;
 }
