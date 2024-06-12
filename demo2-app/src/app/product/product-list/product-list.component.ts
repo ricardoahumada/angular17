@@ -46,7 +46,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
           console.log("Petición de producots completada");
         },
       });
-    }, 3000);
+    }, 500);
 
   }
 
