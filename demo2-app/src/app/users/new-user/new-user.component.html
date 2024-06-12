@@ -1,6 +1,6 @@
 <section>
     <h2>Signup form</h2>
-    <form novalidate [formGroup]="myForm">
+    <form novalidate [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <fieldset formGroupName="name">
             <div class="form-group">
                 <label>Name</label>
