@@ -33,7 +33,7 @@ export class NewUserComponent implements OnInit {
     console.log('myForm:', this.myForm);
 
     this.searchField.valueChanges
-      // .pipe(debounceTime(400), distinctUntilChanged())
+      .pipe(debounceTime(400), distinctUntilChanged())
       .subscribe((term) => {
         console.log('term:', term);
         this.searches.push(term);
