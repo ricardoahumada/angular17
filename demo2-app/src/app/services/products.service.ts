@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { IProduct } from '../models/iproduct';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  constructor() { }
+  constructor(private _http: HttpClient) { }
 
   private _products: Array<IProduct> = [
     {
@@ -40,6 +41,11 @@ export class ProductsService {
 
   public getAProduct(code: string): IProduct | undefined {
     return this._products.find((aP) => aP.code == code);
+  }
+
+  public getProductsFromAPi = (): Observable<IProduct[]> => {
+    const uri = "http://localhost:3000/products";
+    return this._http.get<IProduct[]>(uri);
   }
 
 
