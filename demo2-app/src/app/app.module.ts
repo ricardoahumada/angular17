@@ -15,6 +15,7 @@ import { FilterProductsPipe } from './pipes/filter-products.pipe';
 import { CommentsComponent } from './product/product-detail/comments/comments.component';
 import { ImagesComponent } from './product/product-detail/images/images.component';
 import { NewUserComponent } from './users/new-user/new-user.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { NewUserComponent } from './users/new-user/new-user.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProduct } from 'src/app/models/iproduct';
@@ -20,6 +21,7 @@ export class ProductListComponent implements OnInit {
 
   constructor(private _productsService: ProductsService,
     private _route: ActivatedRoute,
+    private _http: HttpClient
   ) { }
 
 
@@ -27,6 +29,11 @@ export class ProductListComponent implements OnInit {
     this._route.queryParams.subscribe((data: any) => {
       console.log('Query params:', data);
       this.products = this._productsService.filterProducts(data.name);
+    })
+
+    const uri = "http://localhost:3000/products";
+    this._http.get(uri).subscribe((data) => {
+      console.log("Data received:", data);
     })
   }
 
