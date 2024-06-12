@@ -4,7 +4,7 @@
         <fieldset formGroupName="name">
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" class="form-control" [formControl]="firstName" required
+                <input type="text" class="form-control" [formControl]="firstName" 
                     placeholder="Introduce tu nombre">
 
                 <span class="error" *ngIf="firstName.touched && !firstName.valid">Valor no valido</span>
@@ -18,19 +18,19 @@
 
             <div class="form-group">
                 <label>Last Name</label>
-                <input type="text" class="form-control" required formControlName="lastName">
+                <input type="text" class="form-control"  formControlName="lastName">
             </div>
         </fieldset>
         <pre>{{myForm.controls['name'].value | json}}</pre>
 
         <div class="form-group">
             <label>Email</label>
-            <input type="email" class="form-control" required formControlName="email">
+            <input type="email" class="form-control"  formControlName="email">
         </div>
 
         <div class="form-group">
             <label>Password</label>
-            <input type="password" class="form-control" required formControlName="password">
+            <input type="password" class="form-control"  formControlName="password">
         </div>
 
         <div class="form-group">
@@ -43,7 +43,7 @@
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
         </div>
 
     </form>
