@@ -2,6 +2,11 @@
 <div>
     <input class="form-control" type="text" [(ngModel)]="texto_filtro" *appDelay="3" />
 </div>
+<br>
+<div>
+    <a [routerLink]="['new']" routerLinkActive="router-link-active"><i class="bi bi-calendar2-plus"></i></a>
+</div>
+<br>
 <ul>
     <li *ngFor="let aP of proyectos | filterElements:'name':texto_filtro" class="card">
         <div class="card-body">

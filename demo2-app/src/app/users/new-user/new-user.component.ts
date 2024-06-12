@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { LanguageValidator } from 'src/app/validators/language-validatior';
 
 @Component({
@@ -14,6 +15,10 @@ export class NewUserComponent implements OnInit {
 
   firstName = new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z]*')]);
 
+  /* reactive */
+  searchField = new FormControl();
+  searches: string[] = [];
+
   ngOnInit(): void {
     this.myForm = new FormGroup({
       name: new FormGroup({
@@ -26,6 +31,13 @@ export class NewUserComponent implements OnInit {
     });
 
     console.log('myForm:', this.myForm);
+
+    this.searchField.valueChanges
+      // .pipe(debounceTime(400), distinctUntilChanged())
+      .subscribe((term) => {
+        console.log('term:', term);
+        this.searches.push(term);
+      });
   }
 
 
@@ -36,5 +48,7 @@ export class NewUserComponent implements OnInit {
       // enviar a API
     }
   }
+
+  
 
 }

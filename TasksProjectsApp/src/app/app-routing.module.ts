@@ -7,6 +7,7 @@ import { NewTaskComponent } from './tasks/new-task/new-task.component';
 import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { NotFoundComponent } from './utils/not-found/not-found.component';
+import { NewProjectComponent } from './projects/new-project/new-project.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'projects', pathMatch: 'full' },
@@ -19,7 +20,9 @@ const routes: Routes = [
   {
     path: 'projects',
     component: ProjectListComponent,
-  },  
+  },
+  { path: 'projects/new', component: NewProjectComponent },
+
   {
     path: 'projects/:pid',
     component: ProjectDetailComponent,
@@ -35,4 +38,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
