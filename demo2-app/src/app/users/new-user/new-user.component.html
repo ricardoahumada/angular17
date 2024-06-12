@@ -4,9 +4,17 @@
         <fieldset formGroupName="name">
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" class="form-control" [formControl]="firstName" required>
+                <input type="text" class="form-control" [formControl]="firstName" required
+                    placeholder="Introduce tu nombre">
+
+                <span class="error" *ngIf="firstName.touched && !firstName.valid">Valor no valido</span>
+
+                <pre>value: {{firstName.value}}</pre>
+                <pre>valid: {{firstName.valid}}</pre>
+                <pre>touched: {{firstName.touched}}</pre>
+                <pre>pristine: {{firstName.pristine}}</pre>
+
             </div>
-            <pre>{{firstName.value}}</pre>
 
             <div class="form-group">
                 <label>Last Name</label>
@@ -41,5 +49,7 @@
     </form>
 
     <pre>{{myForm.value | json}}</pre>
+    <pre>valid:{{myForm.valid}}</pre>
+    <pre>touched:{{myForm.touched}}</pre>
 
 </section>
