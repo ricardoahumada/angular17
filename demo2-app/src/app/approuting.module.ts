@@ -7,6 +7,7 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { CommentsComponent } from './product/product-detail/comments/comments.component';
 import { ImagesComponent } from './product/product-detail/images/images.component';
+import { NewUserComponent } from './users/new-user/new-user.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'hello', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const routes: Routes = [
             { path: 'images', component: ImagesComponent },
         ]
     },
+    { path: 'users/new', component: NewUserComponent },
     { path: '**', component: NotfoundComponent },
 ];
 

@@ -3,10 +3,8 @@
   <header>
     <nav class="nav nav-pills nav-justified">
       <a class="flex-sm-fill text-sm-center nav-link" [routerLink]="['hello']" [routerLinkActive]="'active'">Hello</a>
-      <a class="flex-sm-fill text-sm-center nav-link " [routerLink]="['hello2']"
-        [routerLinkActive]="'active'">Hello2</a>
-      <a class="flex-sm-fill text-sm-center nav-link " [routerLink]="['products']" [routerLinkActive]="'active'"
-        [queryParams]="{name:'leaf'}">Productos</a>
+      <a class="flex-sm-fill text-sm-center nav-link " [routerLink]="['products']" [routerLinkActive]="'active'" [queryParams]="{name:'leaf'}">Productos</a>
+      <a class="flex-sm-fill text-sm-center nav-link " [routerLink]="['users/new']" [routerLinkActive]="'active'" >Registro</a>
     </nav>
   </header>
 
