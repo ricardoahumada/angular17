@@ -1,40 +1,45 @@
 <section>
     <h2>Signup form</h2>
-    <form novalidate >
+    <form novalidate [formGroup]="myForm">
         <fieldset formGroupName="name">
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" class="form-control" required>
+                <input type="text" class="form-control" [formControl]="firstName" required>
             </div>
+            <pre>{{firstName.value}}</pre>
 
             <div class="form-group">
                 <label>Last Name</label>
-                <input type="text" class="form-control" required>
+                <input type="text" class="form-control" required formControlName="lastName">
             </div>
         </fieldset>
-        
+        <pre>{{myForm.controls['name'].value | json}}</pre>
+
         <div class="form-group">
             <label>Email</label>
-            <input type="email" class="form-control" required required>
+            <input type="email" class="form-control" required formControlName="email">
         </div>
 
         <div class="form-group">
             <label>Password</label>
-            <input type="password" class="form-control" required>
+            <input type="password" class="form-control" required formControlName="password">
         </div>
 
         <div class="form-group">
             <label>Language</label>
-            <select class="form-control" >
+            <select class="form-control" formControlName="language">
                 <option value="" disabled selected>Please select a language</option>
                 <option value="es">es</option>
                 <option value="en">en</option>
             </select>
         </div>
-        
+
         <div class="form-group">
-            <button type="submit" class="btn btn-primary" >Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-        
+
     </form>
+
+    <pre>{{myForm.value | json}}</pre>
+
 </section>

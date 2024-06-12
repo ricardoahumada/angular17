@@ -17,7 +17,7 @@ const routes: Routes = [
     {
         path: 'products/:code', component: ProductDetailComponent,
         children: [
-            { path: '', redirectTo: 'features', pathMatch: 'full' },
+            { path: '', redirectTo: 'images', pathMatch: 'full' },
             { path: 'comments', component: CommentsComponent },
             { path: 'images', component: ImagesComponent },
         ]
