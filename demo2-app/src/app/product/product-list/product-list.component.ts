@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { IProduct } from 'src/app/models/iproduct';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -9,7 +10,7 @@ import { ProductsService } from 'src/app/services/products.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
   title: string = 'Products list';
   message: string = 'This is a message';
   show_text: string = 'show';
@@ -24,16 +25,34 @@ export class ProductListComponent implements OnInit {
   ) { }
 
 
+  $projectsSubs: Subscription | null = null;
+  _timer: any;
+
   ngOnInit(): void {
     /*  this._route.queryParams.subscribe((data: any) => {
        console.log('Query params:', data);
        this.products = this._productsService.filterProducts(data.name);
      }) */
 
-    this._productsService.getProductsFromAPi().subscribe((productos:Array<IProduct>) => {
-      this.products = productos;
-    });
+    this._timer = setTimeout(() => {
+      this.$projectsSubs = this._productsService.getProductsFromAPi().subscribe({
+        next: (productos: Array<IProduct>) => {
+          this.products = productos;
+        },
+        error: (error) => {
+          console.log("Error en la petición de producots");
+        },
+        complete: () => {
+          console.log("Petición de producots completada");
+        },
+      });
+    }, 3000);
 
+  }
+
+  ngOnDestroy(): void {
+    if (this.$projectsSubs) this.$projectsSubs.unsubscribe();
+    delete (this._timer);
   }
 
 
@@ -59,8 +78,4 @@ export class ProductListComponent implements OnInit {
     if (theProduct) theProduct.stars = stars;
   }
 
-
-
-  ngOnDestroy() {
-  }
 }
