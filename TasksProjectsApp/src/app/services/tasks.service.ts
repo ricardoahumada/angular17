@@ -12,7 +12,7 @@ import { SessionService } from './session.service';
 export class TasksService {
 
 
-  constructor(private _http: HttpClient, private session: SessionService) {}
+  constructor(private _http: HttpClient, private session: SessionService) { }
 
   private _tasks: Task[] = [
     {
@@ -47,7 +47,7 @@ export class TasksService {
   public deleteATask(tid: number): boolean {
     this._tasks = this._tasks.filter((aT) => aT.tid != tid);
     console.log('deleteATask:', this._tasks);
-    
+
     return true;
   }
 
@@ -98,18 +98,18 @@ export class TasksService {
     } else if (this.$tasksObsr) {
       return this.$tasksObsr;
     } else { */
-      console.log('getTasksFromApiStore...');
-      const httpOptions = this.getRequestOptions();
-      this.$tasksObsr = this._http
-        .get<Task[]>('http://localhost:3000/tasks', httpOptions)
-        .pipe(
-          tap((data) => {
-            console.log('getTasksFromApiStore:', data);
-            this._tasks = data;
-          }),
-          catchError(HttpErrorHandler.errorHandl)
-        );
-      return this.$tasksObsr;
+    console.log('getTasksFromApiStore...');
+    const httpOptions = this.getRequestOptions();
+    this.$tasksObsr = this._http
+      .get<Task[]>('http://localhost:3000/tasks', httpOptions)
+      .pipe(
+        tap((data) => {
+          console.log('getTasksFromApiStore:', data);
+          this._tasks = data;
+        }),
+        catchError(HttpErrorHandler.errorHandl)
+      );
+    return this.$tasksObsr;
     // }
   }
 
