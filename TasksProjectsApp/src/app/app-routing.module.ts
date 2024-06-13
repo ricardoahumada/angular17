@@ -8,6 +8,7 @@ import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { NotFoundComponent } from './utils/not-found/not-found.component';
 import { NewProjectComponent } from './projects/new-project/new-project.component';
+import { ProjectMembersComponent } from './projects/project-detail/project-members/project-members.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'projects', pathMatch: 'full' },
@@ -29,6 +30,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'tasks', pathMatch: 'full' },
       { path: 'tasks', component: ProjectTasksComponent },
+      { path: 'members', component: ProjectMembersComponent },
     ],
   },
   { path: '**', component: NotFoundComponent },

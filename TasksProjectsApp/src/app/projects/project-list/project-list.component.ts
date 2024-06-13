@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Project } from 'src/app/models/project';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { TasksService } from 'src/app/services/tasks.service';
@@ -15,6 +16,12 @@ export class ProjectListComponent implements OnInit {
 
   texto_filtro: string = '';
 
+  apiError: boolean = false;
+  loading: boolean = true;
+
+  $projectSubs: Subscription = {} as Subscription;
+
+
   constructor(private _projectServ: ProjectsService,
     private _taskSrv: TasksService
   ) { }
@@ -23,8 +30,20 @@ export class ProjectListComponent implements OnInit {
   ngOnInit(): void {
     this.proyectos = this._projectServ.getProjects();
     if (this.proyectos) {
+      this.loading = false;
       this.project_tasks = this._taskSrv.getAllProjectsTaskNumber();
     }
+
+    /* this.$projectSubs = this._projectServ.getProjectsFromApi().subscribe({
+      next: data => {
+        this.proyectos = data;
+        this.loading=false;
+        if (this.proyectos) {
+          this.project_tasks = this._taskSrv.getAllProjectsTaskNumber();
+        }
+      },
+      error: (err) => { this.apiError = true; }
+    }) */
   }
 
   updateRating = (stars: number, uid: number): void => {
@@ -34,6 +53,10 @@ export class ProjectListComponent implements OnInit {
       if (aP.pid == uid) aP.rating = stars;
     })
 
+  }
+
+  ngOnDestroy(): void {
+    // this.$projectSubs.unsubscribe();
   }
 
 }

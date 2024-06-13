@@ -2,6 +2,18 @@
 <div>
     <input class="form-control" type="text" [(ngModel)]="texto_filtro" *appDelay="3" />
 </div>
+
+<article *ngIf="loading || apiError">
+    <div class="spinner-border" role="status" *ngIf="loading && !apiError">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="alert alert-dark" role="alert" *ngIf="apiError">
+        Ooops...there was a problem :-/
+        <br>
+        Please try again later.
+    </div>
+</article>
+
 <br>
 <div>
     <a [routerLink]="['new']" routerLinkActive="router-link-active"><i class="bi bi-calendar2-plus"></i></a>

@@ -5,5 +5,5 @@ export interface Project {
   name: string;
   date: Date;
   rating: number;
-  members?: Array<User>;
+  team_members?: Array<number>;
 }

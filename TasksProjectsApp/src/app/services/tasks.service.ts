@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Observable, catchError, of, tap } from 'rxjs';
 import { Task } from 'src/app/models/task';
+import { HttpErrorHandler } from '../handlers/http-error-handler';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { SessionService } from './session.service';
 
 
 @Injectable({
@@ -7,7 +11,8 @@ import { Task } from 'src/app/models/task';
 })
 export class TasksService {
 
-  constructor() { }
+
+  constructor(private _http: HttpClient, private session: SessionService) {}
 
   private _tasks: Task[] = [
     {
@@ -83,6 +88,52 @@ export class TasksService {
       if (index == 0) return this._tasks[this._tasks.length - 1].tid;
       else return this._tasks[index - 1].tid;
     } else return -1;
+  }
+
+  private $tasksObsr: Observable<Task[]> | null = null;
+
+  getTasksFromApiStore() {
+    /* if (this._tasks.length > 0) {
+      return of(this._tasks);
+    } else if (this.$tasksObsr) {
+      return this.$tasksObsr;
+    } else { */
+      console.log('getTasksFromApiStore...');
+      const httpOptions = this.getRequestOptions();
+      this.$tasksObsr = this._http
+        .get<Task[]>('http://localhost:3000/tasks', httpOptions)
+        .pipe(
+          tap((data) => {
+            console.log('getTasksFromApiStore:', data);
+            this._tasks = data;
+          }),
+          catchError(HttpErrorHandler.errorHandl)
+        );
+      return this.$tasksObsr;
+    // }
+  }
+
+  getTasksFromApi() {
+    const httpOptions = {};
+    // const httpOptions = this.getRequestOptions();
+
+    this.$tasksObsr = this._http
+      .get<Task[]>('http://localhost:3000/tasks', httpOptions)
+      .pipe(
+        tap((data) => {
+          this._tasks = data;
+        }),
+        catchError(HttpErrorHandler.errorHandl)
+      );
+    return this.$tasksObsr;
+  }
+
+  private getRequestOptions() {
+    return {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.session.accessToken,
+      }),
+    };
   }
 
 }
