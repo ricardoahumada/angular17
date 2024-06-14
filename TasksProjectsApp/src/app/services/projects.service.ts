@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Project } from '../models/project';
-import { catchError, Observable, retry, tap } from 'rxjs';
+import { catchError, map, Observable, retry, tap } from 'rxjs';
 import { HttpErrorHandler } from '../handlers/http-error-handler';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ProjectsService {
   private _projects: Project[] = [
-    {
+    /* {
       pid: 1,
       name: 'Web Client a',
       date: new Date('2021-12-01'),
@@ -30,7 +30,7 @@ export class ProjectsService {
       date: new Date('2012-11-29'),
       rating: 0,
       team_members: [2, 3],
-    },
+    }, */
   ];
 
   private _currentPid: number = 0;
@@ -77,7 +77,11 @@ export class ProjectsService {
     this.$projObsr = this._http
       .get<Project[]>('http://localhost:3000/projects', httpOptions)
       .pipe(
-        retry(2),
+        map(proyectos => {
+          console.log('datos recibidos: ', proyectos);
+          this._projects = proyectos;
+          return proyectos;
+        }),
         catchError(HttpErrorHandler.errorHandl)
       );
     return this.$projObsr;

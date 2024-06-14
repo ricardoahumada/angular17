@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, catchError, of, tap } from 'rxjs';
+import { Observable, catchError, map, of, retry, tap } from 'rxjs';
 import { Task } from 'src/app/models/task';
 import { HttpErrorHandler } from '../handlers/http-error-handler';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -120,9 +120,14 @@ export class TasksService {
     this.$tasksObsr = this._http
       .get<Task[]>('http://localhost:3000/tasks', httpOptions)
       .pipe(
-        tap((data) => {
+        /* tap((data) => {
           this._tasks = data;
-        }),
+        }), */
+        /* map((data) => {
+          this._tasks = data;
+          return data;
+        }), */
+        retry(2),
         catchError(HttpErrorHandler.errorHandl)
       );
     return this.$tasksObsr;

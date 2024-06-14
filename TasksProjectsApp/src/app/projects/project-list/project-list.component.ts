@@ -28,13 +28,13 @@ export class ProjectListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.proyectos = this._projectServ.getProjects();
+    /* this.proyectos = this._projectServ.getProjects();
     if (this.proyectos) {
       this.loading = false;
       this.project_tasks = this._taskSrv.getAllProjectsTaskNumber();
-    }
+    } */
 
-    /* this.$projectSubs = this._projectServ.getProjectsFromApi().subscribe({
+    this.$projectSubs = this._projectServ.getProjectsFromApi().subscribe({
       next: data => {
         this.proyectos = data;
         this.loading=false;
@@ -43,7 +43,7 @@ export class ProjectListComponent implements OnInit {
         }
       },
       error: (err) => { this.apiError = true; }
-    }) */
+    })
   }
 
   updateRating = (stars: number, uid: number): void => {
@@ -56,7 +56,7 @@ export class ProjectListComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    // this.$projectSubs.unsubscribe();
+    this.$projectSubs.unsubscribe();
   }
 
 }
