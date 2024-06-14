@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dynamic',
-  standalone: true,
-  imports: [CommonModule],
+  // imports: [CommonModule],
   templateUrl: './dynamic.component.html',
   styleUrls: ['./dynamic.component.scss'],
 })
