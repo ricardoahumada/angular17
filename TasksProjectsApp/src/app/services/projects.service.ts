@@ -77,10 +77,14 @@ export class ProjectsService {
     this.$projObsr = this._http
       .get<Project[]>('http://localhost:3000/projects', httpOptions)
       .pipe(
-        map(proyectos => {
+        /* map(proyectos => {
           console.log('datos recibidos: ', proyectos);
           this._projects = proyectos;
           return proyectos;
+        }), */
+        tap(proyectos => {
+          console.log('datos recibidos: ', proyectos);
+          this._projects = proyectos;
         }),
         catchError(HttpErrorHandler.errorHandl)
       );
