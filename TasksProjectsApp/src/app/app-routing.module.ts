@@ -18,6 +18,7 @@ const routes: Routes = [
   {
     path: 'tasks',
     component: TaskListComponent,
+    canActivate: [CanActivateGuardGuard]
   },
   { path: 'tasks/new', component: NewTaskComponent },
   { path: 'tasks/:tid', component: TaskDetailComponent },
@@ -26,11 +27,15 @@ const routes: Routes = [
     component: ProjectListComponent,
     canActivate: [CanActivateGuardGuard]
   },
-  { path: 'projects/new', component: NewProjectComponent },
+  {
+    path: 'projects/new', component: NewProjectComponent,
+    canActivate: [CanActivateGuardGuard]
+  },
 
   {
     path: 'projects/:pid',
     component: ProjectDetailComponent,
+    canActivate: [CanActivateGuardGuard],
     children: [
       { path: '', redirectTo: 'tasks', pathMatch: 'full' },
       { path: 'tasks', component: ProjectTasksComponent },

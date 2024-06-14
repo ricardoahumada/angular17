@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Task } from 'src/app/models/task';
 import { TasksService } from 'src/app/services/tasks.service';
 
@@ -15,10 +16,19 @@ export class TaskListComponent implements OnInit {
 
   texto_filtro: string = '';
 
+  $taskSubs: Subscription = {} as Subscription;
+
+
   constructor(private _taskSrv: TasksService) { }
 
   ngOnInit(): void {
     this.tareas = this._taskSrv.getTasks();
+    
+    //Api
+    /* this.$taskSubs = this._taskSrv.getTasksFromApi().subscribe((data) => {
+      this.tareas = data;
+    }); */
+    
   }
 
   borrarT = (tid: number): void => {
