@@ -8,7 +8,8 @@ export class AuthService {
   constructor(private session: SessionService) {}
 
   public isSignedIn() {
-    return !!this.session.accessToken;
+    // return !!this.session.accessToken;
+    return !!this.session.getToken();
   }
 
   public doSignOut() {
@@ -16,6 +17,7 @@ export class AuthService {
   }
 
   public doSignIn(accessToken: string) {    
-    this.session.accessToken = accessToken;
+    // this.session.accessToken = accessToken;
+    this.session.storeToken(accessToken);
   }
 }

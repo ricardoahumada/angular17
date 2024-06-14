@@ -50,7 +50,7 @@ export class SignInComponent implements OnInit {
       next: (response) => {
         console.log('response:',response);
         
-        this.auth.doSignIn(response.access_token);
+        // this.auth.doSignIn(response.access_token);
         this.router.navigate(['/tasks']);
       },
       error: (error) => {

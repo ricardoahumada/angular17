@@ -136,7 +136,7 @@ export class TasksService {
   private getRequestOptions() {
     return {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.session.accessToken,
+        Authorization: 'Bearer ' + this.session.getToken(),
       }),
     };
   }

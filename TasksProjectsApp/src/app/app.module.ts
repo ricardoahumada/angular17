@@ -20,6 +20,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ProjectMembersComponent } from './projects/project-detail/project-members/project-members.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LogginInterceptor } from './interceptors/loggin.interceptor';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { LogginInterceptor } from './interceptors/loggin.interceptor';
     ProjectMembersComponent,
     NewProjectComponent,
     NewTaskComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,

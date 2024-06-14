@@ -1,9 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
 import { Observable, throwError } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
+import { catchError, tap } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 import { SessionService } from './session.service';
+import { AuthService } from './auth.service';
 
 const API_URL = environment.apiUrl;
 
@@ -14,7 +15,9 @@ export class ApiService {
 
   constructor(
     private http: HttpClient,
-    private session: SessionService
+    private session: SessionService,
+    private auth: AuthService,
+
   ) {
   }
 
@@ -22,7 +25,9 @@ export class ApiService {
     return this.http.post(API_URL + '/auth/login', {
       email,
       password
-    }).pipe(catchError(this.handleError));
+    }).pipe(tap((data:any) => {
+      this.auth.doSignIn(data.access_token);
+    }), catchError(this.handleError));
   }
 
 
@@ -31,5 +36,5 @@ export class ApiService {
     return throwError(error);
   }
 
-  
+
 }
