@@ -105,6 +105,31 @@
       ],
       "date": "2024-06-22",
       "id": 6
+    },
+    {
+      "name": "Proyecto nuevo",
+      "team_members": [
+        1,
+        2
+      ],
+      "date": "2024-06-12",
+      "id": 7
+    },
+    {
+      "name": "Proyecto nuevo 2",
+      "team_members": [
+        3
+      ],
+      "date": "2024-06-30",
+      "id": 8
+    },
+    {
+      "name": "Nuevo Proyecto 3",
+      "team_members": [
+        1
+      ],
+      "date": "2024-06-30",
+      "id": 9
     }
   ],
   "tasks": [
