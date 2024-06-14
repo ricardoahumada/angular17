@@ -64,8 +64,16 @@ export class NewProjectComponent implements OnInit {
     }, []);
     temProj.date = temProj.deadline;
     delete (temProj.deadline);
-    this._projSrv.addProject(temProj);
-    this._router.navigate(['/projects']);
+    /* this._projSrv.addProject(temProj);
+    this._router.navigate(['/projects']); */
+    this._projSrv.addProjectToApi(temProj).subscribe({
+      next: (data) => {
+        this._router.navigate(['/projects']);
+      },
+      error: (e) => {
+        console.log('Ha habido un problema guardando el proyecto');
+      }
+    })
   }
 
 

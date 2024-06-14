@@ -3,7 +3,10 @@ import { Project } from '../models/project';
 import { catchError, map, Observable, retry, tap } from 'rxjs';
 import { HttpErrorHandler } from '../handlers/http-error-handler';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
+
+const API_URL = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root',
@@ -75,17 +78,17 @@ export class ProjectsService {
     const httpOptions = {};
 
     this.$projObsr = this._http
-      .get<Project[]>('http://localhost:3000/projects', httpOptions)
+      .get<Project[]>(API_URL + '/projects', httpOptions)
       .pipe(
-        /* map(proyectos => {
-          console.log('datos recibidos: ', proyectos);
-          this._projects = proyectos;
-          return proyectos;
-        }), */
-        tap(proyectos => {
-          console.log('datos recibidos: ', proyectos);
-          this._projects = proyectos;
+        map(proyectos => {
+          console.log('datos recibidos proyectos: ', proyectos);
+          this._projects = proyectos.map((aP: any) => ({ ...aP, pid: aP.id }));
+          return this._projects;
         }),
+        /* tap(proyectos => {
+          console.log('datos recibidos: ', proyectos);
+          this._projects = proyectos;
+        }), */
         catchError(HttpErrorHandler.errorHandl)
       );
     return this.$projObsr;
@@ -99,8 +102,13 @@ export class ProjectsService {
     };
 
     return this._http
-      .post<Project>(`http://localhost:3000/projects`, JSON.stringify(aP), httpOptions)
-      .pipe(retry(1), catchError(HttpErrorHandler.errorHandl));
+      .post<Project>(API_URL + `/projects`, JSON.stringify(aP), httpOptions)
+      .pipe(retry(1),
+        tap((newProject:any) => {
+          console.log('datos recibidos nuevo proyecti: ', newProject);
+          this._projects.push({ ...newProject, pid: newProject.id });
+        })
+        , catchError(HttpErrorHandler.errorHandl));
   }
 
 
