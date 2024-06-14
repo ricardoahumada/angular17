@@ -4,7 +4,7 @@
       "id": "flags",
       "tasks": true,
       "projects": true,
-      "new-feature":true
+      "new-feature": true
     }
   ],
   "products": [
@@ -56,29 +56,55 @@
   ],
   "projects": [
     {
-      "pid": 1,
+      "id": 1,
       "name": "Web Client a",
       "date": "2022-12-09T23:00:00.000Z",
-      "team_members": [1, 3],
-      "stars":0
+      "team_members": [
+        1,
+        3
+      ],
+      "stars": 0
     },
     {
-      "pid": 2,
+      "id": 2,
       "name": "App Client b",
       "date": "2022-11-29T23:00:00.000Z",
-      "team_members": [1, 2],
-      "stars":0
+      "team_members": [
+        1,
+        2
+      ],
+      "stars": 0
     },
     {
-      "pid": 3,
+      "id": 3,
       "name": "App Client c",
       "date": "2023-01-29T23:00:00.000Z",
-      "team_members": [2, 3]
+      "team_members": [
+        2,
+        3
+      ]
     },
     {
-      "pid": 4,
+      "id": 4,
       "name": "Hybric Client d",
       "date": "2022-10-29T23:00:00.000Z"
+    },
+    {
+      "name": "New proj",
+      "team_members": [
+        2
+      ],
+      "date": "2024-06-15",
+      "id": 5
+    },
+    {
+      "name": "New Proj2",
+      "team_members": [
+        1,
+        3
+      ],
+      "date": "2024-06-22",
+      "id": 6
     }
   ],
   "tasks": [
