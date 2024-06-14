@@ -16,8 +16,10 @@ import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { DeleteComponent } from './utils/delete/delete.component';
 import { RateComponent } from './utils/rate/rate.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ProjectMembersComponent } from './projects/project-detail/project-members/project-members.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { LogginInterceptor } from './interceptors/loggin.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,12 +40,15 @@ import { ProjectMembersComponent } from './projects/project-detail/project-membe
   ],
   imports: [
     BrowserModule,
-    FormsModule, 
+    FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LogginInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
