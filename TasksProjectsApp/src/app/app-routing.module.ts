@@ -11,6 +11,7 @@ import { NewProjectComponent } from './projects/new-project/new-project.componen
 import { ProjectMembersComponent } from './projects/project-detail/project-members/project-members.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { CanActivateGuardGuard } from './guards/can-activate-guard.guard';
+import { TasksResolver } from './resolvers/tasks.resolver';
 
 const routes: Routes = [
   { path: '', redirectTo: 'projects', pathMatch: 'full' },
@@ -18,7 +19,8 @@ const routes: Routes = [
   {
     path: 'tasks',
     component: TaskListComponent,
-    canActivate: [CanActivateGuardGuard]
+    // canActivate: [CanActivateGuardGuard],
+    resolve: { tasks: TasksResolver }
   },
   { path: 'tasks/new', component: NewTaskComponent },
   { path: 'tasks/:tid', component: TaskDetailComponent },

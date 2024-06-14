@@ -18,6 +18,8 @@ export class TasksResolver implements Resolve<Observable<Task[]>> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<Task[]> {
+    console.log('TasksResolver:', route, state);
+    
     return this._tasksService.getTasksFromApi();
   }
 }

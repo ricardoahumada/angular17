@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Task } from 'src/app/models/task';
 import { TasksService } from 'src/app/services/tasks.service';
@@ -19,16 +20,22 @@ export class TaskListComponent implements OnInit {
   $taskSubs: Subscription = {} as Subscription;
 
 
-  constructor(private _taskSrv: TasksService) { }
+  constructor(private _taskSrv: TasksService, private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.tareas = this._taskSrv.getTasks();
-    
+    // this.tareas = this._taskSrv.getTasks();
+
     //Api
     /* this.$taskSubs = this._taskSrv.getTasksFromApi().subscribe((data) => {
       this.tareas = data;
     }); */
-    
+
+    // resolver
+    this._route.data.subscribe((datos:any) => {
+      console.log('datos en ruta:', datos);
+      
+      this.tareas = datos.tasks;
+    })
   }
 
   borrarT = (tid: number): void => {
