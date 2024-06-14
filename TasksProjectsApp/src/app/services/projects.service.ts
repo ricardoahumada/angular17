@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Project } from '../models/project';
-import { catchError, map, Observable, retry, tap } from 'rxjs';
+import { catchError, map, Observable, of, retry, tap } from 'rxjs';
 import { HttpErrorHandler } from '../handlers/http-error-handler';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -75,23 +75,31 @@ export class ProjectsService {
   private $projObsr: Observable<Project[]> | null = null;
 
   getProjectsFromApi(): Observable<Project[]> {
-    const httpOptions = {};
+    console.log('getProjectsFromApi proyectos actuales: ', this._projects);
 
-    this.$projObsr = this._http
-      .get<Project[]>(API_URL + '/projects', httpOptions)
-      .pipe(
-        map(proyectos => {
-          console.log('datos recibidos proyectos: ', proyectos);
-          this._projects = proyectos.map((aP: any) => ({ ...aP, pid: aP.id }));
-          return this._projects;
-        }),
-        /* tap(proyectos => {
-          console.log('datos recibidos: ', proyectos);
-          this._projects = proyectos;
-        }), */
-        catchError(HttpErrorHandler.errorHandl)
-      );
-    return this.$projObsr;
+    if (this._projects.length > 0) {
+      return of(this._projects);
+    } else if (this.$projObsr) {
+      return this.$projObsr;
+    } else {
+      const httpOptions = {};
+
+      this.$projObsr = this._http
+        .get<Project[]>(API_URL + '/projects', httpOptions)
+        .pipe(
+          map(proyectos => {
+            console.log('datos recibidos proyectos: ', proyectos);
+            this._projects = proyectos.map((aP: any) => ({ ...aP, pid: aP.id }));
+            return this._projects;
+          }),
+          /* tap(proyectos => {
+            console.log('datos recibidos: ', proyectos);
+            this._projects = proyectos;
+          }), */
+          catchError(HttpErrorHandler.errorHandl)
+        );
+      return this.$projObsr;
+    }
   }
 
   addProjectToApi(aP: Project): Observable<Project> {
@@ -104,8 +112,8 @@ export class ProjectsService {
     return this._http
       .post<Project>(API_URL + `/projects`, JSON.stringify(aP), httpOptions)
       .pipe(retry(1),
-        tap((newProject:any) => {
-          console.log('datos recibidos nuevo proyecti: ', newProject);
+        tap((newProject: any) => {
+          console.log('datos recibidos nuevo proyecto: ', newProject);
           this._projects.push({ ...newProject, pid: newProject.id });
         })
         , catchError(HttpErrorHandler.errorHandl));
