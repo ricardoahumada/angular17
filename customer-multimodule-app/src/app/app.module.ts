@@ -12,7 +12,8 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule.forRoot()
+    // SharedModule // with providedIn: 'root'
+    SharedModule.forRoot() // with forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

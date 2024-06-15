@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
-@Injectable(/* {
-  providedIn: 'root',
-} */)
+@Injectable(
+  // {providedIn: 'root',} // comment when using forRoot()
+)
 export class SharedService {
   constructor() {}
 
@@ -13,6 +13,7 @@ export class SharedService {
   }
 
   sayHello() {
+    console.log('Using sayHello from Shared Module...');
     return this.value;
   }
 }

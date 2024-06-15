@@ -10,6 +10,7 @@ import { SharedService } from './shared.service';
   exports: [SharedComponent],
 })
 export class SharedModule {
+  // Comment when using providedIn: 'root'
   static forRoot(): ModuleWithProviders<SharedModule> {
     return {
       ngModule: SharedModule,
