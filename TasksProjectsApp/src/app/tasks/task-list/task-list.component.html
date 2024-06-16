@@ -11,6 +11,7 @@
             <th>Project</th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -25,8 +26,10 @@
                 <app-delete [tid]="aT.tid" (delete_clicked)="borrarT($event)"></app-delete>
             </td>
             <td>
-                <a [routerLink]="['/tasks/',aT.tid]" routerLinkActive="router-link-active"><i
-                        class="bi bi-eye"></i></a>
+                <a [routerLink]="['/tasks/',aT.tid]" routerLinkActive="router-link-active"><i class="bi bi-eye"></i></a>
+            </td>
+            <td>
+                <preview-task [tarea]="aT"></preview-task>
             </td>
         </tr>
     </tbody>

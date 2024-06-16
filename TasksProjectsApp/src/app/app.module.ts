@@ -21,6 +21,7 @@ import { ProjectMembersComponent } from './projects/project-detail/project-membe
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LogginInterceptor } from './interceptors/loggin.interceptor';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { PreviewTaskComponent } from './tasks/preview-task/preview-task.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
     ProjectMembersComponent,
     NewProjectComponent,
     NewTaskComponent,
-    SignInComponent
+    SignInComponent,
+    PreviewTaskComponent
   ],
   imports: [
     BrowserModule,

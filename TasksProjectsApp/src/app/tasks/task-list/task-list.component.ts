@@ -31,9 +31,9 @@ export class TaskListComponent implements OnInit {
     }); */
 
     // resolver
-    this._route.data.subscribe((datos:any) => {
+    this._route.data.subscribe((datos: any) => {
       console.log('datos en ruta:', datos);
-      
+
       this.tareas = datos.tasks;
     })
   }
@@ -48,5 +48,7 @@ export class TaskListComponent implements OnInit {
   filtraT = (texto: string): Array<any> => {
     return this.tareas.filter(aT => aT.description.toLocaleLowerCase().includes(texto.toLocaleLowerCase()));
   }
+
+  
 
 }
