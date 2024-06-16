@@ -26,6 +26,8 @@ import { LangMenuComponent } from './i18n/lang-menu/lang-menu.component';
 import { TranslateService } from './i18n/translate.service';
 import { FeatureFlagsService } from './feature-flags/feature-flags.service';
 import { FeatureFlagsDirective } from './feature-flags/feature-flags.directive';
+import { PreviewTaskComponent } from './tasks/preview-task/preview-task.component';
+import { CustomCardComponent } from './utils/custom-card/custom-card.component';
 
 export function setupTranslateFactory(service: TranslateService): Function {
   return () => service.use('en');
@@ -50,6 +52,8 @@ const featureFactory = (featureFlagsService: FeatureFlagsService) => () =>
     NewTaskComponent,
     SignInComponent,
     LangMenuComponent,
+    PreviewTaskComponent,
+    CustomCardComponent
   ],
   imports: [
     BrowserModule,

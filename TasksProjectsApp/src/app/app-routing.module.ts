@@ -15,6 +15,12 @@ import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
 import { NotFoundComponent } from './utils/not-found/not-found.component';
 
 const routes: Routes = [
+  /* If you want to apply a guard to all routes, use children schema
+  {
+    path: '', canActivateChild: [AuthenticationGuard], children: [
+      { path: 'projects', component: ProjectsListComponent },
+    ]
+  }, */
   { path: '', redirectTo: 'projects', pathMatch: 'full' },
   { path: 'signin', component: SignInComponent },
   {
@@ -58,4 +64,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

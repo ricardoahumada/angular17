@@ -99,7 +99,7 @@ export class ProjectsService {
   private getRequestOptions() {
     return {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.session.accessToken,
+        Authorization: 'Bearer ' + this.session.getToken(),
       }),
     };
   }

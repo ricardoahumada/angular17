@@ -5,17 +5,19 @@ import { SessionService } from './session.service';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private session: SessionService) {}
+  constructor(private session: SessionService) { }
 
   public isSignedIn() {
-    return !!this.session.accessToken;
+    // return !!this.session.accessToken;
+    return !!this.session.getToken();
   }
 
   public doSignOut() {
     this.session.destroy();
   }
 
-  public doSignIn(accessToken: string) {    
-    this.session.accessToken = accessToken;
+  public doSignIn(accessToken: string) {
+    // this.session.accessToken = accessToken;
+    this.session.storeToken(accessToken);
   }
 }
