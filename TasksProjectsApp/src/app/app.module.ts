@@ -22,6 +22,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LogginInterceptor } from './interceptors/loggin.interceptor';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { PreviewTaskComponent } from './tasks/preview-task/preview-task.component';
+import { CustomCardComponent } from './utils/custom-card/custom-card.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { PreviewTaskComponent } from './tasks/preview-task/preview-task.componen
     NewProjectComponent,
     NewTaskComponent,
     SignInComponent,
-    PreviewTaskComponent
+    PreviewTaskComponent,
+    CustomCardComponent
   ],
   imports: [
     BrowserModule,
