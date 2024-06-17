@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CustomerListComponent } from './customers/customer-list/customer-list.component';
-import { CustomersModule } from './customers/customers.module';
-import { OrdersModule } from './orders/orders.module';
 
 const routes: Routes = [
   {
@@ -11,11 +8,14 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'customers', loadChildren: () => CustomersModule
+    // path: 'customers', loadChildren: () => CustomersModule // eager
+    path: 'customers', loadChildren: () => import('./customers/customers.module').then((m) => m.CustomersModule) // lazy
   }
   ,
   {
-    path: 'orders', loadChildren: () => OrdersModule
+    // path: 'orders', loadChildren: () => OrdersModule // eager
+    path: 'orders', loadChildren: () => import('./orders/orders.module').then((m) => m.OrdersModule) // lazy
+
   }
 ];
 

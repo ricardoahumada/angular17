@@ -26,7 +26,7 @@ export class PreviewTaskComponent implements OnInit {
     this.viewRef.clear();
     const detComponent: ComponentRef<TaskDetailComponent> = this.viewRef.createComponent(TaskDetailComponent);
     console.log('detComponent:', detComponent);
-    detComponent.instance.task = this.aT;
+    detComponent.instance.task = this.aT
     
   }
   hidePreview = (tid: number) => {
