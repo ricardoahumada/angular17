@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/shared/services/shared.service';
 
 @Component({
   selector: 'app-customer-list',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _sharedSrv: SharedService) { }
 
   ngOnInit(): void {
+    const val = this._sharedSrv.sayHello('CustomerListComponent');
+    console.log(val);
+    
   }
 
 }

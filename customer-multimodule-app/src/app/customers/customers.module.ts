@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { CustomersRoutingModule } from './customers-routing.module';
-import { CustomerListComponent } from './customer-list/customer-list.component';
-import { OrdersModule } from '../orders/orders.module';
+import { SharedModule } from '../shared/shared.module';
 import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
+import { CustomersRoutingModule } from './customers-routing.module';
 
 
 @NgModule({
@@ -15,7 +15,7 @@ import { CustomerDetailComponent } from './customer-detail/customer-detail.compo
   imports: [
     CommonModule,
     CustomersRoutingModule,
-    OrdersModule
+    SharedModule
   ],
   exports: [CustomerListComponent]
 })
