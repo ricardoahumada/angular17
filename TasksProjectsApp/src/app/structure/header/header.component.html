@@ -7,19 +7,21 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" [routerLink]="['']"
-            routerLinkActive="router-link-active">Home</a>
-        </li>
+        
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['tasks']" routerLinkActive="router-link-active">Tasks</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['projects']" routerLinkActive="router-link-active">Projects</a>
+          <a class="nav-link" [routerLink]="['projects']" [routerLinkActive]="'router-link-active'">Projects</a>
         </li>
         <li class="nav-item" *appFeatureFlags="'new-feature'">
-          <a class="nav-link" [routerLink]="['new-feature']" routerLinkActive="router-link-active">New-feature</a>
+          <a class="nav-link" [routerLink]="['new-feature']" [routerLinkActive]="'router-link-active'">New-feature</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['dynamic']" [routerLinkActive]="'router-link-active'">Show Dynamic</a>
+        </li>
+        
         <li class="nav-item">
           <a class="nav-link disabled">Other</a>
         </li>
@@ -31,17 +33,6 @@
     </div>
   </div>
 </nav>
-
-<hr>
-<div class="buttons-container">
-  <button class="show-btn" (click)="showDynamicComponent()">
-    Show component
-  </button>
-  <button class="remove-btn" (click)="removeDynamicComponent()">
-    Remove component
-  </button>
-</div>
-<ng-template #dynamic></ng-template>
 
 <hr>
 

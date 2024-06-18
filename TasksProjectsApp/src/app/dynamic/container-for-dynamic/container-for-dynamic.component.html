@@ -1,0 +1,20 @@
+<div class="buttons-container">
+    <button class="show-btn" (click)="showDynamicComponent()">
+        Show component
+    </button>
+    <button class="show-btn" (click)="showFlexDynamicComponent('DynamicComponent')">
+        Show component
+    </button>
+    <button class="remove-btn" (click)="removeDynamicComponent()">
+        Remove component
+    </button>
+</div>
+<ng-template #dynamic></ng-template>
+
+<hr>
+
+<custom-card>
+    This is the projected content
+    <h3 ngProjectAs="card-title">My Title</h3>
+    <div ngProjectAs="card-body">My Body</div>
+</custom-card>

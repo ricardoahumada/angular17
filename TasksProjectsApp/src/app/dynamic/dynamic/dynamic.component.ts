@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dynamic',
-  standalone: true,
-  imports: [CommonModule],
+  // standalone: true,
+  // imports: [CommonModule],
   templateUrl: './dynamic.component.html',
   styleUrls: ['./dynamic.component.scss'],
 })
@@ -16,7 +16,9 @@ export class DynamicComponent {
   }
 }
 
-/* @NgModule({
+
+/* Uncomment If not standalone component */
+@NgModule({
   declarations: [DynamicComponent],
   imports: [
       CommonModule
@@ -27,4 +29,4 @@ export class DynamicComponent {
 export class DynamicFormModule {
   constructor() {
   }
-} */
+}
