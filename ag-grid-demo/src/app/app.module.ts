@@ -5,6 +5,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { AppComponent } from './app.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { CellComponent } from './cell/cell.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CellComponent } from './cell/cell.component';
   ],
   imports: [
     BrowserModule,
-    // AgGridModule
+    AgGridModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
