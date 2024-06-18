@@ -19,6 +19,7 @@ import { HeaderComponent } from './structure/header/header.component';
 import { CustomCardComponent } from './utils/custom-card/custom-card.component';
 import { RateComponent } from './utils/rate/rate.component';
 import { ContainerForDynamicComponent } from './dynamic/container-for-dynamic/container-for-dynamic.component';
+import { ConsumerComponent } from './observables/consumer/consumer.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ContainerForDynamicComponent } from './dynamic/container-for-dynamic/co
     NewProjectComponent,
     SignInComponent,
     CustomCardComponent,
-    ContainerForDynamicComponent
+    ContainerForDynamicComponent,
+    ConsumerComponent
   ],
   imports: [
     BrowserModule,

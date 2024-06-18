@@ -10,6 +10,7 @@ import { ProjectListComponent } from './projects/project-list/project-list.compo
 import { SignInComponent } from './sign-in/sign-in.component';
 import { NotFoundComponent } from './utils/not-found/not-found.component';
 import { ContainerForDynamicComponent } from './dynamic/container-for-dynamic/container-for-dynamic.component';
+import { ConsumerComponent } from './observables/consumer/consumer.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'projects', pathMatch: 'full' },
@@ -38,6 +39,7 @@ const routes: Routes = [
       { path: 'members', component: ProjectMembersComponent },
     ],
   },
+  { path: 'observables', component: ConsumerComponent },
   { path: 'dynamic', component: ContainerForDynamicComponent },
   { path: '**', component: NotFoundComponent },
 ];

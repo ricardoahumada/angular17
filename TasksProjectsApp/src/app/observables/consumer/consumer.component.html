@@ -1,0 +1,27 @@
+<section>
+    <h2>Consumer Component</h2>
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>tid</th>
+                <th>description</th>
+                <th>time</th>
+                <th>project</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let aTask of tasks">
+                <td>{{aTask.tid}}</td>
+                <td>
+                    {{aTask.description}}
+                </td>
+                <td>{{aTask.time}}</td>
+                <td>{{aTask.project}}</td>
+                <td>
+                    <app-delete [tid]="aTask.tid" (delete_clicked)="deleteTask($event)"></app-delete>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
