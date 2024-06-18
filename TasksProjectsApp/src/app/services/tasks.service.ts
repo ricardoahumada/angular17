@@ -30,14 +30,14 @@ export class TasksService {
  */
   ];
 
-  private $tasksObs = new BehaviorSubject<Task[]>(this._tasks);
+  private $tasksSub = new BehaviorSubject<Task[]>(this._tasks);
 
   getTasks(): Task[] {
     return this._tasks;
   }
 
   getTasksObs(): Observable<Task[]> {
-    return this.$tasksObs;
+    return this.$tasksSub;
   }
 
   getATask(tid: number): Task | undefined {
@@ -46,7 +46,7 @@ export class TasksService {
 
   deleteATask(tid: number): boolean {
     this._tasks = this._tasks.filter((aT) => aT.id != tid);
-    this.$tasksObs.next(this._tasks);
+    this.$tasksSub.next(this._tasks);
     return true;
   }
 

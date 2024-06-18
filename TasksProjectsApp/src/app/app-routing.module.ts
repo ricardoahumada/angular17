@@ -14,6 +14,7 @@ import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
 import { NotFoundComponent } from './utils/not-found/not-found.component';
 import { ContainerForDynamicComponent } from './dynamic/container-for-dynamic/container-for-dynamic.component';
+import { ConsumerComponent } from './observables/consumer/consumer.component';
 
 const routes: Routes = [
   /* If you want to apply a guard to all routes, use children schema
@@ -58,6 +59,7 @@ const routes: Routes = [
       feature: 'new-feature',
     },
   },
+  { path: 'observables', component: ConsumerComponent },
   { path: 'dynamic', component: ContainerForDynamicComponent },
   { path: '**', component: NotFoundComponent },
 ];

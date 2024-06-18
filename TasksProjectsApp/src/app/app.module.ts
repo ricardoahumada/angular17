@@ -28,6 +28,7 @@ import { CustomCardComponent } from './utils/custom-card/custom-card.component';
 import { DeleteComponent } from './utils/delete/delete.component';
 import { NameEditorComponent } from './utils/name-editor/name-editor.component';
 import { NotFoundComponent } from './utils/not-found/not-found.component';
+import { ConsumerComponent } from './observables/consumer/consumer.component';
 
 export function setupTranslateFactory(service: TranslateService): Function {
   return () => service.use('en');
@@ -54,7 +55,8 @@ const featureFactory = (featureFlagsService: FeatureFlagsService) => () =>
     LangMenuComponent,
     PreviewTaskComponent,
     CustomCardComponent,
-    ContainerForDynamicComponent
+    ContainerForDynamicComponent,
+    ConsumerComponent
   ],
   imports: [
     BrowserModule,
