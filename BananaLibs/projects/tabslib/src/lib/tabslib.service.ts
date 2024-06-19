@@ -32,7 +32,7 @@ export class TabslibService {
 
     loader().then(
       (component: any) => {
-        console.log('loaded:', component);
+        console.log('TabslibService.load component loaded:', component);
         if (component[name]) {
           this._tabs.push(component[name]);
           this.$tabSub.next(this._tabs);

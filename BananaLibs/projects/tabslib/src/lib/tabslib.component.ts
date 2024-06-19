@@ -30,16 +30,8 @@ export class TabslibComponent implements OnInit {
   showFlexDynamicComponent(aTab: any) {
     console.log('TabslibComponent.showFlexDynamicComponent:', aTab);
 
-    /* let dynamicModule: any;
-    if (code == 'OrderComponent') {
-      const path = '../modules/orders/order-list/order-list.component';
-      dynamicModule = import(path);
-    } else dynamicModule = null;
-
-    console.log('dynamicModule:', dynamicModule);
-
     this.viewRef.clear();
-    // if (dynamicModule) this.viewRef.createComponent(dynamicModule[code]); */
+    if (aTab) this.viewRef.createComponent(aTab);
   }
 
 }
