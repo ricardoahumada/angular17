@@ -14,16 +14,16 @@ export class OrderListComponent implements OnInit {
   rowData: any[] = [];
   columnDefs: any[] = [
     { headerName: "Key", field: "key" },
+    { headerName: "Sku", field: "sku", filter: true },
     { headerName: "Line Number", field: "linenumber" },
-    { headerName: "Manufacturer sku", field: "manufacturersku" },
-    { headerName: "Notes", field: "notes" },
+    { headerName: "Manufacturer sku", field: "manufacturersku", filter: true },
     { headerName: "Pack", field: "packkey" },
-    { headerName: "Q. Ordered", field: "qtyordered" },
+    { headerName: "Q. Ordered", field: "qtyordered", },
     { headerName: "Q. Received.", field: "qtyreceived" },
     { headerName: "Storer", field: "storerkey" },
-    { headerName: "Sku", field: "sku" },
+    { headerName: "Notes", field: "notes" },
   ];
-  
+
   defaultColDef: any = {
     sortable: true,
     filter: true,
