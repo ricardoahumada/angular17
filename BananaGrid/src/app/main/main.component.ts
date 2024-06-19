@@ -15,8 +15,7 @@ export class MainComponent implements OnInit {
   }
 
   showOrders() {
-    this._tabsSrv.load('OrderComponent');
-    this._tabsSrv.loadWithCallBack(
+    this._tabsSrv.load('OrderListComponent',
       () => {
         const aModule = import('../modules/orders/order-list/order-list.component');
         console.log('aModule:', aModule);

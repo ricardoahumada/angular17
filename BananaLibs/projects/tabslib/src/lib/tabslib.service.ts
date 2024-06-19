@@ -9,24 +9,36 @@ export class TabslibService {
   constructor() { }
 
   private _names: string[] = [];
+  private _tabs: any[] = [];
 
-  private $codeSub = new BehaviorSubject<string[]>(this._names);
+  private $namesSub = new BehaviorSubject<string[]>(this._names);
+  private $tabSub = new BehaviorSubject<any[]>(this._tabs);
 
   getCodes(): Observable<string[]> {
     console.log('TabslibService.getCodes');
-    
-    return this.$codeSub;
+    return this.$namesSub;
   }
 
-  load(name: string): void {
-    console.log('TabslibService.load:', name);
+  getTabs(): Observable<any[]> {
+    console.log('TabslibService.getTabs');
+    return this.$tabSub;
+  }
+
+
+  load(name: string, loader: any): void {
+    console.log('TabslibService.load');
     this._names.push(name);
-    this.$codeSub.next(this._names);
-  }
+    this.$namesSub.next(this._names);
 
-  loadWithCallBack(loader: any): void {
-    console.log('TabslibService.load:', loader);
-    loader();
+    loader().then(
+      (component: any) => {
+        console.log('loaded:', component);
+        if (component[name]) {
+          this._tabs.push(component[name]);
+          this.$tabSub.next(this._tabs);
+        }
+      }
+    );
   }
 
 }
