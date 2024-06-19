@@ -4,8 +4,7 @@ import { TabslibService } from './tabslib.service';
 @Component({
   selector: 'banana-tabs',
   templateUrl: './tabslib.component.html',
-  styles: [
-  ]
+  styleUrls: ['./tabslib.component.less']
 })
 export class TabslibComponent implements OnInit {
 
@@ -13,7 +12,7 @@ export class TabslibComponent implements OnInit {
 
   codes: string[] = [];
 
-  @ViewChild('dynamic', { read: ViewContainerRef })
+  @ViewChild('dynamicTab', { read: ViewContainerRef })
   private viewRef: ViewContainerRef = {} as ViewContainerRef;
 
   ngOnInit(): void {

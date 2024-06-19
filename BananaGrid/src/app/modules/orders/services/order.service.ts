@@ -6,4 +6,9 @@ import { Injectable } from '@angular/core';
 export class OrderService {
 
   constructor() { }
+
+  getOrdersFromApi() {
+    return 'orders';
+  }
+
 }
