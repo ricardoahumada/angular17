@@ -8,6 +8,6 @@ export class MyLibService {
   constructor() { }
 
   public sayHello(){
-    console.log("Helllo from MyLibService!!!");
+    console.log("Helllo from MyLibService...has updated!!!");
   }
 }
