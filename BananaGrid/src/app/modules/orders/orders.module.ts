@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrderListComponent } from './order-list/order-list.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 
 
@@ -9,7 +10,8 @@ import { OrderListComponent } from './order-list/order-list.component';
     OrderListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AgGridModule
   ],
   exports:[
     OrderListComponent
