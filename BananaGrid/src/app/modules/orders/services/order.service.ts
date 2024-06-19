@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Order } from '../models/order';
+import { ApiService } from 'src/app/api/api.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-  constructor() { }
+  constructor(private _apiSrv: ApiService) { }
 
-  getOrdersFromApi():Array<Order> {
-    return [];
+  getOrdersFromApi(): Observable<Order[]> {
+    return this._apiSrv.getOrders();
   }
 
 }

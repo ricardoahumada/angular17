@@ -14,7 +14,9 @@ export class OrderListComponent implements OnInit {
   orders: Order[] = [];
 
   ngOnInit(): void {
-    this.orders = this._orderSrv.getOrdersFromApi();
+    this._orderSrv.getOrdersFromApi().subscribe(data => {
+      this.orders = data;
+    });
   }
 
 }
