@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrdersModule } from './modules/orders/orders.module';
 import { ApiModule } from './api/api.module';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ApiModule } from './api/api.module';
     AppRoutingModule,
     OrdersModule,
     HttpClientModule,
-    ApiModule
+    ApiModule,
+    AgGridModule
   ],
   providers: [],
   bootstrap: [AppComponent]

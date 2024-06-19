@@ -2,3 +2,13 @@
 <ul>
     <li *ngFor="let anOrder of orders">{{anOrder|json}}</li>
 </ul>
+
+<ag-grid-angular
+        style="width: 100%; height: 100%;"
+        class="ag-theme-balham"
+        [rowData]="rowData"
+        [columnDefs]="columnDefs"
+        [defaultColDef]="defaultColDef"
+        [pagination]="true"
+        [paginationPageSize]="3"
+    ></ag-grid-angular>
