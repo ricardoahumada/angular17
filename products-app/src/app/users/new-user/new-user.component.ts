@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   AbstractControl,
+  Form,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -16,13 +17,15 @@ import { LanguageValidator } from 'src/app/validators/language-validatior';
   styleUrls: ['./new-user.component.scss'],
 })
 export class NewUserComponent implements OnInit {
-  constructor(private _fb: FormBuilder) {}
+  constructor(private _fb: FormBuilder) { }
 
   myform: FormGroup = {} as FormGroup;
 
   firstName = new FormControl('', [Validators.minLength(3)]);
   lastName = new FormControl('', Validators.required);
   email = new FormControl('', [Validators.email, Validators.required]);
+
+  signUpForm: FormGroup = {} as FormGroup;
 
   ngOnInit(): void {
     this.myform = new FormGroup({
@@ -36,6 +39,23 @@ export class NewUserComponent implements OnInit {
       email: this.email,
       password: new FormControl(),
       language: new FormControl('', LanguageValidator.validateLanguage),
+    });
+
+    this.signUpForm = this._fb.group({
+      name: this._fb.group({
+        firstname: ['', [Validators.required, Validators.minLength(10)]],
+        lastname: [
+          '',
+          [
+            Validators.required,
+            Validators.maxLength(15),
+            Validators.pattern('^[a-zA-Z]+$'),
+          ],
+        ],
+      }),
+      email: ['', [Validators.required, Validators.pattern('[^ @]*@[^ @]*')]],
+      password: ['', [Validators.minLength(8), Validators.required]],
+      language: [''],
     });
 
     this.searchField.valueChanges
@@ -55,22 +75,7 @@ export class NewUserComponent implements OnInit {
     }
   }
 
-  signUpForm = this._fb.group({
-    name: this._fb.group({
-      firstname: ['', [Validators.required, Validators.minLength(10)]],
-      lastname: [
-        '',
-        [
-          Validators.required,
-          Validators.maxLength(15),
-          Validators.pattern('^[a-zA-Z]+$'),
-        ],
-      ],
-    }),
-    email: ['', [Validators.required, Validators.pattern('[^ @]*@[^ @]*')]],
-    password: ['', [Validators.minLength(8), Validators.required]],
-    language: [''],
-  });
+
 
   /* template driven */
   model: Signup = new Signup();
