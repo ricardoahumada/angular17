@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "TasksProjectsApp:build:production"
+              "buildTarget": "TasksProjectsApp:build:production"
             },
             "development": {
-              "browserTarget": "TasksProjectsApp:build:development"
+              "buildTarget": "TasksProjectsApp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "TasksProjectsApp:build"
+            "buildTarget": "TasksProjectsApp:build"
           }
         },
         "test": {
