@@ -40,7 +40,7 @@ export class ProductsService {
   }
 
   public getProductsFromAPI(): Observable<IProduct[]> {
-    const params = new HttpParams().set('code', 'GUN-0611');
+    const params = new HttpParams();//.set('code', 'GUN-0611');
 
     return this._http
       .get<IProduct[]>(`${API_URL}/products`, { params })

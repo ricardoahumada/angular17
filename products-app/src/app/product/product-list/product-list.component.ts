@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, computed, effect, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 import { IProduct } from 'src/app/models/iproduct';
 import { Product } from 'src/app/models/product';
@@ -19,11 +19,23 @@ export class ProductListComponent implements OnInit {
 
   products: Array<IProduct> = [];
 
-  constructor(private _productsService: ProductsService) {}
+  constructor(private _productsService: ProductsService) { 
+    effect(()=>{
+      console.log("Effect: The count is: ", this.count());
+    })
+  }
 
   private $productsObs: any = {};
 
+
+  count: WritableSignal<number> = signal(0);
+  doubleCount: Signal<number> = computed(() => this.count() * 2)
+  increment() {
+    this.count.update(value => value + 1);
+  }
+
   ngOnInit(): void {
+    console.log('ProductListComponent count:', this.count());
     // this.products=this._productsService.getProducts();
     this.$productsObs.$productsObs = this._productsService
       .getProductsFromAPI()

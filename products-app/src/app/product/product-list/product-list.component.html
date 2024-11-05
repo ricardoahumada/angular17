@@ -21,15 +21,41 @@
             <div>{{a_product?.date | date: 'full'}}</div>
             <div>{{a_product?.price | currency:'EUR':true:'1.2-2'}}</div>
             <div>{{a_product.stars}}
-                <rate-component [rating]="a_product.stars"
-                (star_clicked)="updateStars($event,a_product.code)">
+                <rate-component [rating]="a_product.stars" (star_clicked)="updateStars($event,a_product.code)">
                 </rate-component>
             </div>
-            <div><a [routerLink]="['/products',a_product?.code]" >detail</a></div>
+            <div><a [routerLink]="['/products',a_product?.code]">detail</a></div>
         </li>
     </ul>
 
+    ==================================
+
+    @if(show_list){
+    <ul class="list-group">
+        @for(a_product of products | filterProducts:filter_text; track a_product.code){
+        <li class="list-group-item">
+            <div highlight user="Ricardo" color="orange">{{a_product?.name | uppercase}}</div>
+            <div>{{a_product?.code | lowercase}}</div>
+            <div>
+                <img [src]="'./assets/imgs/'+a_product?.image" alt="" [style.maxWidth.px]="img_width"
+                    [style.maxHeight.px]="img_height" />
+            </div>
+            <div>{{a_product?.date | date: 'full'}}</div>
+            <div>{{a_product?.price | currency:'EUR':true:'1.2-2'}}</div>
+            <div>{{a_product.stars}}
+                <rate-component [rating]="a_product.stars" (star_clicked)="updateStars($event,a_product.code)">
+                </rate-component>
+            </div>
+            <div><a [routerLink]="['/products',a_product?.code]">detail</a></div>
+        </li>}
+    </ul>
+    }
 
 
+    ==================================
+
+    <h3>Signal: {{count()}}</h3>
+    <h3>2Signal: {{doubleCount()}}</h3>
+    <button (click)="increment()">Inc</button>
 
 </section>
