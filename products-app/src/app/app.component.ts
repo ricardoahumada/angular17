@@ -7,5 +7,5 @@ import { MiComponentComponent } from './util/mi-component/mi-component.component
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'products-app';
+  title: string = 'products-app';
 }

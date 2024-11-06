@@ -1,1 +1,29 @@
-<p>products-list works!</p>
+<section>
+    <article *ngIf="show">
+        <div>id: {{unProducto.id}}</div>
+        <div>name: {{unProducto.name | uppercase}}</div>
+        <div>image: <img src="./assets/imgs/{{unProducto.image}}" alt="" /></div>
+        <div>image: <img [src]="genImgUrl()" alt="" /></div>
+    </article>
+
+
+    <div><button (click)="mostrar()">Mostar</button></div>
+    <div><input [(ngModel)]="texto" /></div>
+    <pre>{{texto}}</pre>
+    <pre>{{unProducto | json}}</pre>
+</section>
+
+<hr>
+
+<h2>Lista</h2>
+<section>
+    <ul>
+        <li *ngFor="let prod of productos">
+            <div>id: {{prod.id}}</div>
+            <div>name: {{prod.name | uppercase}}</div>
+            <div>image: <img src="./assets/imgs/{{prod.image}}" alt="" /></div>
+        </li>
+    </ul>
+    
+
+</section>
