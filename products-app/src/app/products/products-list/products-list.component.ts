@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Product } from '../../models/product';
+import { ProductClass } from '../../models/product-class';
 
 @Component({
   selector: 'products-list',
@@ -6,8 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './products-list.component.scss'
 })
 export class ProductsListComponent {
-  unProducto: any = {
+  unProducto: Product = {
     id: 2,
+    code: 'cd1',
     name: 'Carrito',
     image: 'GardenCart.png'
   }
@@ -15,7 +18,7 @@ export class ProductsListComponent {
   texto: string = 'Hola';
   show: boolean = false;
 
-  productos: any[] = [
+  productos: Array<Product> = [
     {
       "name": "Rastrillo",
       "code": "E-001",
@@ -49,6 +52,7 @@ export class ProductsListComponent {
       "stars": 3
     }
   ];
+
 
   genImgUrl() {
     return './assets/imgs/' + this.unProducto.image;
