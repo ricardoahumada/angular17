@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ProjectListComponent } from './projects/project-list/project-list.component';
 import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { HeaderComponent } from './structure/header/header.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { HeaderComponent } from './structure/header/header.component';
   ],
   imports: [
     BrowserModule,
-    HeaderComponent
+    HeaderComponent,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
