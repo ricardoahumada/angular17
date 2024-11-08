@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, input, OnInit, output } from '@angular/core';
 
 @Component({
   selector: 'app-delete',
@@ -8,18 +8,16 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class DeleteComponent implements OnInit {
 
-  constructor() { }
-
   ngOnInit(): void {
+    
   }
+  
+  tid= input<number>(0);
 
-  @Input()
-  tid:number=0;
-
-  @Output() delete_clicked: EventEmitter<number> = new EventEmitter<number>();
+  delete_clicked= output<number>();
 
   delete(){
-    this.delete_clicked.emit(this.tid);
+    this.delete_clicked.emit(this.tid());
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { Task } from '../../models/task';
 import { TASKS } from '../../data/tasks';
 
@@ -9,16 +9,15 @@ import { TASKS } from '../../data/tasks';
 })
 export class TaskListComponent {
   tasks: Task[] = TASKS;
-  filter_text: string = '';
+  taskList = signal(this.tasks);
+  filter_text = signal('');
 
-  getFilteredTasks(): Task[] | null {
-    if (this.tasks && this.filter_text) return this.tasks.filter(aT => aT.description.toLocaleLowerCase().includes(this.filter_text.toLocaleLowerCase()))
-    else return this.tasks
-  }
+  filteredTasks = computed(()=>this.taskList().filter(aT => aT.description.toLocaleLowerCase().includes(this.filter_text().toLocaleLowerCase())))
 
   deleteTask(tid: number): void {
     if (this.tasks) {
-      this.tasks = this.tasks.filter(aT => aT.id != tid)
+      // this.tasks = this.taskList().filter(aT => aT.id != tid);
+      this.taskList.set(this.taskList().filter(aT => aT.id != tid));
     }
   }
 
