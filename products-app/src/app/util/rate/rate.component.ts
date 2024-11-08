@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Input, output, Output } from '@angular/core';
 
 @Component({
   selector: 'app-rate',
@@ -8,14 +8,18 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class RateComponent {
 
-  @Input()
+  /* @Input()
   rating: number = 0;
+ */
+  rating = input<number>(0);
 
-  @Output()
+  /* @Output()
   starClicked:EventEmitter<number> = new EventEmitter();
+ */
+
+  starClicked = output<number>();
 
   starClick(val: number) {
-    console.log('clicado:', val);
     this.starClicked.emit(val);
   }
 }

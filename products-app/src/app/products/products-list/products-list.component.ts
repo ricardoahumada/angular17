@@ -1,4 +1,4 @@
-import { Component, computed, signal, WritableSignal } from '@angular/core';
+import { Component, computed, effect, signal, WritableSignal } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductClass } from '../../models/product-class';
 
@@ -8,6 +8,13 @@ import { ProductClass } from '../../models/product-class';
   styleUrl: './products-list.component.scss'
 })
 export class ProductsListComponent {
+
+  constructor() {
+    effect(() => {
+      console.log("Counter cambio!", this.counter());
+    })
+  }
+
   unProducto: Product = {
     id: 2,
     code: 'cd1',
@@ -16,7 +23,7 @@ export class ProductsListComponent {
   }
 
   texto: WritableSignal<string> = signal('Hola');
-  show:WritableSignal<boolean> = signal(false);
+  show: WritableSignal<boolean> = signal(false);
 
   counter: WritableSignal<number> = signal(0);
   doubleCounter = computed(() => this.counter() * 2);
@@ -82,7 +89,7 @@ export class ProductsListComponent {
     console.log('updateStars:', stars, pid);
     const aProduct = this.productos.find(aP => aP.id == pid);
     if (aProduct) aProduct.stars = stars;
-    
+
     this.productlist.set([...this.productlist()]);
   }
 
