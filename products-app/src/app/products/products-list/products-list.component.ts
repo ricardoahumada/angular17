@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal, WritableSignal } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductClass } from '../../models/product-class';
 
@@ -15,12 +15,15 @@ export class ProductsListComponent {
     image: 'GardenCart.png'
   }
 
-  texto: string = 'Hola';
-  show: boolean = false;
+  texto: WritableSignal<string> = signal('Hola');
+  show:WritableSignal<boolean> = signal(false);
+
+  counter: WritableSignal<number> = signal(0);
+  doubleCounter = computed(() => this.counter() * 2);
 
   productos: Array<Product> = [
     {
-      "id":1,
+      "id": 1,
       "name": "Rastrillo",
       "code": "E-001",
       "image": "LeafRake.png",
@@ -29,7 +32,7 @@ export class ProductsListComponent {
       "stars": 3
     },
     {
-      "id":2,
+      "id": 2,
       "name": "Carrito",
       "code": "C-0002",
       "image": "GardenCart.png",
@@ -38,7 +41,7 @@ export class ProductsListComponent {
       "stars": 4
     },
     {
-      "id":3,
+      "id": 3,
       "name": "Altavoz",
       "code": "A-001",
       "image": "loudspeaker.png",
@@ -47,7 +50,7 @@ export class ProductsListComponent {
       "stars": 1
     },
     {
-      "id":4,
+      "id": 4,
       "name": "Pala",
       "code": "A-001",
       "image": "",
@@ -57,20 +60,30 @@ export class ProductsListComponent {
     }
   ];
 
+  productlist = signal(this.productos);
+
+  totalStarts = computed(() => this.productlist().reduce((acc: number, aP: Product) => acc + (aP.stars ? aP.stars : 0), 0));
+
+  addOne() {
+    // this.counter = this.counter + 1;
+    this.counter.set(this.counter() + 1);
+  }
+
   genImgUrl() {
     return './assets/imgs/' + this.unProducto.image;
   }
 
-  mostrar() {
+  /* mostrar() {
     console.log("Mostrando...", this.texto);
     this.show = !this.show;
-  }
+  } */
 
   updateStars(stars: number, pid: number | undefined) {
     console.log('updateStars:', stars, pid);
-    
     const aProduct = this.productos.find(aP => aP.id == pid);
     if (aProduct) aProduct.stars = stars;
+    
+    this.productlist.set([...this.productlist()]);
   }
 
 }

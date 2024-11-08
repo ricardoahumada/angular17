@@ -1,5 +1,5 @@
 <section>
-    @if(show){
+    @if(show()){
     <article>
         <div>id: {{unProducto.id}}</div>
         <div>name: {{unProducto.name | uppercase}}</div>
@@ -8,9 +8,16 @@
     </article>
     }
 
-    <div><button (click)="mostrar()">Mostar</button></div>
-    <div><input [(ngModel)]="texto" /></div>
-    <pre>{{texto}}</pre>
+    <div><button (click)="show.set(!show())">Mostar</button></div>
+
+    <div><input [ngModel]="texto()" (ngModelChange)="texto.set($event)" /></div>
+    <pre>{{texto()}}</pre>
+</section>
+
+<section>
+    <pre>counter: {{counter()}}</pre>
+    <button (click)="addOne()">+</button>
+    <pre>counter: {{doubleCounter()}}</pre>
 </section>
 
 <hr>
@@ -27,7 +34,7 @@
             </tr>
         </thead>
         <tbody>
-            @for(prod of productos;track prod.id){
+            @for(prod of productlist();track prod.id){
             <tr>
                 <td>{{prod.id}}</td>
                 <td>{{prod.name | uppercase}}</td>
@@ -38,4 +45,5 @@
             }
         </tbody>
     </table>
+    <div>Total de precios:{{totalStarts()}}</div>
 </section>
