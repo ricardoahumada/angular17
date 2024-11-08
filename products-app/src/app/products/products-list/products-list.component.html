@@ -17,16 +17,25 @@
 
 <h2>Lista de productos</h2>
 <section>
-    <ul>
-        @for(prod of productos;track prod.id){
-        <li>
-            <div>id: {{prod.id}}</div>
-            <div>name: {{prod.name | uppercase}}</div>
-            <div>image: <img src="./assets/imgs/{{prod.image}}" alt="" /></div>
-            <div>Valoracion: <app-rate [rating]="prod.stars?prod.stars:0" (starClicked)="updateStars($event, prod.id)"></app-rate></div>
-        </li>
-        }
-    </ul>
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>id</th>
+                <th>nombre</th>
+                <th>imagen</th>
+                <th>valoración</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(prod of productos;track prod.id){
+            <tr>
+                <td>{{prod.id}}</td>
+                <td>{{prod.name | uppercase}}</td>
+                <td><img src="./assets/imgs/{{prod.image}}" alt="" /></td>
+                <td><app-rate [rating]="prod.stars?prod.stars:0"
+                        (starClicked)="updateStars($event, prod.id)"></app-rate></td>
+            </tr>
+            }
+        </tbody>
+    </table>
 </section>
-
-<pre>{{productos | json}}</pre>

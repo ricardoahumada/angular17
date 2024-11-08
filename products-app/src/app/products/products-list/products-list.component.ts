@@ -57,7 +57,6 @@ export class ProductsListComponent {
     }
   ];
 
-
   genImgUrl() {
     return './assets/imgs/' + this.unProducto.image;
   }
