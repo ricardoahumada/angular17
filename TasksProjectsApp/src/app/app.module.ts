@@ -6,17 +6,19 @@ import { ProjectListComponent } from './projects/project-list/project-list.compo
 import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { HeaderComponent } from './structure/header/header.component';
 import { FormsModule } from '@angular/forms';
+import { DeleteComponent } from './utils/delete/delete.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjectListComponent,
-    TaskListComponent
+    TaskListComponent,
   ],
   imports: [
     BrowserModule,
     HeaderComponent,
-    FormsModule
+    FormsModule,
+    DeleteComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

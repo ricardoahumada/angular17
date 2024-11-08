@@ -21,7 +21,7 @@
                 <td>{{aTask.time}}</td>
                 <td>{{aTask.project}}</td>
                 <td>
-                    <button (click)="deleteTask(aTask.id)"><i class="bi bi-trash"></i></button>
+                    <app-delete [tid]="aTask.id" (delete_clicked)="deleteTask($event)"></app-delete>
                 </td>
             </tr>}@empty{
             <tr>
