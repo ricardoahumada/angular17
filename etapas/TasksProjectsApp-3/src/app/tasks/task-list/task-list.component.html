@@ -1,36 +1,6 @@
 <section>
     <h2>Tasks</h2>
     <br>
-    <input class="form-control"  (keyup)="filterChange($event)" placeholder="Text to filter tasks">
-
-    <hr>
-    <table class="table table-striped">
-        <thead class="table-dark">
-            <tr>
-                <th>tid</th>
-                <th>description</th>
-                <th>time</th>
-                <th>project</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @for(aTask of taskList(); track aTask.id){
-            <tr>
-                <td>{{aTask.id}}</td>
-                <td>{{aTask.description}}</td>
-                <td>{{aTask.time}}</td>
-                <td>{{aTask.project}}</td>
-                <td>
-                    <button (click)="deleteTask(aTask.id)">delete</button>
-                </td>
-            </tr>}@empty{
-            <tr>
-                <td>No tasks...</td>
-            </tr>
-            }
-        </tbody>
-    </table>
 
     <input class="form-control" [ngModel]="filterSIgnal()" (ngModelChange)="filterSIgnal.set($event)" placeholder="Text to filter tasks">
 
@@ -53,7 +23,7 @@
                 <td>{{aTask.time}}</td>
                 <td>{{aTask.project}}</td>
                 <td>
-                    <button (click)="deleteTask(aTask.id)">delete</button>
+                    <app-delete [tid]="aTask.id" (deleteClick)="deleteTask($event)"></app-delete>
                 </td>
             </tr>}@empty{
             <tr>
