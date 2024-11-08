@@ -11,12 +11,11 @@
     <div><button (click)="mostrar()">Mostar</button></div>
     <div><input [(ngModel)]="texto" /></div>
     <pre>{{texto}}</pre>
-    <pre>{{unProducto | json}}</pre>
 </section>
 
 <hr>
 
-<h2>Lista</h2>
+<h2>Lista de productos</h2>
 <section>
     <ul>
         @for(prod of productos;track prod.id){
@@ -24,7 +23,10 @@
             <div>id: {{prod.id}}</div>
             <div>name: {{prod.name | uppercase}}</div>
             <div>image: <img src="./assets/imgs/{{prod.image}}" alt="" /></div>
+            <div>Valoracion: <app-rate [rating]="prod.stars?prod.stars:0" (starClicked)="updateStars($event, prod.id)"></app-rate></div>
         </li>
         }
     </ul>
 </section>
+
+<pre>{{productos | json}}</pre>

@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ProductsListComponent } from './products/products-list/products-list.component';
 import { MiComponentComponent } from './util/mi-component/mi-component.component';
 import { FormsModule } from '@angular/forms';
+import { RateComponent } from './util/rate/rate.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     MiComponentComponent,
-    FormsModule
+    FormsModule,
+    RateComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,6 +20,7 @@ export class ProductsListComponent {
 
   productos: Array<Product> = [
     {
+      "id":1,
       "name": "Rastrillo",
       "code": "E-001",
       "image": "LeafRake.png",
@@ -28,6 +29,7 @@ export class ProductsListComponent {
       "stars": 3
     },
     {
+      "id":2,
       "name": "Carrito",
       "code": "C-0002",
       "image": "GardenCart.png",
@@ -36,6 +38,7 @@ export class ProductsListComponent {
       "stars": 4
     },
     {
+      "id":3,
       "name": "Altavoz",
       "code": "A-001",
       "image": "loudspeaker.png",
@@ -44,6 +47,7 @@ export class ProductsListComponent {
       "stars": 1
     },
     {
+      "id":4,
       "name": "Pala",
       "code": "A-001",
       "image": "",
@@ -61,6 +65,13 @@ export class ProductsListComponent {
   mostrar() {
     console.log("Mostrando...", this.texto);
     this.show = !this.show;
+  }
+
+  updateStars(stars: number, pid: number | undefined) {
+    console.log('updateStars:', stars, pid);
+    
+    const aProduct = this.productos.find(aP => aP.id == pid);
+    if (aProduct) aProduct.stars = stars;
   }
 
 }
