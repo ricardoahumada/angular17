@@ -1,6 +1,6 @@
 <section>
     @if(show()){
-    <article>
+    <article *ngIf="show()">
         <div>id: {{unProducto.id}}</div>
         <div>name: {{unProducto.name | uppercase}}</div>
         <div>image: <img src="./assets/imgs/{{unProducto.image}}" alt="" /></div>
@@ -8,9 +8,11 @@
     </article>
     }
 
+    
+
     <div><button (click)="show.set(!show())">Mostar</button></div>
 
-    <div><input [ngModel]="texto()" (ngModelChange)="texto.set($event)" /></div>
+    <div><input highlight [ngModel]="texto()" (ngModelChange)="texto.set($event)" /></div>
     <pre>{{texto()}}</pre>
 </section>
 
@@ -22,8 +24,8 @@
 
 <hr>
 
-<h2>Lista de productos</h2>
-<section>
+<h2 *replicate="2">Lista de productos</h2>
+<section >
     <table class="table table-striped">
         <thead class="table-dark">
             <tr>
@@ -34,10 +36,12 @@
             </tr>
         </thead>
         <tbody>
-            @for(prod of productlist();track prod.id){
+            @for(prod of productlist()|filterProducts:texto();track prod.id){
             <tr>
                 <td>{{prod.id}}</td>
-                <td>{{prod.name | uppercase}}</td>
+                <td highlight="red">
+                    {{prod.name}}
+                </td>
                 <td><img src="./assets/imgs/{{prod.image}}" alt="" /></td>
                 <td><app-rate [rating]="prod.stars?prod.stars:0"
                         (starClicked)="updateStars($event, prod.id)"></app-rate></td>

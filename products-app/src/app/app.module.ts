@@ -6,17 +6,23 @@ import { ProductsListComponent } from './products/products-list/products-list.co
 import { MiComponentComponent } from './util/mi-component/mi-component.component';
 import { FormsModule } from '@angular/forms';
 import { RateComponent } from './util/rate/rate.component';
+import { FilterProductsPipe } from './pipes/filter-products.pipe';
+import { HighlightDirective } from './directives/highlight.directive';
+import { ReplicateDirective } from './directives/replicate.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsListComponent
+    ProductsListComponent,
+    ReplicateDirective,
   ],
   imports: [
     BrowserModule,
     MiComponentComponent,
     FormsModule,
-    RateComponent
+    RateComponent,
+    FilterProductsPipe,
+    HighlightDirective,
   ],
   providers: [],
   bootstrap: [AppComponent]
