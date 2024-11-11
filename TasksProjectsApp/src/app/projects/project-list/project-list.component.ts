@@ -8,5 +8,7 @@ import { PROJECTS } from '../../data/projects';
   styleUrl: './project-list.component.scss'
 })
 export class ProjectListComponent {
+  filter_text: string = '';
+
   projects: Project[] = PROJECTS;
 }
