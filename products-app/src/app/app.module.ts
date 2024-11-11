@@ -9,6 +9,7 @@ import { RateComponent } from './util/rate/rate.component';
 import { FilterProductsPipe } from './pipes/filter-products.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
 import { ReplicateDirective } from './directives/replicate.directive';
+import { ProductService } from './services/product.service';
 
 @NgModule({
   declarations: [

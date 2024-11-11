@@ -1,8 +1,9 @@
 import { Directive, ElementRef, HostListener, input, Input, OnInit } from '@angular/core';
+import { ProductService } from '../services/product.service';
 
 @Directive({
   selector: '[highlight]', 
-  standalone: true
+  standalone: true,
 })
 export class HighlightDirective implements OnInit {
 

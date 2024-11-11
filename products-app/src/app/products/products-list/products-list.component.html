@@ -36,7 +36,7 @@
             </tr>
         </thead>
         <tbody>
-            @for(prod of productlist()|filterProducts:texto();track prod.id){
+            @for(prod of productService.productList()|filterProducts:texto();track prod.id){
             <tr>
                 <td>{{prod.id}}</td>
                 <td highlight="red">

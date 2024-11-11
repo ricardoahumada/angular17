@@ -1,6 +1,7 @@
 import { Component, computed, effect, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductClass } from '../../models/product-class';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'products-list',
@@ -9,53 +10,17 @@ import { ProductClass } from '../../models/product-class';
 })
 export class ProductsListComponent implements OnInit, OnDestroy {
 
-  constructor() {
+  constructor(public productService: ProductService) {
     effect(() => {
       console.log("Counter cambio!", this.counter());
     })
   }
 
   ngOnInit(): void {
-    console.log('Inicializnado....');
-    this.productos = [
-      {
-        "id": 1,
-        "name": "Rastrillo",
-        "code": "E-001",
-        "image": "LeafRake.png",
-        "date": "2022-11-14",
-        "price": 19.95,
-        "stars": 3
-      },
-      {
-        "id": 2,
-        "name": "Carrito",
-        "code": "C-0002",
-        "image": "GardenCart.png",
-        "date": "2021-01-23",
-        "price": 32.99,
-        "stars": 4
-      },
-      {
-        "id": 3,
-        "name": "Altavoz",
-        "code": "A-001",
-        "image": "loudspeaker.png",
-        "date": "2024-06-04",
-        "price": 29.95,
-        "stars": 1
-      },
-      {
-        "id": 4,
-        "name": "Pala",
-        "code": "A-001",
-        "image": "",
-        "date": "2020-09-02",
-        "price": 9.95,
-        "stars": 3
-      }
-    ]
-    this.productlist.set(this.productos);
+    // console.log('Inicializnado....');
+    // this.productos = this.productService.getProducts();
+    // this.productos = this.productService.productList();
+    // this.productlist.set(this.productos);
     this.timer = setTimeout(() => {
       console.log('Este es un mensaje diferido...');
     }, 1000);
@@ -78,9 +43,9 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
   productos: Array<Product> = [] as Product[];
 
-  productlist = signal(this.productos);
+  // productlist = signal(this.productos);
 
-  totalStarts = computed(() => this.productlist().reduce((acc: number, aP: Product) => acc + (aP.stars ? aP.stars : 0), 0));
+  totalStarts = computed(() => this.productService.productList().reduce((acc: number, aP: Product) => acc + (aP.stars ? aP.stars : 0), 0));
 
   addOne() {
     // this.counter = this.counter + 1;
@@ -98,11 +63,12 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
   updateStars(stars: number, pid: number | undefined) {
     console.log('updateStars:', stars, pid);
-    const aProduct = this.productos.find(aP => aP.id == pid);
+    /* const aProduct = this.productos.find(aP => aP.id == pid);
     if (aProduct) aProduct.stars = stars;
 
-    this.productlist.set([...this.productlist()]);
-  }
+    this.productlist.set([...this.productlist()]); */
+    if(pid) this.productService.updateStars(pid, stars);
+  } 
 
   ngOnDestroy(): void {
     console.log('Destruyendo....');
