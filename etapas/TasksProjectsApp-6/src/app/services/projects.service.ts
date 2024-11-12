@@ -1,0 +1,35 @@
+import { PROJECTS } from '../data/projects';
+import { Project } from '../models/project';
+
+/* @Injectable({
+  providedIn: 'root',
+}) */
+export class ProjectsService {
+
+  constructor() {}
+
+  private _projects: Project[] = PROJECTS;
+
+  getProjects(): Project[] {
+    return this._projects;
+  }
+
+  getAproject(pid: number): Project | undefined {
+    return this._projects.find((aP) => aP.id == pid);
+  }
+
+  deleteAProject(pid: number): boolean {
+    this._projects = this._projects.filter((aP) => aP.id != pid);
+    return true;
+  }
+
+  addProject(aP: Project): boolean {
+    if (aP) {
+      aP.id = this._projects.length;
+      this._projects.push(aP);
+      return true;
+    }
+    return false;
+  }
+
+}
