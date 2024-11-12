@@ -8,7 +8,7 @@ export class ProductService {
 
   constructor() { 
     effect(() => {
-      console.log("Products cambio!", this.productList());
+      console.log("ProductService - Products cambio!", this.productList());
     })
   }
 
@@ -62,7 +62,8 @@ export class ProductService {
   } */
 
   updateStars(pid:number, stars:number){
-    const lista = this.productList();
+    // const lista = this.productList();
+    const lista = [...this._productos];
     const aProduct = lista.find(aP => aP.id == pid);
     if (aProduct) aProduct.stars = stars;
     this.productList.set(lista);

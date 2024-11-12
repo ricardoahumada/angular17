@@ -1,4 +1,4 @@
-import { Component, computed, effect, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductClass } from '../../models/product-class';
 import { ProductService } from '../../services/product.service';
@@ -6,7 +6,8 @@ import { ProductService } from '../../services/product.service';
 @Component({
   selector: 'products-list',
   templateUrl: './products-list.component.html',
-  styleUrl: './products-list.component.scss'
+  styleUrl: './products-list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsListComponent implements OnInit, OnDestroy {
 
@@ -62,7 +63,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   } */
 
   updateStars(stars: number, pid: number | undefined) {
-    console.log('updateStars:', stars, pid);
+    // console.log('updateStars:', stars, pid);
     /* const aProduct = this.productos.find(aP => aP.id == pid);
     if (aProduct) aProduct.stars = stars;
 
