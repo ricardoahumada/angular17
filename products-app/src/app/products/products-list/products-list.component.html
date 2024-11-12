@@ -1,31 +1,8 @@
+<h2 *replicate="1">Lista de productos</h2>
+
+<div><input class="form-control" highlight [ngModel]="texto()" (ngModelChange)="texto.set($event)" /></div>
+<br>
 <section>
-    @if(show()){
-    <article *ngIf="show()">
-        <div>id: {{unProducto.id}}</div>
-        <div>name: {{unProducto.name | uppercase}}</div>
-        <div>image: <img src="./assets/imgs/{{unProducto.image}}" alt="" /></div>
-        <div>image: <img [src]="genImgUrl()" alt="" /></div>
-    </article>
-    }
-
-    
-
-    <div><button (click)="show.set(!show())">Mostar</button></div>
-
-    <div><input highlight [ngModel]="texto()" (ngModelChange)="texto.set($event)" /></div>
-    <pre>{{texto()}}</pre>
-</section>
-
-<section>
-    <pre>counter: {{counter()}}</pre>
-    <button (click)="addOne()">+</button>
-    <pre>counter: {{doubleCounter()}}</pre>
-</section>
-
-<hr>
-
-<h2 *replicate="2">Lista de productos</h2>
-<section >
     <table class="table table-striped">
         <thead class="table-dark">
             <tr>
@@ -39,7 +16,7 @@
             @for(prod of productService.productList()|filterProducts:texto();track prod.id){
             <tr>
                 <td>{{prod.id}}</td>
-                <td highlight="red">
+                <td highlight="skyblue">
                     {{prod.name}}
                 </td>
                 <td><img src="./assets/imgs/{{prod.image}}" alt="" /></td>
@@ -49,5 +26,29 @@
             }
         </tbody>
     </table>
-    <div>Total de precios:{{totalStarts()}}</div>
+    <h3>Total de precios:{{totalStarts()}}</h3>
 </section>
+
+<hr>
+<div><button type="button" class="btn btn-light" (click)="show.set(!show())">Mostar ejemplos ocultos</button></div>
+<hr>
+
+@if(show()){
+<section>
+    <button (click)="addOne()">+</button>
+    <pre>counter: {{counter()}}</pre>
+    <pre>2xcounter: {{doubleCounter()}}</pre>
+</section>
+
+<section>
+    <article *ngIf="show()">
+        <div>id: {{unProducto.id}}</div>
+        <div>name: {{unProducto.name | uppercase}}</div>
+        <div>image: <img src="./assets/imgs/{{unProducto.image}}" alt="" /></div>
+        <div>image: <img [src]="genImgUrl()" alt="" /></div>
+    </article>
+
+    <br>
+    <pre>{{texto()}}</pre>
+</section>
+}

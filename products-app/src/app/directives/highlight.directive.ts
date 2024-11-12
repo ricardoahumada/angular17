@@ -18,7 +18,7 @@ export class HighlightDirective implements OnInit {
   onClick(){
     console.log('HighlightDirective ...clicked');
     const nativeEl = this.el.nativeElement;
-    nativeEl.style.backgroundColor = "blue";
+    nativeEl.style.backgroundColor = "beige";
   }
 
   ngOnInit(): void {

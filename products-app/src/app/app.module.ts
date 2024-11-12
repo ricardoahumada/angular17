@@ -10,12 +10,16 @@ import { FilterProductsPipe } from './pipes/filter-products.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
 import { ReplicateDirective } from './directives/replicate.directive';
 import { ProductService } from './services/product.service';
+import { ListOrdersComponent } from './orders/list-orders/list-orders.component';
+import { NewUserComponent } from './user/new-user/new-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsListComponent,
     ReplicateDirective,
+    ListOrdersComponent,
+    NewUserComponent
   ],
   imports: [
     BrowserModule,
