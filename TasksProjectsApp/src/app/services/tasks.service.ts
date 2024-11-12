@@ -1,4 +1,4 @@
-import { effect, Injectable, signal } from '@angular/core';
+import { effect, Injectable, Signal, signal } from '@angular/core';
 import {
   BehaviorSubject
 } from 'rxjs';
@@ -16,6 +16,10 @@ export class TasksService {
   }
 
   tasks = signal(TASKS);
+
+  getTasks():Signal<Task[]>{
+    return this.tasks;
+  }
 
   getATask(tid: number): Task | undefined {
     return this.tasks().find((aT) => aT.id == tid);

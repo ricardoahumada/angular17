@@ -17,6 +17,7 @@ export class TaskListComponent {
 
   filteredTasks = computed(() => this.taksService.tasks().filter(aT => aT.description.toLocaleLowerCase().includes(this.filter_text().toLocaleLowerCase())))
 
+  taskList = this.taksService.getTasks()
 
   deleteTask(tid: number): void {
     this.taksService.deleteATask(tid);
