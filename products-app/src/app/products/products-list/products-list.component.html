@@ -10,6 +10,7 @@
                 <th>nombre</th>
                 <th>imagen</th>
                 <th>valoración</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +23,7 @@
                 <td><img src="./assets/imgs/{{prod.image}}" alt="" /></td>
                 <td><app-rate [rating]="prod.stars?prod.stars:0"
                         (starClicked)="updateStars($event, prod.id)"></app-rate></td>
+                <td><a [routerLink]="[prod.id]">Ver detalle</a></td>
             </tr>
             }
         </tbody>

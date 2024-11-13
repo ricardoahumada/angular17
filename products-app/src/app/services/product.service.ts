@@ -6,7 +6,7 @@ import { Product } from '../models/product';
 })
 export class ProductService {
 
-  constructor() { 
+  constructor() {
     effect(() => {
       console.log("ProductService - Products cambio!", this.productList());
     })
@@ -61,7 +61,11 @@ export class ProductService {
     this._productos = this._productos.filter(aP => aP.id != pid);
   } */
 
-  updateStars(pid:number, stars:number){
+  getAProduct(pid: number) {
+    return this._productos.find(aP => aP.id == pid);
+  }
+
+  updateStars(pid: number, stars: number) {
     // const lista = this.productList();
     const lista = [...this._productos];
     const aProduct = lista.find(aP => aP.id == pid);

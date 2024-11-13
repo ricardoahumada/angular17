@@ -13,6 +13,7 @@ import { ProductService } from './services/product.service';
 import { ListOrdersComponent } from './orders/list-orders/list-orders.component';
 import { NewUserComponent } from './user/new-user/new-user.component';
 import { AppRoutingModule } from './app-routing.module';
+import { DetailProductsComponent } from './products/detail-products/detail-products.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
     ProductsListComponent,
     ReplicateDirective,
     ListOrdersComponent,
-    NewUserComponent
+    NewUserComponent,
+    DetailProductsComponent
   ],
   imports: [
     BrowserModule,

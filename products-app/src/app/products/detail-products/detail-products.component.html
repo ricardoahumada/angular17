@@ -1,0 +1,12 @@
+<h3>Detalle del producto: {{pid}}</h3>
+@if(product){
+<pre>
+    {{product|json}}
+</pre>
+<div>
+    <a [routerLink]="['/products/4']" >Saltar al 4</a>
+</div>
+}
+@if(!product){
+    <div>No existe</div>
+}
