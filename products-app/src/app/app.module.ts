@@ -12,6 +12,7 @@ import { ReplicateDirective } from './directives/replicate.directive';
 import { ProductService } from './services/product.service';
 import { ListOrdersComponent } from './orders/list-orders/list-orders.component';
 import { NewUserComponent } from './user/new-user/new-user.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { NewUserComponent } from './user/new-user/new-user.component';
     RateComponent,
     FilterProductsPipe,
     HighlightDirective,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

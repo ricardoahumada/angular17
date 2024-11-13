@@ -1,7 +1,20 @@
 <main class="container">
+
+  <header>
+    <nav>
+      <ul>
+        <li><a [routerLink]="['']" >Home</a></li>
+        <li><a [routerLink]="['products']" routerLinkActive="router-link-active">Products</a></li>
+        <li><a [routerLink]="['orders']" routerLinkActive="router-link-active">Pedidos</a></li>
+        <li><a [routerLink]="['users','new']" [routerLinkActive]="'router-link-active'">Nuevo usuaurio</a></li>
+      </ul>
+    </nav>
+  </header>
+  <router-outlet></router-outlet>
+
   <h1>Hello, {{ title }}</h1>
+
   <div>
-    <mi-component></mi-component>
-    <products-list></products-list>
+    <router-outlet></router-outlet>
   </div>
 </main>
