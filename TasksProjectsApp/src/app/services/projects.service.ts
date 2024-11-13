@@ -1,10 +1,11 @@
+import { Injectable } from '@angular/core';
 import { PROJECTS } from '../data/projects';
 import { Project } from '../models/project';
 import { TasksService } from './tasks.service';
 
-/* @Injectable({
+@Injectable({
   providedIn: 'root',
-}) */
+})
 export class ProjectsService {
 
   constructor(private _taskService: TasksService) {}

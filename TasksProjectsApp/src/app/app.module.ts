@@ -39,7 +39,7 @@ import { ProjectMembersComponent } from './projects/project-detail/project-membe
     NotFoundComponent,
     AppRoutingModule,
   ],
-  providers: [ProjectsService],
+  providers: [/* ProjectsService */],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
