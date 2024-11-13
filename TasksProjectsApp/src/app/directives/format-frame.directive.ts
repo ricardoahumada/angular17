@@ -8,10 +8,10 @@ export class FormatFrameDirective {
   constructor(private el: ElementRef) {
   }
 
-  appFormatFrame = input('yellow')
+  color = input('yellow')
 
   @HostListener('mouseenter') onMouseEnter() {
-    this.highlight(this.appFormatFrame());
+    this.highlight(this.color());
   }
   @HostListener('mouseleave') onMouseLeave() {
     this.highlight('');
@@ -22,7 +22,7 @@ export class FormatFrameDirective {
   }
 
   ngOnInit(): void {
-    console.log('FormatFrameDirective:', this.el);
+    // console.log('FormatFrameDirective:', this.el);
     const nativeEl = this.el.nativeElement;
     nativeEl.style.border = "2px solid red";
     nativeEl.style.textTransform = "upperCase";

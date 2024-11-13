@@ -1,6 +1,7 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, OnInit, signal } from '@angular/core';
 import { Task } from '../../models/task';
 import { TASKS } from '../../data/tasks';
+import { TasksService } from '../../services/tasks.service';
 
 @Component({
   selector: 'app-task-list',
@@ -8,17 +9,17 @@ import { TASKS } from '../../data/tasks';
   styleUrl: './task-list.component.scss'
 })
 export class TaskListComponent {
-  tasks: Task[] = TASKS;
-  taskList = signal(this.tasks);
+
+  constructor(public taksService: TasksService) {
+  }
+
   filter_text = signal('');
 
-  filteredTasks = computed(()=>this.taskList().filter(aT => aT.description.toLocaleLowerCase().includes(this.filter_text().toLocaleLowerCase())))
+  filteredTasks = computed(() => this.taksService.tasks().filter(aT => aT.description.toLocaleLowerCase().includes(this.filter_text().toLocaleLowerCase())))
+
 
   deleteTask(tid: number): void {
-    if (this.tasks) {
-      // this.tasks = this.taskList().filter(aT => aT.id != tid);
-      this.taskList.set(this.taskList().filter(aT => aT.id != tid));
-    }
+    this.taksService.deleteATask(tid);
   }
 
 }

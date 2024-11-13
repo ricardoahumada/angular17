@@ -10,6 +10,7 @@ import { DeleteComponent } from './utils/delete/delete.component';
 import { FilterElementsPipe } from './pipes/filter-elements.pipe';
 import { DelayDirective } from './directives/delay.directive';
 import { FormatFrameDirective } from './directives/format-frame.directive';
+import { ProjectsService } from './services/projects.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { FormatFrameDirective } from './directives/format-frame.directive';
     DeleteComponent,
     DelayDirective
   ],
-  providers: [],
+  providers: [ProjectsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,10 +14,10 @@
             </tr>
         </thead>
         <tbody>
-            @for(aTask of taskList()|filterElements:'description':filter_text(); track aTask.id){
+            @for(aTask of taksService.tasks()|filterElements:'description':filter_text(); track aTask.id){
             <tr>
                 <td>{{aTask.id}}</td>
-                <td [appFormatFrame]="'yellow'">{{aTask.description}}</td>
+                <td appFormatFrame>{{aTask.description}}</td>
                 <td>{{aTask.time}}</td>
                 <td>{{aTask.project}}</td>
                 <td>

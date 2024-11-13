@@ -12,6 +12,7 @@ export class DelayDirective {
 
 
   @Input() set appDelay(delay: number) {
+
     setTimeout(() => {
       this.viewContainer.createEmbeddedView(this.templateRef);
     }, delay * 1000);
