@@ -14,6 +14,7 @@ import { ListOrdersComponent } from './orders/list-orders/list-orders.component'
 import { NewUserComponent } from './user/new-user/new-user.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DetailProductsComponent } from './products/detail-products/detail-products.component';
+import { NotFoundComponent } from './util/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DetailProductsComponent } from './products/detail-products/detail-produ
     ReplicateDirective,
     ListOrdersComponent,
     NewUserComponent,
-    DetailProductsComponent
+    DetailProductsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
