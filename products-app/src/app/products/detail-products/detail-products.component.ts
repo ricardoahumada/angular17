@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
 import { Observable, Observer } from 'rxjs';
@@ -11,7 +11,7 @@ import { Observable, Observer } from 'rxjs';
 })
 export class DetailProductsComponent implements OnInit, OnDestroy {
 
-  constructor(private _route: ActivatedRoute, private _productService: ProductService) {
+  constructor(private _route: ActivatedRoute, private _productService: ProductService, private _router: Router) {
   }
 
   pid = 0;
@@ -26,13 +26,15 @@ export class DetailProductsComponent implements OnInit, OnDestroy {
     this.$paramsSubs = this._route.params.subscribe(data => {
       this.pid = data['pid'];
       this.product = this._productService.getAProduct(this.pid);
+
+      if(!this.product) this._router.navigate(['not-found'])
     });
 
   }
 
   ngOnDestroy(): void {
     console.log('Destuyendo detalle:', this.pid);
-    if(this.$paramsSubs) this.$paramsSubs.unsubscribe();
+    if (this.$paramsSubs) this.$paramsSubs.unsubscribe();
   }
 
 }

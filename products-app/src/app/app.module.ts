@@ -15,6 +15,8 @@ import { NewUserComponent } from './user/new-user/new-user.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DetailProductsComponent } from './products/detail-products/detail-products.component';
 import { NotFoundComponent } from './util/not-found/not-found.component';
+import { D1Component } from './products/detail-products/d1/d1.component';
+import { D2Component } from './products/detail-products/d2/d2.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { NotFoundComponent } from './util/not-found/not-found.component';
     ListOrdersComponent,
     NewUserComponent,
     DetailProductsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    D1Component,
+    D2Component
   ],
   imports: [
     BrowserModule,

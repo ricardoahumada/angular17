@@ -3,10 +3,18 @@
 <pre>
     {{product|json}}
 </pre>
+<hr>
+<section>
+    <nav>
+        <a [routerLink]="'d1'">D1</a> | <a [routerLink]="'d2'">D2</a>
+    </nav>
+    <router-outlet></router-outlet>
+</section>
+<hr>
 <div>
-    <a [routerLink]="['/products/4']" >Saltar al 4</a>
+    <a [routerLink]="['/products/4']">Saltar al 4</a>
 </div>
 }
 @if(!product){
-    <div>No existe</div>
+<div>No existe</div>
 }
