@@ -20,5 +20,4 @@ export class ProjectListComponent implements OnInit {
   ngOnInit(): void {
     this.projects = this._projectService.getProjects();
   }
-  
 }

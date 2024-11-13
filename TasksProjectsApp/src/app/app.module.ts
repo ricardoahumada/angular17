@@ -11,6 +11,12 @@ import { FilterElementsPipe } from './pipes/filter-elements.pipe';
 import { DelayDirective } from './directives/delay.directive';
 import { FormatFrameDirective } from './directives/format-frame.directive';
 import { ProjectsService } from './services/projects.service';
+import { NotFoundComponent } from './utils/delete/not-found/not-found.component';
+import { AppRoutingModule } from './app-routing.module';
+import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
+import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
+import { ProjectTasksComponent } from './projects/project-detail/project-tasks/project-tasks.component';
+import { ProjectMembersComponent } from './projects/project-detail/project-members/project-members.component';
 
 @NgModule({
   declarations: [
@@ -18,14 +24,20 @@ import { ProjectsService } from './services/projects.service';
     ProjectListComponent,
     TaskListComponent,
     FilterElementsPipe,
-    FormatFrameDirective
+    FormatFrameDirective,
+    TaskDetailComponent,
+    ProjectDetailComponent,
+    ProjectTasksComponent,
+    ProjectMembersComponent
   ],
   imports: [
     BrowserModule,
     HeaderComponent,
     FormsModule,
     DeleteComponent,
-    DelayDirective
+    DelayDirective,
+    NotFoundComponent,
+    AppRoutingModule,
   ],
   providers: [ProjectsService],
   bootstrap: [AppComponent]

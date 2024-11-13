@@ -1,14 +1,16 @@
 import { PROJECTS } from '../data/projects';
 import { Project } from '../models/project';
+import { TasksService } from './tasks.service';
 
 /* @Injectable({
   providedIn: 'root',
 }) */
 export class ProjectsService {
 
-  constructor() {}
+  constructor(private _taskService: TasksService) {}
 
   private _projects: Project[] = PROJECTS;
+  private _currentPid: number = 0;
 
   getProjects(): Project[] {
     return this._projects;
@@ -30,6 +32,14 @@ export class ProjectsService {
       return true;
     }
     return false;
+  }
+
+  setCurrentProject(pid: number) {
+    this._currentPid = pid;
+  }
+
+  getCurrentProject(): Project | undefined {
+    return this._projects.find((aP) => aP.id == this._currentPid);
   }
 
 }
