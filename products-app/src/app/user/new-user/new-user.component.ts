@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'new-user',
@@ -7,6 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewUserComponent implements OnInit {
   constructor() { }
+
+  firstName: FormControl = new FormControl('Juan',[Validators.required, Validators.min(3)]);
+
+  myform: FormGroup = new FormGroup({
+    name: this.firstName
+  })
 
   ngOnInit(): void {
 

@@ -21,7 +21,8 @@ export class DetailProductsComponent  {
 
   pidS = toSignal(this._route.params.pipe(map(params => params['pid'])));
   productS = computed(() => this._productService.getAProduct(this.pidS()));
-  
+
+
 /* 
   ngOnInit(): void {
     console.log(this._route.snapshot);
