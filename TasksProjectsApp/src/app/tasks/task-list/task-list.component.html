@@ -4,6 +4,10 @@
     <input *appDelay="2" class="form-control" [ngModel]="filter_text()" (ngModelChange)="filter_text.set($event)"
         placeholder="Text to filter tasks">
     <hr>
+    <div>
+        <a [routerLink]="['new']" routerLinkActive="router-link-active"><i class="bi bi-calendar2-plus"></i></a>
+    </div>
+    <br>
     <table class="table table-striped">
         <thead class="table-dark">
             <tr>
