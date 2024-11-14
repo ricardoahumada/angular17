@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ProductsListComponent } from './products/products-list/products-list.component';
 import { MiComponentComponent } from './util/mi-component/mi-component.component';
-import { FormsModule } from '@angular/forms';
+import { EmailValidator, FormsModule } from '@angular/forms';
 import { RateComponent } from './util/rate/rate.component';
 import { FilterProductsPipe } from './pipes/filter-products.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
@@ -37,7 +37,8 @@ import { D2Component } from './products/detail-products/d2/d2.component';
     RateComponent,
     FilterProductsPipe,
     HighlightDirective,
-    AppRoutingModule
+    AppRoutingModule,
+    EmailValidator
   ],
   providers: [],
   bootstrap: [AppComponent]
