@@ -9,10 +9,16 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class NewUserComponent implements OnInit {
   constructor() { }
 
-  firstName: FormControl = new FormControl('Juan',[Validators.required, Validators.min(3)]);
+  name: FormControl = new FormControl('', [Validators.required, Validators.minLength(3)]);
 
   myform: FormGroup = new FormGroup({
-    name: this.firstName
+    name: new FormGroup({
+      firstName: this.name,
+      lastName: new FormControl('', [Validators.required, Validators.minLength(3)])
+    }),
+    email: new FormControl('', [Validators.email]),
+    password: new FormControl('', [Validators.minLength(8)]),
+    language: new FormControl('', [Validators.minLength(8)]),
   })
 
   ngOnInit(): void {
