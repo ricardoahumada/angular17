@@ -2,7 +2,7 @@
     <h2>Projects</h2>
 
     <input class="form-control" [(ngModel)]="filter_text" placeholder="text to filter projects">
-    
+
     <br>
     <div class="row row-cols-1 row-cols-md-2 g-4">
         <article *ngFor="let project of projects| filterElements:'name':filter_text" class="col">
@@ -15,6 +15,8 @@
                     <div>
                         <h6>Deadline:</h6> {{project.date | date: 'shortDate'}}
                     </div>
+                    <br>
+                    <a [routerLink]="['/projects',project.id]" class="card-link"><i class="bi bi-eye"></i></a>
                 </div>
             </div>
         </article>

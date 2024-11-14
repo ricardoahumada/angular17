@@ -7,11 +7,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Project } from 'src/app/models/project';
-import { User } from 'src/app/models/user';
-import { ProjectsService } from 'src/app/services/projects.service';
-import { UsersService } from 'src/app/services/users.service';
-import { DateValidator } from 'src/app/validators/date-validator';
+import { User } from '../../models/user';
+import { ProjectsService } from '../../services/projects.service';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-new-project',
@@ -27,7 +25,7 @@ export class NewProjectComponent implements OnInit {
   ) {}
 
   users: User[] = [];
-  team_members_arr: any[] = []; 
+  team_members_arr: FormArray = {} as FormArray;
 
   // TODO: define form model
 
