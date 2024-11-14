@@ -1,0 +1,42 @@
+<section>
+    <h2>Tasks</h2>
+    <br>
+    <input *appDelay="2" class="form-control" [ngModel]="filter_text()" (ngModelChange)="filter_text.set($event)"
+        placeholder="Text to filter tasks">
+    <hr>
+    <div>
+        <a [routerLink]="['new']" routerLinkActive="router-link-active"><i class="bi bi-calendar2-plus"></i></a>
+    </div>
+    <br>
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>tid</th>
+                <th>description</th>
+                <th>time</th>
+                <th>project</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(aTask of taksService.tasks()|filterElements:'description':filter_text(); track aTask.id){
+            <tr>
+                <td>{{aTask.id}}</td>
+                <td appFormatFrame>{{aTask.description}}</td>
+                <td>{{aTask.time}}</td>
+                <td>{{aTask.project}}</td>
+                <td>
+                    <app-delete [tid]="aTask.id" (delete_clicked)="deleteTask($event)"></app-delete>
+                </td>
+                <td><a [routerLink]="['/tasks/',aTask.id]" routerLinkActive="router-link-active"><i
+                            class="bi bi-eye"></i></a></td>
+            </tr>}@empty{
+            <tr>
+                <td>No tasks...</td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</section>
