@@ -19,15 +19,21 @@ import { LanguageValidator } from 'src/app/validators/language-validatior';
 export class NewUserComponent implements OnInit {
   constructor(private _fb: FormBuilder) { }
 
+  /**** Model driven ****/
+  // for this use formControl
   myform: FormGroup = {} as FormGroup;
-
   firstName = new FormControl('', [Validators.minLength(3)]);
   lastName = new FormControl('', Validators.required);
   email = new FormControl('', [Validators.email, Validators.required]);
 
   signUpForm: FormGroup = {} as FormGroup;
 
+  /**** For reactive value changes...observable ****/
+  searchField = new FormControl();
+  searches: string[] = [];
+
   ngOnInit(): void {
+    // for this use formControlName
     this.myform = new FormGroup({
       name: new FormGroup(
         {
@@ -41,6 +47,7 @@ export class NewUserComponent implements OnInit {
       language: new FormControl('', LanguageValidator.validateLanguage),
     });
 
+    /**** using form builder ****/
     this.signUpForm = this._fb.group({
       name: this._fb.group({
         firstname: ['', [Validators.required, Validators.minLength(10)]],
@@ -57,6 +64,9 @@ export class NewUserComponent implements OnInit {
       password: ['', [Validators.minLength(8), Validators.required]],
       language: [''],
     });
+
+
+    /**** Using value changes...observable ****/
 
     this.searchField.valueChanges
       .pipe(debounceTime(400), distinctUntilChanged())
@@ -75,9 +85,10 @@ export class NewUserComponent implements OnInit {
     }
   }
 
+  
+  /* **************************** */
 
-
-  /* template driven */
+  /**** template driven ****/
   model: Signup = new Signup();
   @ViewChild('f')
   sform: any;
@@ -87,7 +98,4 @@ export class NewUserComponent implements OnInit {
     console.log('onSubmitTemplate form:', this.sform);
   }
 
-  /* reactive */
-  searchField = new FormControl();
-  searches: string[] = [];
 }
