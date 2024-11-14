@@ -11,6 +11,8 @@ import { FilterElementsPipe } from './pipes/filter-elements.pipe';
 import { DelayDirective } from './directives/delay.directive';
 import { FormatFrameDirective } from './directives/format-frame.directive';
 import { ProjectsService } from './services/projects.service';
+import { NewTaskComponent } from './tasks/new-task/new-task.component';
+import { NewProjectComponent } from './projects/new-project/new-project.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ProjectsService } from './services/projects.service';
     ProjectListComponent,
     TaskListComponent,
     FilterElementsPipe,
-    FormatFrameDirective
+    FormatFrameDirective,
+    NewTaskComponent,
+    NewProjectComponent
   ],
   imports: [
     BrowserModule,

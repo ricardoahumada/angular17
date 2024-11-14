@@ -1,0 +1,29 @@
+<section>
+    <h2>New Project</h2>
+    <form novalidate>
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label>Deadline</label>
+            <input type="date" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label>Team members</label>            
+            <div class="form-check" *ngFor="let item of team_members_arr.controls; let i = index">
+                <input class="form-check-input" type="checkbox" [value]="item.value.uid" [id]="'check'+item.value.uid" [checked]="item.value.selected"
+                (click)="memberChecked(item.value.uid)">
+                <label class="form-check-label" [for]="'check'+item.value">
+                    {{getUserById(item.value.uid).name}}
+                </label>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</section>
