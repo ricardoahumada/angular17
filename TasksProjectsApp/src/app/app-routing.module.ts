@@ -7,8 +7,9 @@ import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
 import { ProjectTasksComponent } from './projects/project-detail/project-tasks/project-tasks.component';
 import { ProjectMembersComponent } from './projects/project-detail/project-members/project-members.component';
-import { NewProjectComponent } from './projects/new-project/new-project.component';
 import { NewTaskComponent } from './tasks/new-task/new-task.component';
+import { NewProjectComponent } from './projects/new-project/new-project.component';
+import { NewTaskSgnComponent } from './tasks/new-task-sgn/new-task-sgn.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'projects', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
     component: TaskListComponent,
   },
   { path: 'tasks/new', component: NewTaskComponent },
+  { path: 'tasks/new-sgn', component: NewTaskSgnComponent },
   { path: 'tasks/:tid', component: TaskDetailComponent },
   {
     path: 'projects', component: ProjectListComponent,

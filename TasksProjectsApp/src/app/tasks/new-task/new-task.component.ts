@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Task } from '../../models/task';
 import { TasksService } from '../../services/tasks.service';
 import { Router } from '@angular/router';
 
@@ -14,10 +15,13 @@ export class NewTaskComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  //TDOD: generate template driven form
-  
+  @ViewChild('nTaskForm')
+  ntform: any;
+  newTask: Task = {} as Task;
+
   onSubmitTask() {
-    //TDOD: save new task
+    this._taskServ.addATask(this.newTask);
+    this._router.navigate(['/tasks'])
   }
 
 }

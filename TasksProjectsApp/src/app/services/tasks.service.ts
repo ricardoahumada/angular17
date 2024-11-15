@@ -17,6 +17,12 @@ export class TasksService {
     return this.tasks().find((aT) => aT.id == tid);
   }
 
+  addATask(task: Task): Task {
+    task.id = this.tasks().length;
+    this.tasks.set([...this.tasks(), task]);
+    return task;
+  }
+
   deleteATask(tid: number): boolean {
     this.tasks.set(this.tasks().filter((aT) => aT.id != tid));
     return true;

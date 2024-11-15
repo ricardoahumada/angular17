@@ -1,14 +1,12 @@
-import { Injectable } from '@angular/core';
 import { PROJECTS } from '../data/projects';
 import { Project } from '../models/project';
-import { TasksService } from './tasks.service';
 
-@Injectable({
+/* @Injectable({
   providedIn: 'root',
-})
+}) */
 export class ProjectsService {
 
-  constructor(private _taskService: TasksService) {}
+  constructor() { }
 
   private _projects: Project[] = PROJECTS;
   private _currentPid: number = 0;
@@ -28,7 +26,7 @@ export class ProjectsService {
 
   addProject(aP: Project): boolean {
     if (aP) {
-      aP.id = this._projects.length;
+      aP.id = this._projects.length + 10;
       this._projects.push(aP);
       return true;
     }
