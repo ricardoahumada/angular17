@@ -14,24 +14,34 @@ export class ProductsListHttpComponent implements OnInit, OnDestroy {
   constructor(public productService: ProductHTTPService) {
   }
 
-  $obsProd:any = {};
+  $obsProd: any = {};
 
   ngOnInit(): void {
-    this.$obsProd = this.productService.getProducts().subscribe(data => {
-      console.log('Recibbidos productos en componente: ', data);
-      this.productos = data;
-    });
+    this.$obsProd = this.productService.getProducts().subscribe(
+      {
+        next: data => {
+          this.errorMess = false;
+          console.log('Recibbidos productos en componente: ', data);
+          this.productos = data;
+        },
+        error: errorVal => this.errorMess = true,
+        complete: () => console.log('Observable completed')
+
+      }
+
+    );
   }
 
   texto: WritableSignal<string> = signal('');
   productos: Array<Product> = [];
+  errorMess: boolean = false;
 
   updateStars(stars: number, pid: number | undefined) {
     // if (pid) this.productService.updateStars(pid, stars);
   }
 
   ngOnDestroy(): void {
-    if(this.$obsProd) this.$obsProd.unsubscribe();
+    if (this.$obsProd) this.$obsProd.unsubscribe();
   }
 
 }

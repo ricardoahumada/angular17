@@ -2,6 +2,9 @@
 
 <div><input class="form-control" highlight [ngModel]="texto()" (ngModelChange)="texto.set($event)" /></div>
 <br>
+@if(errorMess){
+<div>ooops...ha habido un error</div>}
+<br>
 <section>
     <table class="table table-striped">
         <thead class="table-dark">
