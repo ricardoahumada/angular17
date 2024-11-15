@@ -19,12 +19,12 @@
 
         <div class="form-group">
             <label>Email</label>
-            <input formControlName="email"  type="email" class="form-control">
+            <input formControlName="email" type="email" class="form-control">
         </div>
 
         <div class="form-group">
             <label>Password</label>
-            <input formControlName="password"  type="password" class="form-control" >
+            <input formControlName="password" type="password" class="form-control">
         </div>
 
         <div class="form-group">
@@ -35,11 +35,11 @@
                 <option value="en">en</option>
             </select>
         </div>
-        
+
         <div class="form-group">
             <button type="submit" class="btn btn-primary" [disabled]="!myform.valid">Submit</button>
         </div>
-        
+
     </form>
 </section>
 
@@ -63,4 +63,53 @@
 <pre>{{myform?.status}}</pre>
 <pre>{{myform?.errors}}</pre>
 
+<hr>
+<hr>
 
+<section>
+    <h2>Signup form Template</h2>
+    <form #newUserForm="ngForm" (ngSubmit)="submitTemplateForm()">
+        <fieldset>
+            <div class="form-group">
+                <label>Name</label>
+                <input [(ngModel)]="model.name" name="firstName" type="text" class="form-control" required minlength="3"
+                    maxlength="20">
+            </div>
+
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" [(ngModel)]="model.surname" name="lastName" class="form-control" required>
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" [(ngModel)]="model.email" name="email" class="form-control" required appEmailvalidator>
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" [(ngModel)]="model.password" name="password" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label>Language</label>
+            <select class="form-control" [(ngModel)]="model.language" name="language" required>
+                <option value="" disabled selected>Please select a language</option>
+                <option value="es">es</option>
+                <option value="en">en</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" [disabled]="!newUserForm.valid">Submit</button>
+        </div>
+
+    </form>
+</section>
+
+<pre>{{model|json}}</pre>
+
+<pre>{{newUserForm?.value|json}}</pre>
+<pre>{{newUserForm?.status|json}}</pre>
+<pre>{{newUserForm?.errors|json}}</pre>
