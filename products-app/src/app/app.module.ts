@@ -18,6 +18,7 @@ import { MiComponentComponent } from './util/mi-component/mi-component.component
 import { NotFoundComponent } from './util/not-found/not-found.component';
 import { RateComponent } from './util/rate/rate.component';
 import { ProductsListHttpComponent } from './products/productshttp-list/products-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ProductsListHttpComponent } from './products/productshttp-list/products
     HighlightDirective,
     AppRoutingModule,
     EmailvalidatorDirective,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

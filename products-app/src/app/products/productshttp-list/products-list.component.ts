@@ -8,25 +8,30 @@ import { ProductHTTPService } from '../../services/producthttp.service';
   selector: 'products-http-list',
   templateUrl: './products-list.component.html',
   styleUrl: './products-list.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsListHttpComponent implements OnInit, OnDestroy {
 
   constructor(public productService: ProductHTTPService) {
   }
 
+  $obsProd:any = {};
+
   ngOnInit(): void {
+    this.$obsProd = this.productService.getProducts().subscribe(data => {
+      console.log('Recibbidos productos en componente: ', data);
+      this.productos = data;
+    });
   }
 
   texto: WritableSignal<string> = signal('');
-  productos: Array<Product> = this.productService.getProducts();
-
+  productos: Array<Product> = [];
 
   updateStars(stars: number, pid: number | undefined) {
     // if (pid) this.productService.updateStars(pid, stars);
   }
 
   ngOnDestroy(): void {
+    if(this.$obsProd) this.$obsProd.unsubscribe();
   }
 
 }
