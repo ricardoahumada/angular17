@@ -1,15 +1,15 @@
 <section>
     <h2>Signup form</h2>
-    <form novalidate [formGroup]="myform">
+    <form novalidate [formGroup]="myform" (ngSubmit)="submitForm()">
         <fieldset formGroupName="name">
             <div class="form-group">
                 <label>Name</label>
-                <input formControlName="firstName" type="text" class="form-control" required>
+                <input formControlName="firstName" type="text" class="form-control">
             </div>
 
             <div class="form-group">
                 <label>Last Name</label>
-                <input formControlName="lastName" type="text" class="form-control" required>
+                <input formControlName="lastName" type="text" class="form-control">
             </div>
 
             @if(!myform.get('name')?.valid){<div>
@@ -19,12 +19,12 @@
 
         <div class="form-group">
             <label>Email</label>
-            <input formControlName="email"  type="email" class="form-control" required>
+            <input formControlName="email"  type="email" class="form-control">
         </div>
 
         <div class="form-group">
             <label>Password</label>
-            <input formControlName="password"  type="password" class="form-control" required>
+            <input formControlName="password"  type="password" class="form-control" >
         </div>
 
         <div class="form-group">
@@ -37,7 +37,7 @@
         </div>
         
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!myform.valid">Submit</button>
         </div>
         
     </form>
@@ -51,8 +51,16 @@
 <pre>{{myform.get('name')?.pristine}}</pre>
 <pre>{{myform.get('name')?.dirty}}</pre>
 <pre>{{myform.get('name')?.touched}}</pre>
+<pre>{{myform.get('name')?.errors|json}}</pre>
+
+<h4>Language</h4>
+<pre>{{myform.get('language')?.value|json}}</pre>
+<pre>{{myform.get('language')?.status}}</pre>
+<pre>{{myform.get('language')?.errors|json}}</pre>
 
 <h4>myForm</h4>
 <pre>{{myform?.value|json}}</pre>
 <pre>{{myform?.status}}</pre>
 <pre>{{myform?.errors}}</pre>
+
+
