@@ -18,10 +18,6 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // console.log('Inicializnado....');
-    // this.productos = this.productService.getProducts();
-    // this.productos = this.productService.productList();
-    // this.productlist.set(this.productos);
     this.timer = setTimeout(() => {
       console.log('Este es un mensaje diferido...');
     }, 1000);

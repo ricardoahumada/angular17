@@ -17,6 +17,7 @@ import { NewUserComponent } from './user/new-user/new-user.component';
 import { MiComponentComponent } from './util/mi-component/mi-component.component';
 import { NotFoundComponent } from './util/not-found/not-found.component';
 import { RateComponent } from './util/rate/rate.component';
+import { ProductsListHttpComponent } from './products/productshttp-list/products-list.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RateComponent } from './util/rate/rate.component';
     DetailProductsComponent,
     NotFoundComponent,
     D1Component,
-    D2Component
+    D2Component,
+    ProductsListHttpComponent
   ],
   imports: [
     BrowserModule,

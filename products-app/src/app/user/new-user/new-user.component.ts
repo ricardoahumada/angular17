@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LanguageValidator } from '../../validators/language-validatior';
 import { Signup } from '../../models/signup';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 
 @Component({
   selector: 'new-user',
@@ -11,11 +12,11 @@ import { Signup } from '../../models/signup';
 export class NewUserComponent implements OnInit {
   constructor() { }
 
-  name: FormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
+  nameAlone: FormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
 
   myform: FormGroup = new FormGroup({
     name: new FormGroup({
-      firstName: this.name,
+      firstName: this.nameAlone,
       lastName: new FormControl('', [Validators.required, Validators.minLength(3)])
     }, [this.nameValidator()]),
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -24,6 +25,13 @@ export class NewUserComponent implements OnInit {
   })
 
   ngOnInit(): void {
+    this.nameAlone.valueChanges.pipe(
+      debounceTime(400),
+      distinctUntilChanged()
+    )
+    .subscribe(value =>{
+      console.log('nameAlone changed:', value);
+    });
 
   }
 
@@ -44,14 +52,14 @@ export class NewUserComponent implements OnInit {
 
   /* *** template **** */
 
-  model: Signup = new Signup();
+  signupModel: Signup = new Signup();
 
   @ViewChild('newUserForm')
   newUserF:any;
 
   submitTemplateForm(){
     if (this.newUserF.valid) {
-      console.log('Guardar objeto template:', this.model);
+      console.log('Guardar objeto template:', this.signupModel);
     }
   }
 
