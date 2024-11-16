@@ -20,7 +20,8 @@ import { ProjectMembersComponent } from './projects/project-detail/project-membe
 import { NewProjectComponent } from './projects/new-project/new-project.component';
 import { NewTaskComponent } from './tasks/new-task/new-task.component';
 import { NewTaskSgnComponent } from './tasks/new-task-sgn/new-task-sgn.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { LogginInterceptor } from './interceptors/loggin.interceptor';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,9 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LogginInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
