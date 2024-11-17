@@ -1,35 +1,33 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { ProjectListComponent } from './projects/project-list/project-list.component';
-import { TaskListComponent } from './tasks/task-list/task-list.component';
-import { HeaderComponent } from './structure/header/header.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DeleteComponent } from './utils/delete/delete.component';
-import { FilterElementsPipe } from './pipes/filter-elements.pipe';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { DelayDirective } from './directives/delay.directive';
 import { FormatFrameDirective } from './directives/format-frame.directive';
-import { ProjectsService } from './services/projects.service';
-import { NotFoundComponent } from './utils/delete/not-found/not-found.component';
-import { AppRoutingModule } from './app-routing.module';
-import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
-import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
-import { ProjectTasksComponent } from './projects/project-detail/project-tasks/project-tasks.component';
-import { ProjectMembersComponent } from './projects/project-detail/project-members/project-members.component';
-import { NewProjectComponent } from './projects/new-project/new-project.component';
-import { NewTaskComponent } from './tasks/new-task/new-task.component';
-import { NewTaskSgnComponent } from './tasks/new-task-sgn/new-task-sgn.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { LogginInterceptor } from './interceptors/loggin.interceptor';
-import { SSEComponent } from './sse/sse/sse.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { CustomCardComponent } from './utils/custom-card/custom-card.component';
 import { ContainerForDynamicComponent } from './dynamic/container-for-dynamic/container-for-dynamic.component';
-import { FeatureFlagsService } from './feature-flags/feature-flags.service';
-
-const featureFactory = (featureFlagsService: FeatureFlagsService) => () => featureFlagsService.loadConfig();
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { LogginInterceptor } from './interceptors/loggin.interceptor';
+import { FilterElementsPipe } from './pipes/filter-elements.pipe';
+import { NewProjectComponent } from './projects/new-project/new-project.component';
+import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
+import { ProjectMembersComponent } from './projects/project-detail/project-members/project-members.component';
+import { ProjectTasksComponent } from './projects/project-detail/project-tasks/project-tasks.component';
+import { ProjectListComponent } from './projects/project-list/project-list.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SSEComponent } from './sse/sse/sse.component';
+import { HeaderComponent } from './structure/header/header.component';
+import { NewTaskSgnComponent } from './tasks/new-task-sgn/new-task-sgn.component';
+import { NewTaskComponent } from './tasks/new-task/new-task.component';
+import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
+import { TaskListComponent } from './tasks/task-list/task-list.component';
+import { CustomCardComponent } from './utils/custom-card/custom-card.component';
+import { DeleteComponent } from './utils/delete/delete.component';
+import { NotFoundComponent } from './utils/delete/not-found/not-found.component';
+import { PreviewTaskComponent } from './tasks/preview-task/preview-task.component';
+import { TaskDetailForPreviewComponent } from './tasks/task-detail-for-preview/task-detail.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +43,8 @@ const featureFactory = (featureFlagsService: FeatureFlagsService) => () => featu
     NewProjectComponent,
     NewTaskComponent,
     NewTaskSgnComponent,
+    TaskDetailForPreviewComponent,
+    PreviewTaskComponent,
     SSEComponent,
     SignInComponent,
     CustomCardComponent,
@@ -64,7 +64,6 @@ const featureFactory = (featureFlagsService: FeatureFlagsService) => () => featu
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LogginInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: APP_INITIALIZER, useFactory: featureFactory, deps: [FeatureFlagsService], multi: true, }
   ],
   bootstrap: [AppComponent]
 })
