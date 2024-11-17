@@ -7,7 +7,7 @@ import { MyLibService } from 'my-lib';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'customer-app';
+  title = 'Customer App';
 
   constructor(private _myLibSrv: MyLibService) {
   }
