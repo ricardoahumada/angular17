@@ -8,6 +8,7 @@ import { NotFoundComponent } from './util/not-found/not-found.component';
 import { D1Component } from './products/detail-products/d1/d1.component';
 import { D2Component } from './products/detail-products/d2/d2.component';
 import { ProductsListHttpComponent } from './products/productshttp-list/products-list.component';
+import { SSEComponent } from './sse/sse.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full' },
@@ -23,6 +24,7 @@ const routes: Routes = [
   },
   { path: 'orders', component: ListOrdersComponent },
   { path: 'users/new', component: NewUserComponent },
+  { path: 'sse', component: SSEComponent },
   { path: '**', component: NotFoundComponent },
 ];
 

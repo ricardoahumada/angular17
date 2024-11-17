@@ -14,6 +14,7 @@
                 <th>imagen</th>
                 <th>valoración</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,9 @@
                 <td><app-rate [rating]="prod.stars?prod.stars:0"
                         (starClicked)="updateStars($event, prod.id)"></app-rate></td>
                 <td><a [routerLink]="[prod.id]">Ver detalle</a></td>
+                <td>
+                    <button type="button" class="btn btn-secondary mb-3" (click)="delete(prod.id)"><i class="bi bi-trash3"></i></button>
+                </td>
             </tr>
             }
         </tbody>

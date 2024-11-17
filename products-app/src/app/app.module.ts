@@ -19,6 +19,7 @@ import { NotFoundComponent } from './util/not-found/not-found.component';
 import { RateComponent } from './util/rate/rate.component';
 import { ProductsListHttpComponent } from './products/productshttp-list/products-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SSEComponent } from './sse/sse.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     NotFoundComponent,
     D1Component,
     D2Component,
-    ProductsListHttpComponent
+    ProductsListHttpComponent,
+    SSEComponent
   ],
   imports: [
     BrowserModule,

@@ -26,7 +26,6 @@ export class ProductsListHttpComponent implements OnInit, OnDestroy {
         },
         error: errorVal => this.errorMess = true,
         complete: () => console.log('Observable completed')
-
       }
 
     );
@@ -38,6 +37,12 @@ export class ProductsListHttpComponent implements OnInit, OnDestroy {
 
   updateStars(stars: number, pid: number | undefined) {
     // if (pid) this.productService.updateStars(pid, stars);
+  }
+
+  delete(id: number | undefined) {
+    if(id) this.productService.deleteProduct(id).subscribe(isOK => {
+      console.log('Eliminado:', isOK);
+    })
   }
 
   ngOnDestroy(): void {
