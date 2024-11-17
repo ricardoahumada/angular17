@@ -1,0 +1,27 @@
+<section>
+    <h2>New Task</h2>
+    <form [formGroup]="newTaskForm" (ngSubmit)="onSubmitTask()">
+        <div class="form-group">
+            <label>Description</label>
+            <input formControlName="description" type="text" minlength="3" maxlength="20" name="description"
+                class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label>Time</label>
+            <input type="number" formControlName="time" min="1" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label>Project</label>
+            <input type="number" formControlName="project" min="1" class="form-control" required>
+        </div>
+
+        <div>Task to create:{{taskSummary()|json}}</div>
+
+        <br>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" [disabled]="!newTaskForm.valid">Submit</button>
+        </div>
+    </form>
+</section>
