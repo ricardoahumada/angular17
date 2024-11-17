@@ -29,6 +29,7 @@ import { DeleteComponent } from './utils/delete/delete.component';
 import { NameEditorComponent } from './utils/name-editor/name-editor.component';
 import { NotFoundComponent } from './utils/not-found/not-found.component';
 import { ConsumerComponent } from './observables/consumer/consumer.component';
+import { SSEComponent } from './sse/sse.component';
 
 export function setupTranslateFactory(service: TranslateService): Function {
   return () => service.use('en');
@@ -56,7 +57,8 @@ const featureFactory = (featureFlagsService: FeatureFlagsService) => () =>
     PreviewTaskComponent,
     CustomCardComponent,
     ContainerForDynamicComponent,
-    ConsumerComponent
+    ConsumerComponent,
+    SSEComponent
   ],
   imports: [
     BrowserModule,

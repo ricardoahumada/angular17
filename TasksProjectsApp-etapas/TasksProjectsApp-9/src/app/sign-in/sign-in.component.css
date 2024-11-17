@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+
+.sign-in-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.tip {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+form {
+  width: 350px;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  border: none;
+  background: rgba(0, 0, 0, 0.003);
+  box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+  margin: 0 0 16px 0;
+  font-size: 1em;
+  border-left: 2px solid transparent;
+}
+
+input::input-placeholder {
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+input.ng-invalid.ng-touched {
+  border-left: 2px solid red;
+}
+
+.input-errors {
+  color: red;
+  margin: 0 0 16px 0;
+  padding: 0 0 0 16px;
+  font-size: 1em;
+}
+
+
+.sign-in-error {
+  color: red;
+  padding: 16px 0;
+  font-size: 20px;
+  text-align: center;
+}

@@ -1,0 +1,21 @@
+<section>
+    <h2>Projects</h2>
+    
+    <br>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <article *ngFor="let project of projects" class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{project.name}}</h5>
+                    <div>
+                        <h6>Id:</h6> {{project.id}}
+                    </div>
+                    <div>
+                        <h6>Deadline:</h6> {{project.date | date: 'shortDate'}}
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+</section>

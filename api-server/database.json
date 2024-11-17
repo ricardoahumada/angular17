@@ -4,19 +4,10 @@
       "id": "flags",
       "tasks": true,
       "projects": true,
-      "new-feature":true
+      "new-feature": true
     }
   ],
   "products": [
-    {
-      "id": 1,
-      "name": "Leaf Rake serv",
-      "code": "GUN-0611",
-      "image": "LeafRake.png",
-      "date": "2022-11-14T18:25:43.511Z",
-      "price": 19.95,
-      "stars": 3
-    },
     {
       "id": 2,
       "name": "Garden Cart serv",
@@ -59,19 +50,28 @@
       "id": 1,
       "name": "Web Client a",
       "date": "2022-12-09T23:00:00.000Z",
-      "team_members": [1, 3]
+      "team_members": [
+        1,
+        3
+      ]
     },
     {
       "id": 2,
       "name": "App Client b",
       "date": "2022-11-29T23:00:00.000Z",
-      "team_members": [1, 2]
+      "team_members": [
+        1,
+        2
+      ]
     },
     {
       "id": 3,
       "name": "App Client c",
       "date": "2023-01-29T23:00:00.000Z",
-      "team_members": [2, 3]
+      "team_members": [
+        2,
+        3
+      ]
     },
     {
       "id": 4,
@@ -111,7 +111,6 @@
       "project": 1
     }
   ],
-
   "orders": [
     {
       "key": 1,

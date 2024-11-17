@@ -3,6 +3,9 @@ const bodyParser = require("body-parser");
 const jsonServer = require("json-server");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
+// const { EventEmitter } = require("stream");
+
+// const Stream = new EventEmitter();
 
 const server = jsonServer.create();
 const router = jsonServer.router("./database.json");
@@ -71,6 +74,21 @@ server.use(/^(?!\/auth).*$/, (req, res, next) => {
     res.status(status).json({ status, message });
   }
 });
+
+/* server.get('/data-sse', (req, res) => {
+  res.writeHead(200.{
+    'Content—Type': 'text/event—stream',
+    'Cache—Control': 'no—cache',
+    Connection: 'keep-alive',
+  });
+  Stream.on(push, (event, data) => {
+    res.write('event:' + String(event) + '\n+data:' + JSON.stringify(data) + '\n\n')
+  });
+}); */
+
+/* setInterval(function () {
+  Stream.emit('push', 'message', { msg: 'it works!' });
+}, 10000); */
 
 server.use(router);
 
