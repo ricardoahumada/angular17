@@ -32,7 +32,6 @@ export class TasksHttpService {
       .pipe(
         tap((data) => {
           console.log('TasksHttpService.getAllTasks received:', data);
-          
           this._tasks = data;
         }),
         catchError(HttpErrorHandler.errorHandl)
