@@ -11,20 +11,22 @@ import { NewTaskComponent } from './tasks/new-task/new-task.component';
 import { NewProjectComponent } from './projects/new-project/new-project.component';
 import { NewTaskSgnComponent } from './tasks/new-task-sgn/new-task-sgn.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { CanActivateGuard } from './guards/can-activate.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'projects', pathMatch: 'full' },
   { path: 'signin', component: SignInComponent, },
-  { path: 'tasks', component: TaskListComponent, },
+  { path: 'tasks', component: TaskListComponent, canActivate:[CanActivateGuard]},
   { path: 'tasks/new', component: NewTaskComponent },
   { path: 'tasks/new-sgn', component: NewTaskSgnComponent },
   { path: 'tasks/:tid', component: TaskDetailComponent },
   {
-    path: 'projects', component: ProjectListComponent,
+    path: 'projects', component: ProjectListComponent, canActivate:[CanActivateGuard]
   },
   { path: 'projects/new', component: NewProjectComponent },
   {
     path: 'projects/:pid', component: ProjectDetailComponent,
+    canActivateChild: [CanActivateGuard],
     children: [
       { path: '', redirectTo: 'tasks', pathMatch: 'full' },
       { path: 'tasks', component: ProjectTasksComponent },
