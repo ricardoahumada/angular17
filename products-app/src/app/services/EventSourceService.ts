@@ -30,16 +30,17 @@ export class EventSourceService {
         this.eventSource = this.getEventSource(this.url, this.options);
 
         return new Observable((subscriber: Subscriber<Event>) => {
-            this.eventSource.onerror = error => {
-                this.zone.run(() => subscriber.error(error));
-            }
-
             this.eventSource.onmessage = event => {
                 var dataobj = JSON.parse(event.data);
                 console.log('EventSourceService:', dataobj);
-                // subscriber.next(dataobj);
-                this.zone.run(() => subscriber.next(dataobj));
+                subscriber.next(dataobj);
+                // this.zone.run(() => subscriber.next(dataobj));
             }
+
+            this.eventSource.onerror = error => {
+                // this.zone.run(() => subscriber.error(error));
+            }
+
         });
     }
 
