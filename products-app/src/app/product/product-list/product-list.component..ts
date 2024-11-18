@@ -1,7 +1,8 @@
 import { Component, computed, effect, OnInit, Signal, signal, WritableSignal } from '@angular/core';
-import { Observable, Observer } from 'rxjs';
+import { combineLatest, map, Observable, Observer, SubscriptionLike, switchMap } from 'rxjs';
 import { IProduct } from 'src/app/models/iproduct';
 import { Product } from 'src/app/models/product';
+import { EventSourceService } from 'src/app/services/EventSourceService';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -19,13 +20,14 @@ export class ProductListComponent implements OnInit {
 
   products: Array<IProduct> = [];
 
-  constructor(private _productsService: ProductsService) { 
-    effect(()=>{
+  constructor(private _productsService: ProductsService, private eventSourceService: EventSourceService) {
+    effect(() => {
       console.log("Effect: The count is: ", this.count());
     })
   }
 
   private $productsObs: any = {};
+  private $eventSourceSubscription: SubscriptionLike | null = null;
 
 
   count: WritableSignal<number> = signal(0);
@@ -37,17 +39,33 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     console.log('ProductListComponent count:', this.count());
     // this.products=this._productsService.getProducts();
-    this.$productsObs.$productsObs = this._productsService
-      .getProductsFromAPI()
-      .subscribe({
-        next: (data) => {
-          this.products = data;
-        },
-        error: (err) => {
-          console.log('error:', err);
-        },
-        complete: () => console.info('complete'),
-      });
+    /* this.$productsObs = this._productsService.getProductsFromAPI().subscribe({
+      next: (data) => {
+        this.products = data;
+        this.$eventSourceSubscription = this.eventSourceService.
+          getEvents().subscribe(data => {
+            console.log('SSE data: ', data);
+            const prod: any = data;
+            this.products = [...this.products, prod];
+          });
+      },
+      error: (err) => {
+        console.log('error:', err);
+      },
+      complete: () => console.info('complete'),
+    }); */
+
+    this.$productsObs = combineLatest([
+      this._productsService.getProductsFromAPI(),
+      this.eventSourceService.getEvents()
+    ]).pipe(map(([pl, ep]: [any, any]) => {
+      console.log('pl-ep:', pl, ep);
+      pl.push(ep);
+      return pl;
+    })).subscribe(data => {
+      console.log('data:', data);
+      this.products = [...data];
+    });
   }
 
   products2: Product[] = [new Product()];
@@ -76,5 +94,7 @@ export class ProductListComponent implements OnInit {
 
   ngOnDestroy() {
     this.$productsObs.unsubscribe();
+    if (this.$eventSourceSubscription) this.$eventSourceSubscription.unsubscribe();
+    this.eventSourceService.close();
   }
 }

@@ -101,7 +101,7 @@ export class NewUserComponent implements OnInit {
 
   /* **************************** */
 
-  ConfirmedValidator(controlName: string, matchingControlName: string) {
+  /* ConfirmedValidator(controlName: string, matchingControlName: string) {
     return (formGroup: FormGroup) => {
       const control = formGroup.controls[controlName];
       const matchingControl = formGroup.controls[matchingControlName];
@@ -115,6 +115,6 @@ export class NewUserComponent implements OnInit {
         matchingControl.setErrors(null);
       }
     };
-  }
+  } */
 
 }

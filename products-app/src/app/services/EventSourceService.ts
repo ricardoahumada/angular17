@@ -9,7 +9,7 @@ const productToReturn = {
     "date": "2024-11-18",
     "price": 9.95,
     "stars": 3
-  }
+}
 
 @Injectable({
     providedIn: 'root'
@@ -30,15 +30,20 @@ export class EventSourceService {
         this.eventSource = this.getEventSource(this.url, this.options);
 
         return new Observable((subscriber: Subscriber<Event>) => {
-            this.eventSource.onerror = error => {
-                this.zone.run(() => subscriber.error(error));
-            }
 
             this.eventSource.onmessage = event => {
                 var dataobj = JSON.parse(event.data);
                 console.log('EventSourceService:', dataobj);
                 // subscriber.next(dataobj);
                 this.zone.run(() => subscriber.next(dataobj));
+            }
+
+            this.eventSource.addEventListener('<eventName>', data => {
+                this.zone.run(() => subscriber.next(data));
+            });
+
+            this.eventSource.onerror = error => {
+                this.zone.run(() => subscriber.error(error));
             }
         });
     }
