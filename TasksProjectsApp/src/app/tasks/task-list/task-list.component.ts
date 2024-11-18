@@ -33,4 +33,10 @@ export class TaskListComponent {
     this._tasksService.deleteATask(tid);
   }
 
+
+  showPreview(){
+    console.log('Cargar dinamicamente preview...');
+    
+  }
+
 }
