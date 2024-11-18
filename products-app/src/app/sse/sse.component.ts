@@ -15,8 +15,7 @@ export class SSEComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.$eventSourceSubscription = this.eventSourceService.
-      getEvents().subscribe(data => {
+    this.$eventSourceSubscription = this.eventSourceService.getEvents().subscribe(data => {
         console.log('SSEComponent: ', data);
         this.dataList = [...this.dataList, data];
       });
