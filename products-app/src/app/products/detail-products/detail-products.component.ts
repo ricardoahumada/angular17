@@ -1,8 +1,9 @@
-import { Component, computed } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { Component, computed, effect, signal } from '@angular/core';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map } from 'rxjs';
+import { map, switchMap } from 'rxjs';
 import { ProductService } from '../../services/product.service';
+import { ProductHTTPService } from '../../services/producthttp.service';
 
 @Component({
   selector: 'app-detail-products',
@@ -11,8 +12,10 @@ import { ProductService } from '../../services/product.service';
 })
 export class DetailProductsComponent {
 
-  constructor(private _route: ActivatedRoute, private _productService: ProductService, private _router: Router) {
-    
+  constructor(private _route: ActivatedRoute, private _productService: ProductHTTPService, private _router: Router) {
+    /* effect(() => {
+      this.getAProduct();
+    }) */
   }
 
   /* pid = 0;
@@ -20,7 +23,24 @@ export class DetailProductsComponent {
    */// $paramsSubs: any = null;
 
   pidS = toSignal(this._route.params.pipe(map(params => params['pid'])));
-  productS = computed(() => this._productService.getAProduct(this.pidS()));
+  // productS = computed(() => this._productService.getAProduct(this.pidS()));
+  // productS = signal({});
+
+  /* ngOnInit(): void {
+    this.getAProduct();
+  } */
+
+  /* getAProduct() {
+    this._productService.getAProduct(this.pidS()).subscribe(data => {
+      this.productS.set(data);
+    });
+  } */
+
+  productS$ = toObservable(this.pidS).pipe(
+    switchMap(pidS => this._productService.getAProduct(pidS))
+  )
+  productS = toSignal(this.productS$);
+
 
   /* 
     ngOnInit(): void {
