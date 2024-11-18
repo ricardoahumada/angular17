@@ -13,6 +13,7 @@ import { NewTaskSgnComponent } from './tasks/new-task-sgn/new-task-sgn.component
 import { SignInComponent } from './sign-in/sign-in.component';
 import { CanActivateGuard } from './guards/can-activate.guard';
 import { TasksResolver } from './resolvers/tasks.resolver';
+import { ContainerForDynamicComponent } from './dynamic/container-for-dynamic/container-for-dynamic.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'projects', pathMatch: 'full' },
@@ -34,6 +35,7 @@ const routes: Routes = [
       { path: 'members', component: ProjectMembersComponent },
     ],
   },
+  { path: 'dynamic', component: ContainerForDynamicComponent },
   { path: '**', component: NotFoundComponent },
 ];
 

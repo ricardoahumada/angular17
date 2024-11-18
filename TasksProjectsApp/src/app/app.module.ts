@@ -24,6 +24,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LogginInterceptor } from './interceptors/loggin.interceptor';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { ContainerForDynamicComponent } from './dynamic/container-for-dynamic/container-for-dynamic.component';
+import { CustomCardComponent } from './utils/delete/custom-card/custom-card.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     NewProjectComponent,
     NewTaskComponent,
     NewTaskSgnComponent,
-    SignInComponent
+    SignInComponent,
+    ContainerForDynamicComponent,
+    CustomCardComponent
   ],
   imports: [
     BrowserModule,
