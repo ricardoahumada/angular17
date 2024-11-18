@@ -1,0 +1,15 @@
+<h3>Detalle del producto: {{pidS()}}</h3>
+<pre>
+    {{productS()|json}}
+</pre>
+<hr>
+<section>
+    <nav>
+        <a [routerLink]="'d1'">D1</a> | <a [routerLink]="'d2'">D2</a>
+    </nav>
+    <router-outlet></router-outlet>
+</section>
+<hr>
+<div>
+    <a [routerLink]="['/products/4']">Saltar al 4</a>
+</div>
