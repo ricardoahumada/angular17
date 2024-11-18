@@ -10,7 +10,7 @@ import { map } from 'rxjs';
   templateUrl: './task-detail.component.html',
   styleUrls: ['./task-detail.component.scss'],
 })
-export class TaskDetailComponent implements OnInit {
+export class TaskDetailPreviewComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _taskSrv: TasksService,
