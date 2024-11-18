@@ -10,15 +10,16 @@ import { map } from 'rxjs';
   templateUrl: './task-detail.component.html',
   styleUrls: ['./task-detail.component.scss'],
 })
-export class TaskDetailPreviewComponent implements OnInit {
+export class TaskDetailForPreviewComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _taskSrv: TasksService,
     private _router: Router
-  ) {}
+  ) { }
 
-  task = {};
+  task: Task = {} as Task;
+
   ngOnInit(): void {
+    
   }
-
 }

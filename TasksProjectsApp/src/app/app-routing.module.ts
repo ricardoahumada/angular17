@@ -18,7 +18,7 @@ import { ContainerForDynamicComponent } from './dynamic/container-for-dynamic/co
 const routes: Routes = [
   { path: '', redirectTo: 'projects', pathMatch: 'full' },
   { path: 'signin', component: SignInComponent, },
-  { path: 'tasks', component: TaskListComponent, canActivate: [CanActivateGuard], resolve: { tasks: TasksResolver } },
+  { path: 'tasks', component: TaskListComponent, /* canActivate: [CanActivateGuard], resolve: { tasks: TasksResolver } */ },
   { path: 'tasks/new', component: NewTaskComponent },
   { path: 'tasks/new-sgn', component: NewTaskSgnComponent },
   { path: 'tasks/:tid', component: TaskDetailComponent },
