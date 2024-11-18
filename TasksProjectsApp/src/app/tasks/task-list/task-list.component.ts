@@ -4,6 +4,7 @@ import { TASKS } from '../../data/tasks';
 import { TasksService } from '../../services/tasks.service';
 import { TasksHttpService } from '../../services/taskshttp.service';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
@@ -12,7 +13,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class TaskListComponent {
 
-  constructor(private _tasksService: TasksHttpService) {
+  constructor(private _tasksService: TasksHttpService, private _route: ActivatedRoute) {
   }
 
 
@@ -22,6 +23,11 @@ export class TaskListComponent {
 
   filteredTasks = computed(() => this.tasks().filter(aT => aT.description.toLocaleLowerCase().includes(this.filter_text().toLocaleLowerCase())))
 
+  ngOnInit() {
+    this._route.data.subscribe(data => {
+      console.log('Data from resolver:', data);
+    });
+  }
 
   deleteTask(tid: number): void {
     this._tasksService.deleteATask(tid);
