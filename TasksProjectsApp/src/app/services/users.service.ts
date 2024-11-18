@@ -9,6 +9,7 @@ export class UsersService {
     { id: 1, name: 'john', email: 'j@j.com', position: 'manager' },
     { id: 2, name: 'anna', email: 'a@a.com', position: 'PO' },
     { id: 3, name: 'jimmy', email: 'jim@j.com', position: 'Developer' },
+    { id: 4, name: 'luis', email: 'luim@j.com', position: 'Developer' },
   ];
 
   constructor() {}

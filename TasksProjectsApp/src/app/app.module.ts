@@ -22,6 +22,8 @@ import { NewTaskComponent } from './tasks/new-task/new-task.component';
 import { NewTaskSgnComponent } from './tasks/new-task-sgn/new-task-sgn.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LogginInterceptor } from './interceptors/loggin.interceptor';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { LogginInterceptor } from './interceptors/loggin.interceptor';
     NewProjectComponent,
     NewTaskComponent,
     NewTaskSgnComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { LogginInterceptor } from './interceptors/loggin.interceptor';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LogginInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

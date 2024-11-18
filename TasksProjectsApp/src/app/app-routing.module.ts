@@ -10,13 +10,12 @@ import { ProjectMembersComponent } from './projects/project-detail/project-membe
 import { NewTaskComponent } from './tasks/new-task/new-task.component';
 import { NewProjectComponent } from './projects/new-project/new-project.component';
 import { NewTaskSgnComponent } from './tasks/new-task-sgn/new-task-sgn.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'projects', pathMatch: 'full' },
-  {
-    path: 'tasks',
-    component: TaskListComponent,
-  },
+  { path: 'signin', component: SignInComponent, },
+  { path: 'tasks', component: TaskListComponent, },
   { path: 'tasks/new', component: NewTaskComponent },
   { path: 'tasks/new-sgn', component: NewTaskSgnComponent },
   { path: 'tasks/:tid', component: TaskDetailComponent },
