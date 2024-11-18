@@ -27,6 +27,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ContainerForDynamicComponent } from './dynamic/container-for-dynamic/container-for-dynamic.component';
 import { CustomCardComponent } from './utils/delete/custom-card/custom-card.component';
 import { PreviewTaskComponent } from './tasks/preview-task/preview-task.component';
+import { TaskDetailForPreviewComponent } from './tasks/task-detail-for-preview/task-detail.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { PreviewTaskComponent } from './tasks/preview-task/preview-task.componen
     ProjectDetailComponent,
     ProjectTasksComponent,
     ProjectMembersComponent,
+    TaskDetailForPreviewComponent,
     NewProjectComponent,
     NewTaskComponent,
     NewTaskSgnComponent,
