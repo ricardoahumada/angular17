@@ -1,7 +1,9 @@
-import { Component, computed, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, Injector, OnInit, signal } from '@angular/core';
 import { Task } from '../../models/task';
 import { TASKS } from '../../data/tasks';
 import { TasksService } from '../../services/tasks.service';
+import { TasksHttpService } from '../../services/taskshttp.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-task-list',
@@ -10,16 +12,19 @@ import { TasksService } from '../../services/tasks.service';
 })
 export class TaskListComponent {
 
-  constructor(public taksService: TasksService) {
+  constructor(private _tasksService: TasksHttpService) {
   }
 
-  filter_text = signal('');
 
-  filteredTasks = computed(() => this.taksService.tasks().filter(aT => aT.description.toLocaleLowerCase().includes(this.filter_text().toLocaleLowerCase())))
+  filter_text = signal('');
+  tasks = toSignal(this._tasksService.getAllTasks(), { initialValue: [] });
+
+
+  filteredTasks = computed(() => this.tasks().filter(aT => aT.description.toLocaleLowerCase().includes(this.filter_text().toLocaleLowerCase())))
 
 
   deleteTask(tid: number): void {
-    this.taksService.deleteATask(tid);
+    this._tasksService.deleteATask(tid);
   }
 
 }

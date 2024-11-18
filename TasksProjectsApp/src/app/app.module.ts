@@ -20,6 +20,8 @@ import { ProjectMembersComponent } from './projects/project-detail/project-membe
 import { NewProjectComponent } from './projects/new-project/new-project.component';
 import { NewTaskComponent } from './tasks/new-task/new-task.component';
 import { NewTaskSgnComponent } from './tasks/new-task-sgn/new-task-sgn.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { LogginInterceptor } from './interceptors/loggin.interceptor';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,7 @@ import { NewTaskSgnComponent } from './tasks/new-task-sgn/new-task-sgn.component
     ProjectMembersComponent,
     NewProjectComponent,
     NewTaskComponent,
-    NewTaskSgnComponent
+    NewTaskSgnComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,9 +46,12 @@ import { NewTaskSgnComponent } from './tasks/new-task-sgn/new-task-sgn.component
     DelayDirective,
     NotFoundComponent,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [ProjectsService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LogginInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

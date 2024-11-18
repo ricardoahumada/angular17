@@ -66,7 +66,6 @@ export class NewProjectComponent implements OnInit {
       if (aTM.selected) acc.push(aTM.uid);
       return acc;
     }, []);
-
     temProj.date = temProj.deadline;
     delete (temProj.deadline);
     this._projSrv.addProject(temProj);
