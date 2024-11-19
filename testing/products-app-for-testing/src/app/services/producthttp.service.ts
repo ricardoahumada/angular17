@@ -25,7 +25,7 @@ export class ProductHTTPService {
   getProducts(): Observable<Product[]> {
     return this._http.get<Product[]>('http://localhost:3000/products', httpOptions).pipe(
       tap((data) => {
-        console.log('ProductHTTPService.getProducts:', data);
+        // console.log('ProductHTTPService.getProducts:', data);
         this.productos = data;
       }),
       catchError(this.errorHandler)

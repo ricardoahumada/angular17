@@ -18,6 +18,11 @@ describe('NotFoundComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component).toBeTruthy();// shpw methods of expert
+  });
+
+  it('should content title', () => {
+    const compiled = fixture.nativeElement as HTMLElement; // Native element idem DOM Element...show props and methods
+    expect(compiled.querySelector('h2')?.textContent).toContain('Ooopss');
   });
 });

@@ -1,10 +1,8 @@
-import { ChangeDetectionStrategy, Component, computed, effect, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
-import { Product } from '../../models/product';
-import { ProductClass } from '../../models/product-class';
-import { ProductService } from '../../services/product.service';
-import { ProductHTTPService } from '../../services/producthttp.service';
-import { EventSourceService } from '../../services/EventSourceService';
+import { Component, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
 import { combineLatest, map, SubscriptionLike } from 'rxjs';
+import { Product } from '../../models/product';
+import { EventSourceService } from '../../services/EventSourceService';
+import { ProductHTTPService } from '../../services/producthttp.service';
 
 @Component({
   selector: 'products-http-list',

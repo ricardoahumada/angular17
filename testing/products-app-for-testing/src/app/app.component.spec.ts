@@ -8,6 +8,9 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      imports:[
+        AppRoutingModule
+      ]
     }).compileComponents();
   });
 

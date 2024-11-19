@@ -8,11 +8,12 @@ import { NotFoundComponent } from './util/not-found/not-found.component';
 import { D1Component } from './products/detail-product/d1/d1.component';
 import { D2Component } from './products/detail-product/d2/d2.component';
 import { ProductsListHttpComponent } from './products/productshttp-list/products-list.component';
+import { MiComponentComponent } from './util/mi-component/mi-component.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full' },
   { path: 'products', component: ProductsListComponent },
-  // { path: 'products', component: ProductsListHttpComponent },
+  { path: 'productshttp', component: ProductsListHttpComponent },
   {
     path: 'products/:pid', component: DetailProductComponent,
     children: [
@@ -23,6 +24,7 @@ const routes: Routes = [
   },
   { path: 'orders', component: ListOrdersComponent },
   { path: 'users/new', component: NewUserComponent },
+  { path: 'mi', component: MiComponentComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
