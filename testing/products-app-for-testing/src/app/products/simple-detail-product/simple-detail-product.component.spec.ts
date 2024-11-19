@@ -42,6 +42,7 @@ describe('SimpleDetailProductComponent', () => {
     const aProd = component.productS();
     expect(pid).toBe(1);
     expect(aProd).not.toBeNull();
+    expect(aProd).not.toBeUndefined();
   });
 
 });

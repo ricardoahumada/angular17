@@ -12,15 +12,15 @@ import { ProductService } from '../../services/product.service';
 export class ProductsListComponent implements OnInit, OnDestroy {
 
   constructor(public productService: ProductService) {
-    effect(() => {
+    /* effect(() => {
       console.log("Counter cambio!", this.counter());
-    })
+    }) */
   }
 
   ngOnInit(): void {
-    this.timer = setTimeout(() => {
+    /* this.timer = setTimeout(() => {
       console.log('Este es un mensaje diferido...');
-    }, 1000);
+    }, 1000); */
   }
 
   unProducto: Product = {
@@ -52,11 +52,12 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   }
 
   updateStars(stars: number, pid: number | undefined) {
-    if(pid) this.productService.updateStars(pid, stars);
-  } 
+    console.log('updating stars....', pid);
+    if (pid) this.productService.updateStars(pid, stars);
+  }
 
   ngOnDestroy(): void {
-    console.log('Destruyendo....');
+    // console.log('Destruyendo....');
     clearTimeout(this.timer);
   }
 
