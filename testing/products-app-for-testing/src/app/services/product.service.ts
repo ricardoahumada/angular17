@@ -9,7 +9,7 @@ export class ProductService {
 
   constructor() {
     effect(() => {
-      console.log("ProductService - Products cambio!", this.productList());
+      // console.log("ProductService - Products cambio!", this.productList());
     })
   }
 

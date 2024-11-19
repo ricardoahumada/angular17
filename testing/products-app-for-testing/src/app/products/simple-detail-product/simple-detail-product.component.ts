@@ -18,5 +18,11 @@ export class SimpleDetailProductComponent {
   pidS = toSignal(this._route.params.pipe(map(params => params['pid'])));
 
   productS = computed(() => this._productService.getAProduct(this.pidS()));
-  
+
+  /* ngOnInit() {
+    this._route.params.subscribe(params => {
+      console.log('params:', params)
+    });
+  } */
+
 }

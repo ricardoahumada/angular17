@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 
 import { DetailProductComponent } from './detail-product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -8,7 +8,7 @@ import { of } from 'rxjs';
 import { AppRoutingModule } from '../../app-routing.module';
 
 let fakeActivatedRoute = {
-  params: of(convertToParamMap({ pid: '123' })),
+  params: of({ pid: 1 })
 };
 
 describe('DetailProductComponent', () => {
@@ -18,13 +18,13 @@ describe('DetailProductComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DetailProductComponent],
-      imports:[FormsModule, ReactiveFormsModule, HttpClientModule, AppRoutingModule],
+      imports: [FormsModule, ReactiveFormsModule, HttpClientModule, AppRoutingModule],
       providers: [
         { provide: ActivatedRoute, useValue: fakeActivatedRoute }
       ]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(DetailProductComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -33,4 +33,10 @@ describe('DetailProductComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should get a pid', () => {
+    const pid: any = component.pidS();
+    expect(pid).toBe(1);
+  });
+
 });
