@@ -1,0 +1,56 @@
+<h2 *replicate="1">Lista de productos</h2>
+
+<div><input class="form-control" highlight [ngModel]="texto()" (ngModelChange)="texto.set($event)" /></div>
+<br>
+<section>
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>id</th>
+                <th>nombre</th>
+                <th>imagen</th>
+                <th>valoración</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(prod of productService.productList()|filterProducts:texto();track prod.id){
+            <tr>
+                <td>{{prod.id}}</td>
+                <td highlight="skyblue">
+                    {{prod.name}}
+                </td>
+                <td><img src="./assets/imgs/{{prod.image}}" alt="" /></td>
+                <td><app-rate [rating]="prod.stars?prod.stars:0"
+                        (starClicked)="updateStars($event, prod.id)"></app-rate></td>
+                <td><a [routerLink]="[prod.id]">Ver detalle</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <h3>Total de precios:{{totalStarts()}}</h3>
+</section>
+
+<hr>
+<div><button type="button" class="btn btn-light" (click)="show.set(!show())">Mostar ejemplos ocultos</button></div>
+<hr>
+
+@if(show()){
+<section>
+    <button (click)="addOne()">+</button>
+    <pre>counter: {{counter()}}</pre>
+    <pre>2xcounter: {{doubleCounter()}}</pre>
+</section>
+
+<section>
+    <article *ngIf="show()">
+        <div>id: {{unProducto.id}}</div>
+        <div>name: {{unProducto.name | uppercase}}</div>
+        <div>image: <img src="./assets/imgs/{{unProducto.image}}" alt="" /></div>
+        <div>image: <img [src]="genImgUrl()" alt="" /></div>
+    </article>
+
+    <br>
+    <pre>{{texto()}}</pre>
+</section>
+}

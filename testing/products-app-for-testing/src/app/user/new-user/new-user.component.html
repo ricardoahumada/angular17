@@ -1,0 +1,115 @@
+<section>
+    <h2>Signup form</h2>
+    <form novalidate [formGroup]="myform" (ngSubmit)="submitForm()">
+        <fieldset formGroupName="name">
+            <div class="form-group">
+                <label>Name</label>
+                <input formControlName="firstName" type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>Last Name</label>
+                <input formControlName="lastName" type="text" class="form-control">
+            </div>
+
+            @if(!myform.get('name')?.valid){<div>
+                El nombre y apellido son requeridos y deben tener más de 3 caracters
+            </div>}
+        </fieldset>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input formControlName="email" type="email" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input formControlName="password" type="password" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Language</label>
+            <select formControlName="language" class="form-control">
+                <option value="" disabled selected>Please select a language</option>
+                <option value="es">es</option>
+                <option value="en">en</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" [disabled]="!myform.valid">Submit</button>
+        </div>
+
+    </form>
+</section>
+
+<hr>
+<h4>Name</h4>
+<pre>{{myform.get('name')?.value|json}}</pre>
+<pre>{{myform.get('name')?.status}}</pre>
+<pre>{{myform.get('name')?.valid}}</pre>
+<pre>{{myform.get('name')?.pristine}}</pre>
+<pre>{{myform.get('name')?.dirty}}</pre>
+<pre>{{myform.get('name')?.touched}}</pre>
+<pre>{{myform.get('name')?.errors|json}}</pre>
+
+<h4>Language</h4>
+<pre>{{myform.get('language')?.value|json}}</pre>
+<pre>{{myform.get('language')?.status}}</pre>
+<pre>{{myform.get('language')?.errors|json}}</pre>
+
+<h4>myForm</h4>
+<pre>{{myform.value|json}}</pre>
+<pre>{{myform.status}}</pre>
+<pre>{{myform.errors}}</pre>
+
+<hr>
+<hr>
+
+<section>
+    <h2>Signup form Template</h2>
+    <form #newUserForm="ngForm" (ngSubmit)="submitTemplateForm()">
+        <fieldset>
+            <div class="form-group">
+                <label>Name</label>
+                <input [(ngModel)]="signupModel.name" name="firstName" type="text" class="form-control" required minlength="3"
+                    maxlength="20">
+            </div>
+
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" [(ngModel)]="signupModel.surname" name="lastName" class="form-control" required>
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" [(ngModel)]="signupModel.email" name="email" class="form-control" required appEmailvalidator>
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" [(ngModel)]="signupModel.password" name="password" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label>Language</label>
+            <select class="form-control" [(ngModel)]="signupModel.language" name="language" required>
+                <option value="" disabled selected>Please select a language</option>
+                <option value="es">es</option>
+                <option value="en">en</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" [disabled]="!newUserForm.valid">Submit</button>
+        </div>
+
+    </form>
+</section>
+
+<pre>{{signupModel|json}}</pre>
+
+<pre>{{newUserForm?.value|json}}</pre>
+<pre>{{newUserForm?.status|json}}</pre>
+<pre>{{newUserForm?.errors|json}}</pre>
