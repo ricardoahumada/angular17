@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContainerForDynamicComponent } from './dynamic/container-for-dynamic/container-for-dynamic.component';
-import { CanActivateGuard } from './guards/can-activate.guard';
-import { NewProjectComponent } from './projects/new-project/new-project.component';
-import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
-import { ProjectMembersComponent } from './projects/project-detail/project-members/project-members.component';
-import { ProjectTasksComponent } from './projects/project-detail/project-tasks/project-tasks.component';
-import { ProjectListComponent } from './projects/project-list/project-list.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { NewTaskSgnComponent } from './tasks/new-task-sgn/new-task-sgn.component';
-import { NewTaskComponent } from './tasks/new-task/new-task.component';
-import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
-import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { NotFoundComponent } from './utils/delete/not-found/not-found.component';
+import { TaskListComponent } from './tasks/task-list/task-list.component';
+import { ProjectListComponent } from './projects/project-list/project-list.component';
+import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
+import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
+import { ProjectTasksComponent } from './projects/project-detail/project-tasks/project-tasks.component';
+import { ProjectMembersComponent } from './projects/project-detail/project-members/project-members.component';
+import { NewTaskComponent } from './tasks/new-task/new-task.component';
+import { NewProjectComponent } from './projects/new-project/new-project.component';
+import { NewTaskSgnComponent } from './tasks/new-task-sgn/new-task-sgn.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { CanActivateGuard } from './guards/can-activate.guard';
+import { TasksResolver } from './resolvers/tasks.resolver';
+import { ContainerForDynamicComponent } from './dynamic/container-for-dynamic/container-for-dynamic.component';
+import { NewFeatureComponent } from './new-feature-module/new-feature.component';
+import { FeatureGuard } from './feature-flags/feature-flags.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'projects', pathMatch: 'full' },
