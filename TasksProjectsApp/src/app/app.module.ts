@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -27,6 +27,9 @@ import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { CustomCardComponent } from './utils/delete/custom-card/custom-card.component';
 import { DeleteComponent } from './utils/delete/delete.component';
 import { NotFoundComponent } from './utils/delete/not-found/not-found.component';
+import { FeatureFlagsService } from './feature-flags/feature-flags.service';
+
+const featureFactory = (featureFlagsService: FeatureFlagsService) => () =>  featureFlagsService.loadConfig();
 
 @NgModule({
   declarations: [
@@ -62,7 +65,18 @@ import { NotFoundComponent } from './utils/delete/not-found/not-found.component'
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LogginInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: featureFactory,
+      deps: [FeatureFlagsService],
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+
+
+  
