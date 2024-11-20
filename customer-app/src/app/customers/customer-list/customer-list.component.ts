@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SharedService } from '../../shared/shared.service';
 
 @Component({
   selector: 'app-customer-list',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class CustomerListComponent {
 
+  constructor(private _sharedserv: SharedService) {
+
+  }
+
+  ngOnInit(): void {
+    console.log('Share service in customers...', this._sharedserv.sayHello('ric'));
+  }
 }
