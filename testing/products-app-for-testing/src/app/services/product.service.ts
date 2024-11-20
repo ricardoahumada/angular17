@@ -8,9 +8,9 @@ import { DATA } from '../data/products';
 export class ProductService {
 
   constructor() {
-    effect(() => {
+    /* effect(() => {
       console.log("ProductService - Products cambio!", this.productList());
-    })
+    }) */
   }
 
   private _productos: Product[] = DATA;

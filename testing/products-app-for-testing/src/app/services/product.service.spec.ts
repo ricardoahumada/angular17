@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ProductService } from './product.service';
+import { DATA } from '../data/products';
 
 describe('ProductService', () => {
   let service: ProductService;
@@ -13,4 +14,12 @@ describe('ProductService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+  
+  it('returns products', () => {
+    const prods = service.productList();
+    expect(prods).toBe(DATA);
+  });
+
+
+
 });
