@@ -9,7 +9,7 @@ import { FilterProductsPipe } from './pipes/filter-products.pipe';
 import { ProductsListComponent } from './products/products-list/products-list.component';
 import { RateComponent } from './util/rate/rate.component';
 import { provideLocationMocks } from '@angular/common/testing';
-import { provideRouter } from '@angular/router';
+import { provideRouter, RouterModule } from '@angular/router';
 
 describe('AppComponent', () => {
 
@@ -19,7 +19,7 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent, ProductsListComponent, ReplicateDirective],
-      imports: [AppRoutingModule, FilterProductsPipe, FormsModule, RateComponent],
+      imports: [RouterModule/* , AppRoutingModule */, FilterProductsPipe, FormsModule, RateComponent],
       providers: [
         provideRouter([
           {path: 'products',component: ProductsListComponent,},
@@ -50,18 +50,6 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('h1')?.textContent).toContain('Hello, products-app');
   });
 
-  it('should navigate to orders', async () => {
-
-    const harness = await RouterTestingHarness.create('orders');
-
-    const heading = harness
-      .routeNativeElement
-      ?.querySelector('h2')
-      ?.textContent
-      ?.trim() ?? '';
-    expect(heading).toBe('Pedidos');
-  });
-  
   it('should navigate to products', async () => {
 
     const harness = await RouterTestingHarness.create('products');
@@ -73,5 +61,18 @@ describe('AppComponent', () => {
       ?.trim() ?? '';
     expect(heading).toBe('Lista de productos');
   });
+
+  it('should navigate to orders', async () => {
+    const harness = await RouterTestingHarness.create('products');
+    await harness.navigateByUrl('orders');
+
+    const heading = harness
+      .routeNativeElement
+      ?.querySelector('h2')
+      ?.textContent
+      ?.trim() ?? '';
+    expect(heading).toBe('Pedidos');
+  });
+
 
 });
