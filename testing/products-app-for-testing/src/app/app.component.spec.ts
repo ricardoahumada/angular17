@@ -8,6 +8,8 @@ import { ListOrdersComponent } from './orders/list-orders/list-orders.component'
 import { FilterProductsPipe } from './pipes/filter-products.pipe';
 import { ProductsListComponent } from './products/products-list/products-list.component';
 import { RateComponent } from './util/rate/rate.component';
+import { provideLocationMocks } from '@angular/common/testing';
+import { provideRouter } from '@angular/router';
 
 describe('AppComponent', () => {
 
@@ -18,13 +20,13 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent, ProductsListComponent, ReplicateDirective],
       imports: [AppRoutingModule, FilterProductsPipe, FormsModule, RateComponent],
-      /* providers: [
+      providers: [
         provideRouter([
           {path: 'products',component: ProductsListComponent,},
           {path: 'orders',component: ListOrdersComponent,},
         ]),
         provideLocationMocks(),
-      ], */
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AppComponent);
