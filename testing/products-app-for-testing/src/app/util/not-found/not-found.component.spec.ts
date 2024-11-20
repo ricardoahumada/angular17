@@ -8,16 +8,25 @@ describe('NotFoundComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NotFoundComponent]
+      declarations: [NotFoundComponent],
+      imports: [],
+      providers: []
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(NotFoundComponent);
     component = fixture.componentInstance;
+
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('debe contener oops...', () => {
+    const compiled: HTMLElement = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h2')?.textContent).toContain('ops');
+  });
+
 });
